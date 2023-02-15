@@ -1,0 +1,28 @@
+{
+    "name": "simple-wildduck",
+    "version": "1.0.0",
+    "description": "Simple interface for the WildDuck API",
+    "main": "dist/index.js",
+    "scripts": {
+        "compile": "tsc",
+        "publish": "tsc && npm publish --access=public",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/WeebNetsu/simple-wildduck.git"
+    },
+    "keywords": [
+        "wildduck"
+    ],
+    "author": "Stephen van der Westhuizen",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/WeebNetsu/simple-wildduck/issues"
+    },
+    "homepage": "https://github.com/WeebNetsu/simple-wildduck#readme",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/"
+    ]
+}
