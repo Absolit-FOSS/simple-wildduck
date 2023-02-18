@@ -324,7 +324,7 @@ export interface UpdateAddressInformationModel {
   tags?: string[];
 }
 
-export interface RenameDomainInAddress {
+export interface RenameDomainInAddressModel {
   /**
    * Indicates successful response
    */
