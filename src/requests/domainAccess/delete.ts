@@ -5,20 +5,17 @@ import { URL } from "./config";
 import { DeleteUserQueryParametersModel } from "./models";
 
 /**
- * Delete a user
+ * Delete a Domain from listing
  *
- * http://docs.wildduck.email/api/#operation/deleteUser
+ * https://docs.wildduck.email/api/#operation/deleteDomainListing
  *
- * @param id the users wildduck ID
- * @param queryData query parameters for additional options
+ * @param domainId Listed domains unique ID
  */
-export const deleteUser = async (
-	id: string,
-	queryData: DeleteUserQueryParametersModel
+export const deleteDomainFromListing = async (
+	domainId: string
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}`, {
+	const url = urlQueryBuilder(`${URL}/${domainId}`, {
 		access_token: wdData.accessToken,
-		...queryData,
 	});
 
 	const res = await axiosConf.delete(url);

@@ -5,12 +5,11 @@ import { URL } from "./config";
 import { DeleteUserQueryParametersModel } from "./models";
 
 /**
- * Delete a user
+ * Delete an Alias
  *
  * http://docs.wildduck.email/api/#operation/deleteUser
  *
  * @param id the users wildduck ID
- * @param queryData query parameters for additional options
  */
 export const deleteUser = async (
 	id: string,
