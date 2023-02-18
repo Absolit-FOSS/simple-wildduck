@@ -11,14 +11,14 @@ import {
 } from "./models";
 
 /**
- * Get a single user
+ * Request DKIM information
  *
- * http://docs.wildduck.email/api/#operation/getUser
+ * https://docs.wildduck.email/api/#operation/getDkimKey
  *
- * @param id the users wildduck ID
+ * @param dkimId ID of the DKIM
  */
-export const getUser = async (id: string): Promise<GetUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}`, {
+export const requestDkimInformation = async (dkimId: string): Promise<GetUserResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/${dkimId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -48,59 +48,17 @@ export const getUsers = async (
 };
 
 /**
- * This api call returns an EventSource response. Listen on this stream
- * to get notifications about changes in messages and mailboxes.
- * Returned events are JSON encoded strings
+ * Resolve ID for a DKIM domain
+ * 
+ * https://docs.wildduck.email/api/#operation/resolveDkim
  *
- * http://docs.wildduck.email/api/#operation/getUpdates
- *
- * @param id the users wildduck ID
+ * @param domain DKIM domain
  */
-export const getChangeStream = async (
-	id: string
+export const resolveIdForDkimDomain = async (
+	domain: string
 ): Promise<GetUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}/updates`, {
+	const url = urlQueryBuilder(`${URL}/${domain}/updates`, {
 		access_token: wdData.accessToken,
-	});
-
-	const res = await axiosConf.get(url);
-
-	return res.data;
-};
-
-/**
- * Get a users ID via their username
- *
- * http://docs.wildduck.email/api/#operation/resolveUser
- *
- * @param username the users wildduck username
- */
-export const getUserIdByUsername = async (
-	username: string
-): Promise<GetUserIdByUsernameResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/resolve/${username}`, {
-		access_token: wdData.accessToken,
-	});
-
-	const res = await axiosConf.get(url);
-
-	return res.data;
-};
-/**
- * Get the recovery info for a deleted user
- *
- * http://docs.wildduck.email/api/#operation/restoreUserInfo
- *
- * @param id the users wildduck ID
- * @param queryData query parameters for additional options
- */
-export const getDeletedUserInfo = async (
-	id: string,
-	queryData: UserIdentifierModel
-): Promise<GetDeletedUserInfoResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}/restore`, {
-		access_token: wdData.accessToken,
-		...queryData,
 	});
 
 	const res = await axiosConf.get(url);

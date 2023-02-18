@@ -5,20 +5,17 @@ import { URL } from "./config";
 import { DeleteUserQueryParametersModel } from "./models";
 
 /**
- * Delete a user
+ * Delete a DKIM key
  *
- * http://docs.wildduck.email/api/#operation/deleteUser
+ * https://docs.wildduck.email/api/#operation/deleteDkimKey
  *
- * @param id the users wildduck ID
- * @param queryData query parameters for additional options
+ * @param dkimId ID of the DKIM
  */
-export const deleteUser = async (
-	id: string,
-	queryData: DeleteUserQueryParametersModel
+export const deleteDkimKey = async (
+	dkimId: string,
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}`, {
+	const url = urlQueryBuilder(`${URL}/${dkimId}`, {
 		access_token: wdData.accessToken,
-		...queryData,
 	});
 
 	const res = await axiosConf.delete(url);
