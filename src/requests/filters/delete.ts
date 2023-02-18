@@ -2,23 +2,21 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { DeleteUserQueryParametersModel } from "./models";
 
 /**
- * Delete a user
+ * Delete a Filter
  *
- * http://docs.wildduck.email/api/#operation/deleteUser
+ * https://docs.wildduck.email/api/#operation/deleteFilter
  *
- * @param id the users wildduck ID
- * @param queryData query parameters for additional options
+ * @param userId Users unique ID
+ * @param filterId Filters unique ID
  */
-export const deleteUser = async (
-	id: string,
-	queryData: DeleteUserQueryParametersModel
+export const deleteFilter = async (
+	userId: string,
+	filterId: string
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}`, {
+	const url = urlQueryBuilder(`${URL}/${filterId}`, {
 		access_token: wdData.accessToken,
-		...queryData,
 	});
 
 	const res = await axiosConf.delete(url);

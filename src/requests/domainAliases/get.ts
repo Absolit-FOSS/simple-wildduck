@@ -11,14 +11,14 @@ import {
 } from "./models";
 
 /**
- * Get a single user
+ * Request Alias information
  *
- * http://docs.wildduck.email/api/#operation/getUser
+ * https://docs.wildduck.email/api/#operation/getDomainAlias
  *
- * @param id the users wildduck ID
+ * @param aliasId ID of the Alias
  */
-export const getUser = async (id: string): Promise<GetUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}`, {
+export const requestAliasInformation = async (aliasId: string): Promise<GetUserResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/${aliasId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -28,18 +28,21 @@ export const getUser = async (id: string): Promise<GetUserResponseModel> => {
 };
 
 /**
- * Get all registered users
+ * List registered Domain Aliases
  *
- * http://docs.wildduck.email/api/#operation/getUsers
+ * https://docs.wildduck.email/api/#operation/getDomainAliases
  *
- * @param queryData query parameters for additional options
+ * @param query Partial match of a Domain Alias or Domain name
  */
-export const getUsers = async (
-	queryData: GetUsersQueryParametersModel
+export const listRegisteredDomainAliases = async (
+	query: string,
+	limit: number,
+	page: number,
+	next: string,
+	previous: string
 ): Promise<GetUsersResponseModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		access_token: wdData.accessToken,
-		...queryData,
 	});
 
 	const res = await axiosConf.get(url);
@@ -48,59 +51,17 @@ export const getUsers = async (
 };
 
 /**
- * This api call returns an EventSource response. Listen on this stream
- * to get notifications about changes in messages and mailboxes.
- * Returned events are JSON encoded strings
+ * Resolve ID for a domain alias
  *
- * http://docs.wildduck.email/api/#operation/getUpdates
+ * https://docs.wildduck.email/api/#operation/resolveDomainAlias
  *
- * @param id the users wildduck ID
+ * @param alias Alias domain
  */
-export const getChangeStream = async (
-	id: string
+export const resolveIdForDomainAlias = async (
+	alias: string
 ): Promise<GetUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}/updates`, {
+	const url = urlQueryBuilder(`${URL}/${alias}/updates`, {
 		access_token: wdData.accessToken,
-	});
-
-	const res = await axiosConf.get(url);
-
-	return res.data;
-};
-
-/**
- * Get a users ID via their username
- *
- * http://docs.wildduck.email/api/#operation/resolveUser
- *
- * @param username the users wildduck username
- */
-export const getUserIdByUsername = async (
-	username: string
-): Promise<GetUserIdByUsernameResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/resolve/${username}`, {
-		access_token: wdData.accessToken,
-	});
-
-	const res = await axiosConf.get(url);
-
-	return res.data;
-};
-/**
- * Get the recovery info for a deleted user
- *
- * http://docs.wildduck.email/api/#operation/restoreUserInfo
- *
- * @param id the users wildduck ID
- * @param queryData query parameters for additional options
- */
-export const getDeletedUserInfo = async (
-	id: string,
-	queryData: UserIdentifierModel
-): Promise<GetDeletedUserInfoResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}/restore`, {
-		access_token: wdData.accessToken,
-		...queryData,
 	});
 
 	const res = await axiosConf.get(url);

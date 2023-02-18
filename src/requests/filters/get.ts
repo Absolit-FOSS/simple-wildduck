@@ -11,14 +11,18 @@ import {
 } from "./models";
 
 /**
- * Get a single user
+ * Request Filter information
  *
- * http://docs.wildduck.email/api/#operation/getUser
+ * https://docs.wildduck.email/api/#operation/getFilter
  *
- * @param id the users wildduck ID
+ * @param userId Users unique ID
+ * @param filterId Filters unique ID
  */
-export const getUser = async (id: string): Promise<GetUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}`, {
+export const requestFilterInformation = async (
+	userId: string,
+	filterId: string
+): Promise<GetUserResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/${filterId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -28,18 +32,25 @@ export const getUser = async (id: string): Promise<GetUserResponseModel> => {
 };
 
 /**
- * Get all registered users
+ * List all Filters
  *
- * http://docs.wildduck.email/api/#operation/getUsers
+ * https://docs.wildduck.email/api/#operation/getAllFilters
  *
- * @param queryData query parameters for additional options
+ * @param forward Partial match of a forward email address or URL
+ * @param limit How many records to return
+ * @param page Current page number. Informational only, page numbers start from 1
+ * @param next Cursor value for next page, retrieved from nextCursor response value
+ * @param previous Cursor value for previous page, retrieved from previousCursor response value
  */
 export const getUsers = async (
-	queryData: GetUsersQueryParametersModel
+	forward: string,
+	limit: number,
+	page: number,
+	next: number,
+	previous: number
 ): Promise<GetUsersResponseModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		access_token: wdData.accessToken,
-		...queryData,
 	});
 
 	const res = await axiosConf.get(url);
@@ -48,59 +59,17 @@ export const getUsers = async (
 };
 
 /**
- * This api call returns an EventSource response. Listen on this stream
- * to get notifications about changes in messages and mailboxes.
- * Returned events are JSON encoded strings
+ * List Filters for a User
  *
- * http://docs.wildduck.email/api/#operation/getUpdates
+ * https://docs.wildduck.email/api/#operation/getFilters
  *
- * @param id the users wildduck ID
+ * @param userId Users unique ID
  */
-export const getChangeStream = async (
-	id: string
+export const listFiltersForUser = async (
+	userId: string
 ): Promise<GetUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}/updates`, {
+	const url = urlQueryBuilder(`${URL}/${userId}/updates`, {
 		access_token: wdData.accessToken,
-	});
-
-	const res = await axiosConf.get(url);
-
-	return res.data;
-};
-
-/**
- * Get a users ID via their username
- *
- * http://docs.wildduck.email/api/#operation/resolveUser
- *
- * @param username the users wildduck username
- */
-export const getUserIdByUsername = async (
-	username: string
-): Promise<GetUserIdByUsernameResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/resolve/${username}`, {
-		access_token: wdData.accessToken,
-	});
-
-	const res = await axiosConf.get(url);
-
-	return res.data;
-};
-/**
- * Get the recovery info for a deleted user
- *
- * http://docs.wildduck.email/api/#operation/restoreUserInfo
- *
- * @param id the users wildduck ID
- * @param queryData query parameters for additional options
- */
-export const getDeletedUserInfo = async (
-	id: string,
-	queryData: UserIdentifierModel
-): Promise<GetDeletedUserInfoResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}/restore`, {
-		access_token: wdData.accessToken,
-		...queryData,
 	});
 
 	const res = await axiosConf.get(url);

@@ -8,42 +8,22 @@ import {
 } from "./models";
 
 /**
- * Update a user
+ * Update Filter information
  *
- * http://docs.wildduck.email/api/#operation/updateUser
+ * https://docs.wildduck.email/api/#operation/updateFilter
  *
- * @param id the users wildduck ID
- * @param bodyData data to update on the user
+ * @param userId the users wildduck ID
+ * @param filterId Filters unique ID
  */
-export const updateUser = async (
-	id: string,
-	bodyData: UpdateUserBodyParametersModel
+export const updateFilterInformation = async (
+	userId: string,
+	filterId: string
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}`, {
+	const url = urlQueryBuilder(`${URL}/${filterId}`, {
 		access_token: wdData.accessToken,
 	});
 
-	const res = await axiosConf.put(url, bodyData);
-
-	return res.data;
-};
-/**
- * Log out all users sessions in IMAP
- *
- * http://docs.wildduck.email/api/#operation/logoutUser
- *
- * @param id the users wildduck ID
- * @param bodyData data to logout on the user
- */
-export const logoutUser = async (
-	id: string,
-	bodyData: LogoutUserBodyParametersModel
-): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}/logout`, {
-		access_token: wdData.accessToken,
-	});
-
-	const res = await axiosConf.put(url, bodyData);
+	const res = await axiosConf.put(url);
 
 	return res.data;
 };
