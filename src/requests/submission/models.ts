@@ -1,4 +1,4 @@
-import { UserIdentifierModel } from "../../models";
+import { FromToModel, UserIdentifierModel } from "../../models";
 
 export interface ReferenceModel {
 	/**
@@ -13,17 +13,6 @@ export interface ReferenceModel {
 	 * Either reply, replyAll or forward
 	 */
 	action: string;
-}
-
-export interface FromToModel {
-	/**
-	 * Name of the sender/receiver
-	 */
-	name?: string;
-	/**
-	 * Address of the sender/receiver
-	 */
-	address: string;
 }
 
 export interface EnvelopeModel {

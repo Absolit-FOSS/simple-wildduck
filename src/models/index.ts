@@ -96,3 +96,14 @@ export interface PageQueryModel {
 	 */
 	previous?: string;
 }
+
+export interface FromToModel {
+	/**
+	 * Name of the sender/receiver
+	 */
+	name?: string;
+	/**
+	 * Address of the sender/receiver
+	 */
+	address: string;
+}
