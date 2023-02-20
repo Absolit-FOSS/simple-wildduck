@@ -173,14 +173,3 @@ export interface CreateMailboxBodyParameterModel {
 	 */
 	retention?: number;
 }
-
-export interface CreateMailboxResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * Mailbox ID
-	 */
-	id: boolean;
-}

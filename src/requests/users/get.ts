@@ -86,6 +86,7 @@ export const getUserIdByUsername = async (
 
 	return res.data;
 };
+
 /**
  * Get the recovery info for a deleted user
  *

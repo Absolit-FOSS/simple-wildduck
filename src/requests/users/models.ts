@@ -1,5 +1,6 @@
 import {
 	AvailableEmailScopes,
+	CursorResponseModel,
 	DefaultMailboxModel,
 	LimitUsageModel,
 	LimitUsageTTLModel,
@@ -290,17 +291,6 @@ export interface GetUserIdByUsernameResponseModel {
 	id: string;
 }
 
-export interface CreateUserResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * Users unique ID (24 byte hex)
-	 */
-	id: string;
-}
-
 export interface CreateUserBodyParameterModel {
 	/**
 	 * Username of the User. Dots are allowed but informational only
@@ -537,27 +527,7 @@ export interface GetUsersQueryParametersModel {
 	previous?: string;
 }
 
-export interface GetUsersResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * How many results were found
-	 */
-	total: number;
-	/**
-	 * Current page number. Derived from page query argument
-	 */
-	page: number;
-	/**
-	 * Either a cursor string or false if there are not any previous results
-	 */
-	previousCursor: string;
-	/**
-	 * Either a cursor string or false if there are not any next results
-	 */
-	nextCursor: string;
+export interface GetUsersResponseModel extends CursorResponseModel {
 	/**
 	 * User listing
 	 */
