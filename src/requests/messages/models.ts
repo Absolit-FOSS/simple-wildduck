@@ -1,4 +1,11 @@
-import { FromToModel } from "../../models";
+import {
+	AttachmentModel,
+	CursorResponseModel,
+	FromToModel,
+	HeaderModel,
+	PageQueryModel,
+	UserIdentifierModel,
+} from "../../models";
 
 export interface GetMessageInfoQueryParametersModel {
 	/**
@@ -7,7 +14,7 @@ export interface GetMessageInfoQueryParametersModel {
 	markAsSeen?: boolean;
 }
 
-export interface AttachmentModel {
+export interface MessageInfoAttachmentModel {
 	/**
 	 * Attachment ID
 	 */
@@ -236,7 +243,7 @@ export interface GetMessageInfoResponseModel {
 	/**
 	 * Attachments for the message
 	 */
-	attachments?: AttachmentModel[];
+	attachments?: MessageInfoAttachmentModel[];
 	/**
 	 * Security verification info if message was received from MX.
 	 * If this property is missing then do not automatically assume
@@ -308,4 +315,329 @@ export interface DeleteAllMessagesResponseModel {
 	 * Indicates count of deleted messages
 	 */
 	deleted: number;
+}
+
+export interface GetMessagesInMailboxQueryParametersModel
+	extends PageQueryModel {
+	/**
+	 * If true, then returns only unseen messages
+	 */
+	unseen?: boolean;
+	/**
+	 * If true, then includes metaData in the response
+	 */
+	metaData?: boolean;
+	/**
+	 * If true, then includes threadMessageCount in the response.
+	 * Counters come with some overhead
+	 */
+	threadCounters?: boolean;
+	/**
+	 * Ordering of the records by insert date
+	 */
+	order?: "asc" | "desc";
+}
+
+export interface GetMessagesInMailboxResponseModel extends CursorResponseModel {
+	results: {
+		/**
+		 * ID of the Message
+		 */
+		id: number;
+		/**
+		 * ID of the Mailbox
+		 */
+		mailbox: string;
+		/**
+		 * ID of the Thread
+		 */
+		thread: string;
+		/**
+		 * Amount of messages in the Thread. Included if threadCounters query
+		 * argument was true
+		 */
+		threadMessageCount?: number;
+		from: FromToModel;
+		/**
+		 * Recipients in To: field
+		 */
+		to: FromToModel[];
+		/**
+		 * Recipients in Cc: field
+		 */
+		cc: FromToModel[];
+		/**
+		 * Recipients in Bcc: field
+		 */
+		bcc: FromToModel[];
+		/**
+		 * Message subject
+		 */
+		subject: string;
+		/**
+		 * Date string from header
+		 */
+		date: string;
+		/**
+		 * Date string of receive time
+		 */
+		idate?: string;
+		/**
+		 * Message size in bytes
+		 */
+		size: number;
+		/**
+		 * First 128 bytes of the message
+		 */
+		intro: string;
+		/**
+		 * Does the message have attachments
+		 */
+		attachments: boolean;
+		/**
+		 * Is this message already seen or not
+		 */
+		seen: boolean;
+		/**
+		 * Does this message have a \Deleted flag (should not have as messages
+		 * are automatically deleted once this flag is set)
+		 */
+		deleted: boolean;
+		/**
+		 * Does this message have a \Flagged flag
+		 */
+		flagged: boolean;
+		/**
+		 * Does this message have a \Answered flag
+		 */
+		answered: boolean;
+		/**
+		 * Does this message have a $Forwarded flag
+		 */
+		forwarded: boolean;
+		/**
+		 * Parsed Content-Type header. Usually needed to identify encrypted
+		 * messages and such
+		 */
+		contentType: {
+			/**
+			 * MIME type of the message, eg. "multipart/mixed"
+			 */
+			value: string;
+			/**
+			 * An object with Content-Type params as key-value pairs
+			 */
+			params: any;
+		};
+		/**
+		 * Custom metadata value. Included if metaData query argument was true
+		 */
+		metaData?: any;
+	}[];
+}
+
+export interface UpdateMessagesBodyParameterModel {
+	/**
+	 * Message ID values. Either comma separated numbers (1,2,3) or colon
+	 * separated range (3:15), or a range from UID to end (3:*)
+	 */
+	message?: string;
+	/**
+	 * ID of the target Mailbox if you want to move messages
+	 */
+	moveTo?: string;
+	/**
+	 * State of the \Seen flag
+	 */
+	seen?: boolean;
+	/**
+	 * State of the \Flagged flag
+	 */
+	flagged?: boolean;
+	/**
+	 * State of the \Draft flag
+	 */
+	draft?: boolean;
+	/**
+	 * Either expiration date or false to turn of auto-expiration
+	 */
+	expires?: string | false;
+	/**
+	 * Optional metadata, must be an object or JSON formatted string
+	 */
+	metaData?: any;
+}
+
+export interface UploadMessageRefModel {
+	/**
+	 * Mailbox ID
+	 */
+	mailbox: string;
+	/**
+	 * Message ID in Mailbox
+	 */
+	id: number;
+	/**
+	 * Either reply, replyAll or forward
+	 */
+	action: string;
+	/**
+	 * If true, then includes all attachments from the original message.
+	 * If it is an array of attachment ID's includes attachments from the
+	 * list
+	 */
+	attachments: string[];
+}
+
+export interface UploadMessageBodyParameterModel extends UserIdentifierModel {
+	/**
+	 * Is the message unseen or not
+	 */
+	unseen?: boolean;
+	/**
+	 * Is the message a draft or not
+	 */
+	draft?: boolean;
+	/**
+	 * Is the message flagged or not
+	 */
+	flagged?: boolean;
+	/**
+	 * base64 encoded message source. Alternatively, you can provide
+	 * this value as POST body by using message/rfc822 MIME type. If
+	 * raw message is provided then it overrides any other mail
+	 * configuration
+	 */
+	raw?: string;
+	from?: FromToModel;
+	/**
+	 * Addresses for the To: header
+	 */
+	to?: FromToModel[];
+	/**
+	 * Addresses for the Cc: header
+	 */
+	cc?: FromToModel[];
+	/**
+	 * Addresses for the Bcc: header
+	 */
+	bcc?: FromToModel[];
+	/**
+	 * Message subject. If not then resolved from Reference message
+	 */
+	subject?: string;
+	/**
+	 * Plaintext message
+	 */
+	text?: string;
+	/**
+	 * HTML formatted message
+	 */
+	html?: string;
+	/**
+	 * Custom headers for the message. If reference message is set
+	 * then In-Reply-To and References headers are set automatically
+	 */
+	headers?: HeaderModel[];
+	/**
+	 * Attachments as storage file IDs.
+	 *
+	 * **NB! When retrieving message info then an array of objects is
+	 * returned. When uploading a message then an array of IDs is
+	 * used.**
+	 */
+	files?: string[];
+	/**
+	 * Attachments for the message
+	 */
+	attachments?: AttachmentModel[];
+	/**
+	 * Optional metadata, must be an object or JSON formatted string
+	 */
+	metaData?: any;
+	/**
+	 * Optional referenced email. If uploaded message is a reply
+	 * draft and relevant fields are not provided then these are
+	 * resolved from the message to be replied to
+	 */
+	reference?: UploadMessageRefModel;
+	/**
+	 * Marks BIMI verification as passed for a domain. NB! BIMI
+	 * record and logo files for the domain must be valid.
+	 */
+	bimi?: {
+		/**
+		 * Domain name for the BIMI record. It does not have to be
+		 * the same as the From address.
+		 */
+		domain: string;
+		/**
+		 * Optional BIMI selector
+		 */
+		selector?: string;
+	};
+	/**
+	 * If set, then deletes a previous message when storing the new
+	 * one. Useful when uploading a new Draft message.
+	 */
+	replacePrevious?: {
+		/**
+		 * Mailbox ID. Defaults to the mailbox of the uploaded
+		 * message.
+		 */
+		mailbox?: string;
+		/**
+		 * Message ID in Mailbox
+		 */
+		id: number;
+	};
+}
+
+export interface UploadMessageResponseModel {
+	/**
+	 * Indicates successful response
+	 */
+	success: boolean;
+	/**
+	 * Message information
+	 */
+	message: {
+		/**
+		 * Message ID in mailbox
+		 */
+		id: number;
+		/**
+		 * Mailbox ID the message was stored into
+		 */
+		mailbox: string;
+		/**
+		 * Size of the RFC822 formatted email
+		 */
+		size?: number;
+	};
+	/**
+	 * Set if replacing a previous message was requested
+	 */
+	previousDeleted?: boolean;
+}
+
+export interface ForwardStoredMessageBodyParameterModel {
+	/**
+	 * Number of original forwarding target
+	 */
+	target?: number;
+	/**
+	 * An array of additional forward targets
+	 */
+	addresses?: string[];
+}
+
+export interface ForwardStoredMessageResponseModel {
+	success: boolean;
+	queueId: string;
+	forwarded: {
+		seq: string;
+		type: string;
+		value: string;
+	}[];
 }

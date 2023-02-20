@@ -27,6 +27,13 @@ export interface CreationResponseModel extends DefaultResponseModel {
 	id: string;
 }
 
+export interface UpdateResponseModel extends CreationResponseModel {
+	/**
+	 * Number of items updated
+	 */
+	updated: number;
+}
+
 export interface UserIdentifierModel {
 	/**
 	 * Session identifier for the logs
@@ -106,4 +113,35 @@ export interface FromToModel {
 	 * Address of the sender/receiver
 	 */
 	address: string;
+}
+
+export interface HeaderModel {
+	/**
+	 * Header key ('X-Mailer')
+	 */
+	key: string;
+	/**
+	 * Header value ('My Awesome Mailing Service')
+	 */
+	value: string;
+}
+
+export interface AttachmentModel {
+	/**
+	 * Base64 encoded attachment content
+	 */
+	content: string;
+	/**
+	 * Attachment filename
+	 */
+	filename?: string;
+	/**
+	 * MIME type for the attachment file
+	 */
+	contentType?: string;
+	/**
+	 * Content-ID value if you want to reference to this
+	 * attachment from HTML formatted message
+	 */
+	cid?: string;
 }

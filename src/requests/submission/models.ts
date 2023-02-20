@@ -1,4 +1,9 @@
-import { FromToModel, UserIdentifierModel } from "../../models";
+import {
+	AttachmentModel,
+	FromToModel,
+	HeaderModel,
+	UserIdentifierModel,
+} from "../../models";
 
 export interface ReferenceModel {
 	/**
@@ -21,26 +26,6 @@ export interface EnvelopeModel {
 	 * Recipients information
 	 */
 	to?: FromToModel[];
-}
-
-export interface AttachmentsModel {
-	/**
-	 * Base64 encoded attachment content
-	 */
-	content: string;
-	/**
-	 * Attachment filename
-	 */
-	filename?: string;
-	/**
-	 * MIME type for the attachment file
-	 */
-	contentType?: string;
-	/**
-	 * Content-ID value if you want to reference to this
-	 * attachment from HTML formatted message
-	 */
-	cid?: string;
 }
 
 export interface SubmitMessageForDeliveryBodyParameterModel
@@ -109,20 +94,11 @@ export interface SubmitMessageForDeliveryBodyParameterModel
 	 * message is set then In-Reply-To and References
 	 * headers are set automatically
 	 */
-	headers?: {
-		/**
-		 * Header key ('X-Mailer')
-		 */
-		key: string;
-		/**
-		 * Header value ('My Awesome Mailing Service')
-		 */
-		value: string;
-	}[];
+	headers?: HeaderModel[];
 	/**
 	 * Attachments for the message
 	 */
-	attachments?: AttachmentsModel[];
+	attachments?: AttachmentModel[];
 	/**
 	 * Custom metainfo for the message
 	 */

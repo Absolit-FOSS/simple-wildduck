@@ -62,3 +62,25 @@ export const deleteAllMessages = async (
 
 	return res.data;
 };
+
+/**
+ * You can delete outbound emails that are still in queue. Queue ID
+ * can be found from the outbound property of a stored email.
+ *
+ * https://docs.wildduck.email/api/#operation/deleteOutboundMessage
+ *
+ * @param userId Users unique ID
+ * @param queueId Queue unique ID.
+ */
+export const deleteOutboundMessage = async (
+	userId: string,
+	queueId: string
+): Promise<DefaultResponseModel> => {
+	const url = urlQueryBuilder(`/users/${userId}/outbound/${queueId}`, {
+		access_token: wdData.accessToken,
+	});
+
+	const res = await axiosConf.delete(url);
+
+	return res.data;
+};
