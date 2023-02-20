@@ -1,10 +1,13 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { DefaultResponseModel, UserIdentifierModel } from "../../models";
+import {
+	CreationResponseModel,
+	DefaultResponseModel,
+	UserIdentifierModel,
+} from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
 	CreateUserBodyParameterModel,
-	CreateUserResponseModel,
 	RecalculateUserQuotaResponseModel,
 	ResetUserPasswordBodyParametersModel,
 	ResetUserPasswordResponseModel,
@@ -19,7 +22,7 @@ import {
  */
 export const createUser = async (
 	bodyData: CreateUserBodyParameterModel
-): Promise<CreateUserResponseModel> => {
+): Promise<CreationResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/`, {
 		access_token: wdData.accessToken,
 	});

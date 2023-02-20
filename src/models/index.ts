@@ -20,6 +20,13 @@ export interface DefaultResponseModel {
 	success: boolean;
 }
 
+export interface CreationResponseModel extends DefaultResponseModel {
+	/**
+	 * Id of the created item
+	 */
+	id: string;
+}
+
 export interface UserIdentifierModel {
 	/**
 	 * Session identifier for the logs
@@ -43,4 +50,27 @@ export enum AvailableSpecialFolders {
 	JUNK = "\\Junk",
 	SENT = "\\Sent",
 	TRASH = "\\Trash",
+}
+
+export interface CursorResponseModel {
+	/**
+	 * Indicates successful response
+	 */
+	success: boolean;
+	/**
+	 * How many results were found
+	 */
+	total: number;
+	/**
+	 * Current page number. Derived from page query argument
+	 */
+	page: number;
+	/**
+	 * Either a cursor string or false if there are not any previous results
+	 */
+	previousCursor: string;
+	/**
+	 * Either a cursor string or false if there are not any next results
+	 */
+	nextCursor: string;
 }

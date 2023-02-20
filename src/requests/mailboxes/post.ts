@@ -1,10 +1,8 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { CreationResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	CreateMailboxBodyParameterModel,
-	CreateMailboxResponseModel,
-} from "./models";
+import { CreateMailboxBodyParameterModel } from "./models";
 
 /**
  * Create a new mailbox
@@ -17,7 +15,7 @@ import {
 export const createMailbox = async (
 	userId: string,
 	bodyData: CreateMailboxBodyParameterModel
-): Promise<CreateMailboxResponseModel> => {
+): Promise<CreationResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		access_token: wdData.accessToken,
 	});
