@@ -1,20 +1,24 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
+import {
+	GetMailboxInfoResponseModel,
+	GetUserMailboxesQueryParametersModel,
+	GetUserMailboxesResponseModel,
+} from "./models";
 
 /**
- * Delete a mailbox
+ * Get the information of a mailbox
  *
- * https://docs.wildduck.email/api/#operation/deleteMailbox
+ * https://docs.wildduck.email/api/#operation/getMailbox
  *
  * @param userId the users wildduck ID
- * @param mailboxId the users mailbox ID
+ * @param mailboxId the mailbox wildduck ID
  */
-export const deleteMailbox = async (
+export const getMailboxInfo = async (
 	userId: string,
 	mailboxId: string
-): Promise<DefaultResponseModel> => {
+): Promise<GetMailboxInfoResponseModel> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId)}/${mailboxId}`,
 		{
@@ -22,22 +26,24 @@ export const deleteMailbox = async (
 		}
 	);
 
-	const res = await axiosConf.delete(url);
+	const res = await axiosConf.get(url);
 
 	return res.data;
 };
 
 /**
- * Get all registered users
+ * Get a list of the users mailboxes
  *
- * http://docs.wildduck.email/api/#operation/getUsers
+ * https://docs.wildduck.email/api/#operation/getMailboxes
  *
+ * @param userId the users wildduck ID
  * @param queryData query parameters for additional options
  */
-export const getUsers = async (
-	queryData: GetUsersQueryParametersModel
-): Promise<GetUsersResponseModel> => {
-	const url = urlQueryBuilder(`${URL}`, {
+export const getUserMailboxes = async (
+	userId: string,
+	queryData: GetUserMailboxesQueryParametersModel
+): Promise<GetUserMailboxesResponseModel> => {
+	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		access_token: wdData.accessToken,
 		...queryData,
 	});
