@@ -14,6 +14,9 @@ export enum AvailableEmailScopes {
 }
 
 export interface DefaultResponseModel {
+	/**
+	 * Indicates successful response
+	 */
 	success: boolean;
 }
 
@@ -33,4 +36,11 @@ export interface DefaultMailboxModel {
 	junk: string;
 	drafts: string;
 	trash: string;
+}
+
+export enum AvailableSpecialFolders {
+	DRAFTS = "\\Drafts",
+	JUNK = "\\Junk",
+	SENT = "\\Sent",
+	TRASH = "\\Trash",
 }
