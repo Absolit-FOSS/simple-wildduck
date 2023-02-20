@@ -1,4 +1,5 @@
 export * from "./models";
+export * from "./requests/2fa";
 export * from "./requests/export";
 export * from "./requests/mailboxes";
 export * from "./requests/users";
