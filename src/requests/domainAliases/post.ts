@@ -2,13 +2,8 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	CreateUserBodyParameterModel,
-	CreateUserResponseModel,
-	RecalculateUserQuotaResponseModel,
-	ResetUserPasswordBodyParametersModel,
-	ResetUserPasswordResponseModel,
-} from "./models";
+import { CreatNewDomainAliasModel } from "./models";
+import { CreateUserBodyParameterModel } from "../users";
 
 /**
  * Add a new Alias for a Domain.
@@ -22,7 +17,7 @@ import {
  */
 export const createNewDomainAlias = async (
 	bodyData: CreateUserBodyParameterModel
-): Promise<CreateUserResponseModel> => {
+): Promise<CreatNewDomainAliasModel> => {
 	const url = urlQueryBuilder(`${URL}/`, {
 		access_token: wdData.accessToken,
 	});

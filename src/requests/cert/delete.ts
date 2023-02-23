@@ -2,7 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { DeleteUserQueryParametersModel } from "./models";
+import { DeleteTlsCertificateModel } from "./models";
 
 /**
  * Delete a TLS certificate
@@ -13,7 +13,7 @@ import { DeleteUserQueryParametersModel } from "./models";
  */
 export const deleteTlsCert = async (
 	certId: string,
-): Promise<DefaultResponseModel> => {
+): Promise<DeleteTlsCertificateModel> => {
 	const url = urlQueryBuilder(`${URL}/${certId}`, {
 		access_token: wdData.accessToken,
 	});

@@ -2,13 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	CreateUserBodyParameterModel,
-	CreateUserResponseModel,
-	RecalculateUserQuotaResponseModel,
-	ResetUserPasswordBodyParametersModel,
-	ResetUserPasswordResponseModel,
-} from "./models";
+import { AuthenticateUserModel, PreAuthenticationCheckModel } from "./models";
 
 /**
  * Authenticate a User
@@ -18,7 +12,7 @@ import {
  * no parameters
  */
 export const authenticateUser = async (
-): Promise<DefaultResponseModel> => {
+): Promise<AuthenticateUserModel> => {
 	const url = urlQueryBuilder(`${URL}/`, {
 		access_token: wdData.accessToken,
 	});
@@ -35,8 +29,8 @@ export const authenticateUser = async (
  *
  * no parameters
  */
-export const preAuthenticationCheck = async (): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/`, {
+export const preAuthenticationCheck = async (): Promise<PreAuthenticationCheckModel> => {
+	const url = urlQueryBuilder(`${URL}/preauth/`, {
 		access_token: wdData.accessToken,
 	});
 

@@ -3,11 +3,7 @@ import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
-	GetDeletedUserInfoResponseModel,
-	GetUserIdByUsernameResponseModel,
-	GetUserResponseModel,
-	GetUsersQueryParametersModel,
-	GetUsersResponseModel,
+	
 } from "./models";
 
 /**
@@ -18,7 +14,7 @@ import {
  * @param userId ID of the User
  */
 export const requestAutoreplyInformation = async (userId: string): Promise<GetUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${userId}`, {
+	const url = urlQueryBuilder(`${URL}/users/${userId}/request`, {
 		access_token: wdData.accessToken,
 	});
 

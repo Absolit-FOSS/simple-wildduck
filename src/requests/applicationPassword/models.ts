@@ -11,14 +11,19 @@ export interface CreateAppPasswordModel {
    */
   success: boolean;
   /**
-   *
-   */
-  id: "60b91b5cc419d97445f8e57d";
-  /**
    * ID of the Application Password
-   * "password" was in "Request Body schema" and "Response Schema"
    */
-  // password: "aaaaaaaaaaaaaaaa";
+  id: string;
+  /**
+   * Application Specific Password. Generated password is whitespace agnostic,
+   * so it could be displayed to the client as "abcd efgh ijkl mnop"
+   * instead of "abcdefghijklmnop"
+   */
+  password: string;
+  /**
+   * Base64 encoded mobileconfig file. Generated profile file should be sent
+   * to the client with Content-Type value of application/x-apple-aspen-config
+   */
   mobileconfig: string;
   /**
    * Description
@@ -29,7 +34,7 @@ export interface CreateAppPasswordModel {
    * List of scopes this Password applies to. Special scope "*" indicates
    * that this password can be used for any scope except "master"
    */
-  scopes: ["imap", "smtp"];
+  scopes: string[];
   /**
    * If true then result contains a mobileconfig formatted file with account config
    */
@@ -39,15 +44,15 @@ export interface CreateAppPasswordModel {
    * Must be one of the listed identity addresses of the user.
    * Defaults to the main address of the user
    */
-  address?: "user@example.com";
+  address?: string;
   /**
    * Optional pregenerated password. Must be 16 characters, latin letters only
    */
-  password?: "aaaaaaaaaaaaaaaa";
+  // password?: string;
   /**
    * TTL in seconds for this password. Every time password is used, TTL is reset to this value
    */
-  ttl?: 3600000;
+  ttl?: number;
   /**
    * Session identifier for the logs
    */
@@ -55,7 +60,20 @@ export interface CreateAppPasswordModel {
   /**
    * IP address for the logs
    */
-  ip?: "127.0.0.1";
+  ip?: string;
+}
+
+export interface LastUseModel {
+  /**
+   * Datestring of last use or false if password has not been used
+   * <date-time>
+   */
+  time: string;
+  /**
+   * Event ID of the security log for the last authentication
+   * <date-time>
+   */
+  event: string;
 }
 
 export interface RequestAppPasswordInformationModel {
@@ -75,21 +93,43 @@ export interface RequestAppPasswordInformationModel {
    * Items Enum: "imap" "pop3" "smtp" "*"
    * Allowed scopes for the Application Password
    */
-  scopes: ["imap"];
+  scopes: string[];
   /**
    * Information about last use
    */
-  lastUse: {
-    time: "2019-08-24T14:15:22Z";
-    event: string;
-  };
+  lastUse: LastUseModel;
   /**
    * Datestring
    */
-  created: "2019-08-24T14:15:22Z";
+  created: string;
 }
 
-export interface ListApplicationPasswords {
+export interface ResultsModel {
+  /**
+   * ID of the Application Password
+   */
+  id: string;
+  /**
+   * Description
+   */
+  description: string;
+  /**
+   * Items Enum: "imap" "pop3" "smtp" "*" 
+   * Allowed scopes for the Application Password
+   */
+  scopes: string[];
+  /**
+   * Information about last use
+   */
+  lastUse: LastUseModel;
+  /**
+   * Datestring
+   * <date-time>
+   */
+  created: string;
+}
+
+export interface ListApplicationPasswordsModel {
   /**
    * Indicates successful response
    */
@@ -97,16 +137,5 @@ export interface ListApplicationPasswords {
   /**
    * Event listing
    */
-  results: [
-    {
-      id: string;
-      description: string;
-      scopes: ["imap"];
-      lastUse: {
-        time: "2019-08-24T14:15:22Z";
-        event: string;
-      };
-      created: "2019-08-24T14:15:22Z";
-    }
-  ];
+  results: ResultsModel[];
 }

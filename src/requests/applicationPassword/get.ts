@@ -2,13 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultMailboxModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	GetDeletedUserInfoResponseModel,
-	GetUserIdByUsernameResponseModel,
-	GetUserResponseModel,
-	GetUsersQueryParametersModel,
-	GetUsersResponseModel,
-} from "./models";
+import { RequestAppPasswordInformationModel, ListApplicationPasswordsModel } from './models';
 
 /**
  * Request ASP information
@@ -21,8 +15,8 @@ import {
 export const getAppPasswordInformation = async (
 	userId: string,
 	aspId: string
-): Promise<GetUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${aspId}`, {
+): Promise<RequestAppPasswordInformationModel> => {
+	const url = urlQueryBuilder(`/user/${userId}/${aspId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -39,11 +33,11 @@ export const getAppPasswordInformation = async (
  * @param userId ID of the User
  * @param showAll If not true then skips entries with a TTL set
  */
-export const getUsers = async (
-	userId: GetUsersQueryParametersModel,
+export const listApplicationPasswords = async (
+	userId: string,
 	showAll: boolean
-): Promise<DefaultMailboxModel> => {
-	const url = urlQueryBuilder(`${URL}`, {
+): Promise<ListApplicationPasswordsModel> => {
+	const url = urlQueryBuilder(`/user/${userId}`, {
 		access_token: wdData.accessToken,
 	});
 

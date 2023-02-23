@@ -47,6 +47,21 @@ export interface CreatNewDomainAliasModel {
   domain: string;
 }
 
+export interface ResultsModel {
+  /**
+   * ID of the Domain Alias
+   */
+  id: string;
+  /**
+   * Domain Alias
+   */
+  alias: string;
+  /**
+   * The domain this alias applies to
+   */
+  domain: string;
+}
+
 export interface ListRegisteredDomainAliasesModel {
   /**
    * Indicates successful response
@@ -71,13 +86,7 @@ export interface ListRegisteredDomainAliasesModel {
   /**
    * Aliases listing
    */
-  results: [
-    {
-      id: string;
-      alias: string;
-      domain: string;
-    }
-  ];
+  results: ResultsModel[];
 }
 
 export interface ResolveIdForDomainModel {

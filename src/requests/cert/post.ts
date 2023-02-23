@@ -2,13 +2,8 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	CreateUserBodyParameterModel,
-	CreateUserResponseModel,
-	RecalculateUserQuotaResponseModel,
-	ResetUserPasswordBodyParametersModel,
-	ResetUserPasswordResponseModel,
-} from "./models";
+import { CreateOrUpdateTlsCertificateForServerNameModel } from "./models";
+import { CreateUserBodyParameterModel } from "../users";
 
 /**
  * Add a new TLS certificate for a server name or update existing one. You can
@@ -25,7 +20,7 @@ import {
  */
 export const createOrUpdateTlsCertificateForServerName = async (
 	bodyData: CreateUserBodyParameterModel
-): Promise<CreateUserResponseModel> => {
+): Promise<CreateOrUpdateTlsCertificateForServerNameModel> => {
 	const url = urlQueryBuilder(`${URL}/`, {
 		access_token: wdData.accessToken,
 	});

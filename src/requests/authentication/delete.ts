@@ -2,7 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { DeleteUserQueryParametersModel } from "./models";
+import { InvalidateAuthenticationTokenModel } from "./models";
 
 /**
  * Invalidate authentication token
@@ -12,7 +12,7 @@ import { DeleteUserQueryParametersModel } from "./models";
  * no parameters
  */
 export const invalidateAuthenticationToken = async (
-	queryData: DeleteUserQueryParametersModel
+	queryData: InvalidateAuthenticationTokenModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/`, {
 		access_token: wdData.accessToken,

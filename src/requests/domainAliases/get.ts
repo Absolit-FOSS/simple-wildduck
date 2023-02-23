@@ -2,13 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	GetDeletedUserInfoResponseModel,
-	GetUserIdByUsernameResponseModel,
-	GetUserResponseModel,
-	GetUsersQueryParametersModel,
-	GetUsersResponseModel,
-} from "./models";
+import { ListRegisteredDomainAliasesModel, RequestAliasInformationModel, ResolveIdForDomainModel } from "./models";
 
 /**
  * Request Alias information
@@ -17,7 +11,7 @@ import {
  *
  * @param aliasId ID of the Alias
  */
-export const requestAliasInformation = async (aliasId: string): Promise<GetUserResponseModel> => {
+export const requestAliasInformation = async (aliasId: string): Promise<RequestAliasInformationModel> => {
 	const url = urlQueryBuilder(`${URL}/${aliasId}`, {
 		access_token: wdData.accessToken,
 	});
@@ -40,8 +34,8 @@ export const listRegisteredDomainAliases = async (
 	page: number,
 	next: string,
 	previous: string
-): Promise<GetUsersResponseModel> => {
-	const url = urlQueryBuilder(`${URL}`, {
+): Promise<ListRegisteredDomainAliasesModel> => {
+	const url = urlQueryBuilder(`${URL}/${query}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -59,7 +53,7 @@ export const listRegisteredDomainAliases = async (
  */
 export const resolveIdForDomainAlias = async (
 	alias: string
-): Promise<GetUserResponseModel> => {
+): Promise<ResolveIdForDomainModel> => {
 	const url = urlQueryBuilder(`${URL}/${alias}/updates`, {
 		access_token: wdData.accessToken,
 	});

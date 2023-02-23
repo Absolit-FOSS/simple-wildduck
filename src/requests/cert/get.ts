@@ -2,13 +2,8 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	GetDeletedUserInfoResponseModel,
-	GetUserIdByUsernameResponseModel,
-	GetUserResponseModel,
-	GetUsersQueryParametersModel,
-	GetUsersResponseModel,
-} from "./models";
+import { ListRegisteredTlsCertificatesModel, RequestTlsCertificateInformationModel, ResolveIdForServerNameModel } from "./models";
+import { GetUsersQueryParametersModel } from "../users";
 
 /**
  * Request TLS certificate information
@@ -17,8 +12,10 @@ import {
  *
  * @param certId ID of the TLS certificate
  */
-export const requestTlsCertificateInformation = async (certId: string): Promise<GetUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${certId}`, {
+export const requestTlsCertificateInformation = async (
+	certId: string
+): Promise<RequestTlsCertificateInformationModel> => {
+	const url = urlQueryBuilder(`${URL}/certs/${certId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -34,15 +31,21 @@ export const requestTlsCertificateInformation = async (certId: string): Promise<
  *
  * @param queryData query parameters for additional options
  * @param query Partial match of a server name (e.g. query=example.com)
- * @param altNames Match query value against SAN as well (including wildcard names)
+ * @param altNames default: false, example: altNames=true, Match query value against SAN as well (including wildcard names)
  * @param limit How many records to return
  * @param page Current page number. Informational only, page numbers start from 1
  * @param next Cursor value for next page, retrieved from nextCursor response value
  * @param previous Cursor value for previous page, retrieved from previousCursor response value
  */
 export const listRegisteredTlsCertificates = async (
-	queryData: GetUsersQueryParametersModel
-): Promise<GetUsersResponseModel> => {
+	queryData: GetUsersQueryParametersModel,
+	query: string,
+	altNames: boolean,
+	limit: number,
+	page: number,
+	next: string,
+	previous: string
+): Promise<ListRegisteredTlsCertificatesModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		access_token: wdData.accessToken,
 		...queryData,
@@ -62,7 +65,7 @@ export const listRegisteredTlsCertificates = async (
  */
 export const resolveIdForServerName = async (
 	servername: string
-): Promise<GetUserResponseModel> => {
+): Promise<ResolveIdForServerNameModel> => {
 	const url = urlQueryBuilder(`${URL}/${servername}/updates`, {
 		access_token: wdData.accessToken,
 	});

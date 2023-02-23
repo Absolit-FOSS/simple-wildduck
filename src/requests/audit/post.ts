@@ -2,13 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	CreateUserBodyParameterModel,
-	CreateUserResponseModel,
-	RecalculateUserQuotaResponseModel,
-	ResetUserPasswordBodyParametersModel,
-	ResetUserPasswordResponseModel,
-} from "./models";
+import { CreateNewAuditModel } from "./models";
 
 /**
  * Create new audit
@@ -20,13 +14,13 @@ import {
  * @param end End time as ISO date <date-time>
  * @param expires Expiration date. Audit data is deleted after this date <date-time>
  */
-export const createUser = async (
+export const createNewAudit = async (
 	userId: string,
-	start: string,
-	end: string,
-	expires: string
-): Promise<CreateUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/`, {
+	expires: string,
+	start?: string,
+	end?: string
+): Promise<CreateNewAuditModel> => {
+	const url = urlQueryBuilder(`/user/${userId}/audit/`, {
 		access_token: wdData.accessToken,
 	});
 

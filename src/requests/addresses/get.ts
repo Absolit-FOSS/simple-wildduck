@@ -2,15 +2,16 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { GetForwardedAddressesInformationModel } from './models';
+import { 
+	GetAddressInformationModel, 
+	GetForwardedAddressesInformationModel, 
+	ListAddressFromCommunicationRegisterResultsModel, 
+	ListRegisteredAddressesForUserModel, 
+	ListRegisteredAddressesModel, 
+	RequestAddressesInformationModel 
+} from './models';
 import { DefaultResponseModel } from '../../models/index';
-import {
-	GetDeletedUserInfoResponseModel,
-	GetUserIdByUsernameResponseModel,
-	GetUserResponseModel,
-	GetUsersQueryParametersModel,
-	GetUsersResponseModel,
-} from "./models";
+import {} from "./models";
 
 /**
  * Request forwarded Addresses information
@@ -21,8 +22,8 @@ import {
  */
 export const getForwardedAddressesInformation = async (
 	addressId: string
-): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${addressId}`, {
+): Promise<GetForwardedAddressesInformationModel> => {
+	const url = urlQueryBuilder(`${URL}/forwarded/${addressId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -39,11 +40,11 @@ export const getForwardedAddressesInformation = async (
  * @param userId ID of the User
  * @param addressId ID of the Address
  */
-export const requestc = async (
+export const requestAddressesInformation = async (
 	userId: string,
 	addressId: string
-): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}`, {
+): Promise<RequestAddressesInformationModel> => {
+	const url = urlQueryBuilder(`/user/${userId}/${addressId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -63,7 +64,7 @@ export const requestc = async (
 export const getAddressInformation = async (
 	addressId: string,
 	allowWildcard: boolean
-): Promise<GetUserResponseModel> => {
+): Promise<GetAddressInformationModel> => {
 	const url = urlQueryBuilder(`${URL}/${addressId}/updates`, {
 		access_token: wdData.accessToken,
 	});
@@ -78,12 +79,30 @@ export const getAddressInformation = async (
  *
  * https://docs.wildduck.email/api/#operation/getAddresses
  *
- * @param username the users wildduck username
+ * @param query Partial match of an address
+ * @param forward Partial match of a forward email address or URL
+ * @param tags Comma separated list of tags. The Address must have at least one to be set
+ * @param requiredTags Comma separated list of tags. The Address must have all listed tags to be set
+ * @param metaData If true, then includes metaData in the response
+ * @param internalData If true, then includes internalData in the response. Not shown for user-role tokens
+ * @param limit How many records to return
+ * @param page Current page number. Informational only, page numbers start from 1
+ * @param next Cursor value for next page, retrieved from nextCursor response value
+ * @param previous Cursor value for previous page, retrieved from previousCursor response value
  */
 export const listRegisteredAddresses = async (
-	username: string
-): Promise<GetUserIdByUsernameResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/resolve/${username}`, {
+	query: string,
+	forward: string,
+	tags: string,
+	requiredTags: string,
+	metaData: boolean,
+	internalData: boolean,
+	limit: number,
+	page: number,
+	next: string,
+	previous: string
+): Promise<ListRegisteredAddressesModel> => {
+	const url = urlQueryBuilder(`${URL}/resolve/${query}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -100,8 +119,31 @@ export const listRegisteredAddresses = async (
  */
 export const listAddressesFromCommunicationRegister = async (
 	userId: string
-): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${userId}/restore`, {
+): Promise<ListAddressFromCommunicationRegisterResultsModel> => {
+	const url = urlQueryBuilder(`/user/${userId}/restore`, {
+		access_token: wdData.accessToken,
+	});
+
+	const res = await axiosConf.get(url);
+
+	return res.data;
+};
+
+/**
+ * List registered Addresses for a User
+ *
+ * https://docs.wildduck.email/api/#operation/getUserAddresses
+ * 
+ * @param userId ID of the User
+ * @param metaData If true, then includes metaData in the response
+ * @param internalData If true, then includes internalData in the response. Not shown for user-role tokens
+ */
+export const listRegisteredAddressesForUser = async (
+	userId: string,
+	internalData: boolean,
+	metaData?: boolean
+): Promise<ListRegisteredAddressesForUserModel> => {
+	const url = urlQueryBuilder(`/user/${userId}/restore`, {
 		access_token: wdData.accessToken,
 	});
 

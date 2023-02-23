@@ -1,1 +1,1 @@
-export const URL = "/addresses/forwarded/{address}";
+export const URL = "/addresses/{addressId}";

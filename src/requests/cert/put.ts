@@ -3,9 +3,9 @@ import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
-	LogoutUserBodyParametersModel,
-	UpdateUserBodyParametersModel,
+	
 } from "./models";
+import { UpdateUserBodyParametersModel } from "../users";
 
 /**
  * Update a user

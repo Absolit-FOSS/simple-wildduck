@@ -2,6 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
+import { DeleteAddressModel, DeleteForwardedAddressModel } from "./models";
 
 /**
  * Delete a forwarded Address
@@ -12,8 +13,8 @@ import { URL } from "./config";
  */
 export const deleteForwardedAddress = async (
 	addressId: string,
-): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${addressId}`, {
+): Promise<DeleteForwardedAddressModel> => {
+	const url = urlQueryBuilder(`${URL}/forwarded/${addressId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -26,14 +27,15 @@ export const deleteForwardedAddress = async (
  * Delete an Address
  *
  * https://docs.wildduck.email/api/#operation/deleteUserAddress
+ * 
  * @param userId ID of the Address
  * @param addressId ID of the Address
  */
 export const deleteAnAddress = async (
-	_userId: string,
+	userId: string,
 	addressId: string,
-): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${addressId}`, {
+): Promise<DeleteAddressModel> => {
+	const url = urlQueryBuilder(`/users/${userId}/forwarded/${addressId}`, {
 		access_token: wdData.accessToken,
 	});
 

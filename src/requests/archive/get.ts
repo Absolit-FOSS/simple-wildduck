@@ -2,13 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultMailboxModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	GetDeletedUserInfoResponseModel,
-	GetUserIdByUsernameResponseModel,
-	GetUserResponseModel,
-	GetUsersQueryParametersModel,
-	GetUsersResponseModel,
-} from "./models";
+import { ListArchivedMessageModel } from "./models";
 
 /**
  * List archived messages
@@ -24,13 +18,13 @@ import {
  */
 export const listArchivedMessage = async (
 	userId: string,
-	limit: number,
-	page: number,
-	order: string,
-	next: string,
-	previous: string
-): Promise<DefaultMailboxModel> => {
-	const url = urlQueryBuilder(`${URL}/${userId}`, {
+	limit?: number,
+	page?: number,
+	order?: string,
+	next?: string,
+	previous?: string
+): Promise<ListArchivedMessageModel> => {
+	const url = urlQueryBuilder(`/users/${userId}`, {
 		access_token: wdData.accessToken,
 	});
 

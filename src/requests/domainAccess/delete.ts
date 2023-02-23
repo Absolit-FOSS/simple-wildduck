@@ -2,7 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { DeleteUserQueryParametersModel } from "./models";
+import { DeleteDomainFromListingModel } from "./models";
 
 /**
  * Delete a Domain from listing
@@ -13,7 +13,7 @@ import { DeleteUserQueryParametersModel } from "./models";
  */
 export const deleteDomainFromListing = async (
 	domainId: string
-): Promise<DefaultResponseModel> => {
+): Promise<DeleteDomainFromListingModel> => {
 	const url = urlQueryBuilder(`${URL}/${domainId}`, {
 		access_token: wdData.accessToken,
 	});

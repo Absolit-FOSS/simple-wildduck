@@ -2,22 +2,18 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	GetDeletedUserInfoResponseModel,
-	GetUserIdByUsernameResponseModel,
-	GetUserResponseModel,
-	GetUsersQueryParametersModel,
-	GetUsersResponseModel,
-} from "./models";
+import { ListAllowedlistedDomainsModel, ListBlockedlistedDomainsModel } from "./models";
 
 /**
- * List allow listed domains
+ * List allowlisted domains
  *
  * https://docs.wildduck.email/api/#operation/getAllowedDomain
  *
  * @param tag Tag to look for
  */
-export const listAllowedlistedDomains = async (tag: string): Promise<GetUserResponseModel> => {
+export const listAllowedlistedDomains = async (
+	tag: string
+): Promise<ListAllowedlistedDomainsModel> => {
 	const url = urlQueryBuilder(`${URL}/${tag}`, {
 		access_token: wdData.accessToken,
 	});
@@ -34,9 +30,9 @@ export const listAllowedlistedDomains = async (tag: string): Promise<GetUserResp
  * 
  * @param tag Tag to look for
  */
-export const getUsers = async (
+export const listBlockedlistedDomains = async (
 	tag: string
-): Promise<GetUsersResponseModel> => {
+): Promise<ListBlockedlistedDomainsModel> => {
 	const url = urlQueryBuilder(`${URL}/${tag}`, {
 		access_token: wdData.accessToken,
 	});

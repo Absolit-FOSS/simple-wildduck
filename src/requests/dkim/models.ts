@@ -97,6 +97,61 @@ export interface RequestDkimInformationModel {
   previous?: string;
 }
 
+export interface ResultsModel {
+  /**
+   * ID of the DKIM
+   */
+  id: string;
+  /**
+   * The domain this DKIM key applies to
+   */
+  domain: string;
+  /**
+   * DKIM selector
+   */
+  selector: string;
+  /**
+   * Key description
+   */
+  description: string;
+  /**
+   * Key fingerprint (SHA1)
+   */
+  fingerprint: string;
+  /**
+   * Datestring
+   * <date-time>
+   */
+  created: string;
+}
+
+export interface ListRegisteredDkimKeysModel {
+  /**
+   * Indicates successful response
+   */
+  success: boolean;
+  /**
+   * How many results were found
+   */
+  total: number;
+  /**
+   * Current page number. Derived from page query argument
+   */
+  page: number;
+  /**
+   * Either a cursor string or false if there are not any previous results
+   */
+  previousCursor: string;
+  /**
+   * Either a cursor string or false if there are not any next results
+   */
+  nextCursor: string;
+  /**
+   * DKIM listing
+   */
+  results: ResultsModel[];
+}
+
 export interface ResolveIdForDkimDomainModel {
   /**
    * Indicates successful response

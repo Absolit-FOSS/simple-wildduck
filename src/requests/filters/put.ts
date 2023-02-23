@@ -2,10 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	LogoutUserBodyParametersModel,
-	UpdateUserBodyParametersModel,
-} from "./models";
+import { UpdateFilterInformationModel } from "./models";
 
 /**
  * Update Filter information
@@ -18,8 +15,8 @@ import {
 export const updateFilterInformation = async (
 	userId: string,
 	filterId: string
-): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${filterId}`, {
+): Promise<UpdateFilterInformationModel> => {
+	const url = urlQueryBuilder(`/users/${userId}/${filterId}`, {
 		access_token: wdData.accessToken,
 	});
 

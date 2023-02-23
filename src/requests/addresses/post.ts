@@ -2,13 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	CreateUserBodyParameterModel,
-	CreateUserResponseModel,
-	RecalculateUserQuotaResponseModel,
-	ResetUserPasswordBodyParametersModel,
-	ResetUserPasswordResponseModel,
-} from "./models";
+import { CreateNewAddressModel, CreateNewForwardedAddressModel } from "./models";
 
 /**
  * Create new Address
@@ -18,9 +12,9 @@ import {
  * @param userId ID of the User
  */
 export const createNewAddress = async (
-	userId: CreateUserBodyParameterModel
-): Promise<CreateUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/{userId}`, {
+	userId: string
+): Promise<CreateNewAddressModel> => {
+	const url = urlQueryBuilder(`${URL}/forwarded/${userId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -34,18 +28,34 @@ export const createNewAddress = async (
  *
  * https://docs.wildduck.email/api/#operation/createForwardedAddress
  *
- * @param id the users wildduck ID
- * @param bodyData body parameters to cancel user deletion
+ * @param address E-mail Address
+ * @param name Identity name
+ * @param targetsAn array of forwarding targets. The value could either be an email address or a relay url to next MX server ("smtp://mx2.zone.eu:25") or an URL where mail contents are POSTed to
+ * @param forwards Daily allowed forwarding count for this address
+ * @param allowWildcard If true then address value can be in the form of *@example.com,
+ * 						otherwise using * is not allowed
+ * @param tags A list of tags associated with this address
+ * @param metaData Optional metadata, must be an object or JSON formatted string
+ * @param internalData Optional metadata for internal use, must be an object or JSON formatted string of an object
+ * 				       Not available for user-role tokens
+ * @param autoreply Autoreply information
  */
-export const cancelUserDeletion = async (
-	id: string,
-	bodyData: UserIdentifierModel
-): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${id}/restore`, {
+export const createNewForwardedAddress = async (
+	address: string,
+	name?: string,
+	targets?: string[],
+	forwards?: number,
+	allowWildcard?: boolean,
+	tags?: string[],
+	metaData?: object | string,
+	internalData?: object | string,
+	autoreply?: object
+): Promise<CreateNewForwardedAddressModel> => {
+	const url = urlQueryBuilder(`/user/${address}/restore`, {
 		access_token: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post(url);
 
 	return res.data;
 };

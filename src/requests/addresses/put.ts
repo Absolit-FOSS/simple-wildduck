@@ -2,10 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	LogoutUserBodyParametersModel,
-	UpdateUserBodyParametersModel,
-} from "./models";
+import { UpdateForwardedAddressInformationModel, UpdateAddressInformationModel } from './models';
 
 /**
  * Update forwarded Address information
@@ -14,9 +11,9 @@ import {
  *
  * @param addressId ID of the Address
  */
-export const updateUser = async (
+export const updateForwardsAddressInformation = async (
 	addressId: string,
-): Promise<DefaultResponseModel> => {
+): Promise<UpdateForwardedAddressInformationModel> => {
 	const url = urlQueryBuilder(`${URL}/${addressId}`, {
 		access_token: wdData.accessToken,
 	});
@@ -34,11 +31,11 @@ export const updateUser = async (
  * @param userId ID of the User
  * @param addressId ID of the Address
  */
-export const logoutUser = async (
+export const updateAddressInformation = async (
 	userId: string,
 	addressId: string
-): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${addressId}/logout`, {
+): Promise<UpdateAddressInformationModel> => {
+	const url = urlQueryBuilder(`/user/${userId}/logout`, {
 		access_token: wdData.accessToken,
 	});
 

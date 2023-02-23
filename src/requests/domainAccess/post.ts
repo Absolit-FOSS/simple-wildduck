@@ -3,11 +3,8 @@ import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
-	CreateUserBodyParameterModel,
-	CreateUserResponseModel,
-	RecalculateUserQuotaResponseModel,
-	ResetUserPasswordBodyParametersModel,
-	ResetUserPasswordResponseModel,
+	AddDomainToAllowlistModel,
+	AddDomainToBlocklistModel
 } from "./models";
 
 /**
@@ -22,7 +19,7 @@ import {
  */
 export const addDomainToAllowlist = async (
 	tag: string
-): Promise<CreateUserResponseModel> => {
+): Promise<AddDomainToAllowlistModel> => {
 	const url = urlQueryBuilder(`${URL}/${tag}`, {
 		access_token: wdData.accessToken,
 	});
@@ -42,9 +39,9 @@ export const addDomainToAllowlist = async (
  *
  * @param tag Tag to look for
  */
-export const cancelUserDeletion = async (
+export const addDomainToBlocklisted = async (
 	tag: string,
-): Promise<DefaultResponseModel> => {
+): Promise<AddDomainToBlocklistModel> => {
 	const url = urlQueryBuilder(`${URL}/${tag}/restore`, {
 		access_token: wdData.accessToken,
 	});

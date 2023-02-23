@@ -2,13 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-  CreateUserBodyParameterModel,
-  CreateUserResponseModel,
-  RecalculateUserQuotaResponseModel,
-  ResetUserPasswordBodyParametersModel,
-  ResetUserPasswordResponseModel,
-} from "./models";
+import { CreateOrUpdateDkimKeyForDomainModel } from "./models";
 
 /**
  * Add a new DKIM key for a Domain or update existing one.
@@ -20,7 +14,7 @@ import {
  *
  * no parameters
  */
-export const createOrUpdateDkimKeyForDomain = async (): Promise<CreateUserResponseModel> => {
+export const createOrUpdateDkimKeyForDomain = async (): Promise<CreateOrUpdateDkimKeyForDomainModel> => {
   const url = urlQueryBuilder(`${URL}/`, {
     access_token: wdData.accessToken,
   });

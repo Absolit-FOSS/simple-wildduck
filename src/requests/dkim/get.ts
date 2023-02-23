@@ -2,13 +2,8 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	GetDeletedUserInfoResponseModel,
-	GetUserIdByUsernameResponseModel,
-	GetUserResponseModel,
-	GetUsersQueryParametersModel,
-	GetUsersResponseModel,
-} from "./models";
+import { RequestDkimInformationModel, ResolveIdForDkimDomainModel } from "./models";
+import { GetUsersQueryParametersModel } from "../users";
 
 /**
  * Request DKIM information
@@ -17,7 +12,7 @@ import {
  *
  * @param dkimId ID of the DKIM
  */
-export const requestDkimInformation = async (dkimId: string): Promise<GetUserResponseModel> => {
+export const requestDkimInformation = async (dkimId: string): Promise<RequestDkimInformationModel> => {
 	const url = urlQueryBuilder(`${URL}/${dkimId}`, {
 		access_token: wdData.accessToken,
 	});
@@ -28,15 +23,26 @@ export const requestDkimInformation = async (dkimId: string): Promise<GetUserRes
 };
 
 /**
- * Get all registered users
+ * List registered DKIM keys
  *
- * http://docs.wildduck.email/api/#operation/getUsers
+ * https://docs.wildduck.email/api/#operation/getDkimKeys
  *
  * @param queryData query parameters for additional options
+ * @param query Partial match of a Domain name
+ * @param limit How many records to return
+ * @param page Current page number. Informational only, page numbers start from 1
+ * @param next Cursor value for next page, retrieved from nextCursor response value
+ * @param previous Cursor value for previous page, retrieved from previousCursor response value
+ * 
  */
-export const getUsers = async (
-	queryData: GetUsersQueryParametersModel
-): Promise<GetUsersResponseModel> => {
+export const listRegisteredDkimKeys = async (
+	queryData: GetUsersQueryParametersModel,
+	query: string,
+	limit: number,
+	page: number,
+	next: string,
+	previous: string
+): Promise<ResolveIdForDkimDomainModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		access_token: wdData.accessToken,
 		...queryData,
@@ -56,8 +62,8 @@ export const getUsers = async (
  */
 export const resolveIdForDkimDomain = async (
 	domain: string
-): Promise<GetUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${domain}/updates`, {
+): Promise<ResolveIdForDkimDomainModel> => {
+	const url = urlQueryBuilder(`${URL}/${domain}/resolve`, {
 		access_token: wdData.accessToken,
 	});
 

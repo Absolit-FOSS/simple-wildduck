@@ -2,13 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	GetDeletedUserInfoResponseModel,
-	GetUserIdByUsernameResponseModel,
-	GetUserResponseModel,
-	GetUsersQueryParametersModel,
-	GetUsersResponseModel,
-} from "./models";
+import { ListAuthenticationEventsModel, RequestEventInformationModel } from "./models";
 
 /**
  * List authentication Events
@@ -25,14 +19,14 @@ import {
  */
 export const listAuthenticationEvents = async (
 	userId: string,
-	action: string,
-	filterIp: string,
-	limit: number,
-	page: number,
-	next: string,
-	previous: string
-): Promise<GetUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${userId}`, {
+	action?: string,
+	filterIp?: string,
+	limit?: number,
+	page?: number,
+	next?: string,
+	previous?: string
+): Promise<ListAuthenticationEventsModel> => {
+	const url = urlQueryBuilder(`/users/${userId}/authenticate`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -52,8 +46,8 @@ export const listAuthenticationEvents = async (
 export const requestEventInformation = async (
 	userId: string,
 	eventId: string
-): Promise<GetUsersResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${userId}`, {
+): Promise<RequestEventInformationModel> => {
+	const url = urlQueryBuilder(`/users/${userId}`, {
 		access_token: wdData.accessToken,
 	});
 

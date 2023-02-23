@@ -2,13 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import {
-	GetDeletedUserInfoResponseModel,
-	GetUserIdByUsernameResponseModel,
-	GetUserResponseModel,
-	GetUsersQueryParametersModel,
-	GetUsersResponseModel,
-} from "./models";
+import { RequestFilterInformationModel, ListAllFiltersModel, ListFiltersForUserModel } from './models';
 
 /**
  * Request Filter information
@@ -21,8 +15,8 @@ import {
 export const requestFilterInformation = async (
 	userId: string,
 	filterId: string
-): Promise<GetUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${filterId}`, {
+): Promise<RequestFilterInformationModel> => {
+	const url = urlQueryBuilder(`/users/${userId}/${filterId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -42,13 +36,13 @@ export const requestFilterInformation = async (
  * @param next Cursor value for next page, retrieved from nextCursor response value
  * @param previous Cursor value for previous page, retrieved from previousCursor response value
  */
-export const getUsers = async (
+export const listAllFilters = async (
 	forward: string,
 	limit: number,
 	page: number,
 	next: number,
 	previous: number
-): Promise<GetUsersResponseModel> => {
+): Promise<ListAllFiltersModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		access_token: wdData.accessToken,
 	});
@@ -67,7 +61,7 @@ export const getUsers = async (
  */
 export const listFiltersForUser = async (
 	userId: string
-): Promise<GetUserResponseModel> => {
+): Promise<ListFiltersForUserModel> => {
 	const url = urlQueryBuilder(`${URL}/${userId}/updates`, {
 		access_token: wdData.accessToken,
 	});

@@ -85,6 +85,34 @@ export interface PreAuthenticationCheckModel {
   ip?: string;
 }
 
+export interface ResultsModel {
+  /**
+   * ID of the Event
+   */
+  id: string;
+  /**
+   * Action identifier
+   */
+  action: string;
+  /**
+   * Did the action succeed
+   */
+  result: string;
+  /**
+   * Session identifier
+   */
+  sess?: string;
+  /**
+   * IP address of the Event
+   */
+  ip?: string;
+  /**
+   * Datestring of the Event time
+   * <date-time>
+   */
+  created: string;
+}
+
 export interface ListAuthenticationEventsModel {
   /**
    * Indicates successful response
@@ -109,16 +137,7 @@ export interface ListAuthenticationEventsModel {
   /**
    * Event listing
    */
-  results: [
-    {
-      id: string;
-      action: string;
-      result: string;
-      sess: string;
-      ip: string;
-      created: string;
-    }
-  ];
+  results: ResultsModel[];
 }
 
 export interface RequestEventInformationModel {

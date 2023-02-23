@@ -66,7 +66,7 @@ export interface RequestTlsCertificateInformationModel {
   /**
    * If true then private key and certificate are managed automatically by ACME
    */
-  "acme?": false;
+  acme?: false;
   /**
    * Key description
    */
@@ -86,6 +86,42 @@ export interface RequestTlsCertificateInformationModel {
   /**
    * SAN servernames listed in the certificate
    * E.g. "example.com", "www.example.com"
+   */
+  altNames?: string[];
+}
+
+export interface ResultsModel {
+  /**
+   * ID of the certificate
+   */
+  id: string;
+  /**
+   * The server name this certificate applies to
+   */
+  servername: string;
+  /**
+   * If true then private key and certificate are managed automatically by ACME
+   */
+  acme?: boolean;
+  /**
+   * Key description
+   */
+  description: string;
+  /**
+   * Key fingerprint (SHA1)
+   */
+  fingerprint: string;
+  /**
+   * Datestring
+   * <date-time>
+   */
+  created: string;
+  /**
+   * Certificate expiration time
+   */
+  expires?: string;
+  /**
+   * SAN servernames listed in the certificate
    */
   altNames?: string[];
 }
@@ -114,21 +150,16 @@ export interface ListRegisteredTlsCertificatesModel {
   /**
    * Certificate listing
    */
-  results: [
-    {
-      id: string;
-      servername: string;
-      acme: boolean;
-      description: string;
-      fingerprint: string;
-      created: string;
-      expires: string;
-      altNames: string[];
-    }
-  ];
+  results: ResultsModel[];
 }
 
 export interface ResolveIdForServerNameModel {
+  /**
+   * Indicates successful response
+   */
   success: boolean;
+  /**
+   * Unique ID (24 byte hex)
+   */
   id: string;
 }

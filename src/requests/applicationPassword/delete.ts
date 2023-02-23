@@ -2,7 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { DeleteUserQueryParametersModel } from "./models";
+import { DeleteAppPasswordModel } from "./models";
 
 /**
  * Delete an Application Password
@@ -15,7 +15,7 @@ import { DeleteUserQueryParametersModel } from "./models";
 export const deleteAppPassword = async (
 	userId: string,
 	aspId: string
-): Promise<DefaultResponseModel> => {
+): Promise<DeleteAppPasswordModel> => {
 	const url = urlQueryBuilder(`${URL}/${aspId}`, {
 		access_token: wdData.accessToken,
 	});
