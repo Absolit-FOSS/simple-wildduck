@@ -10,17 +10,17 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/WeebNetsu/simple-wildduck.git"
+        "url": "git+https://github.com/Absolit-FOSS/simple-wildduck.git"
     },
     "keywords": [
         "wildduck"
     ],
-    "author": "Stephen van der Westhuizen",
+    "author": "Absolit",
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/WeebNetsu/simple-wildduck/issues"
+        "url": "https://github.com/Absolit-FOSS/simple-wildduck/issues"
     },
-    "homepage": "https://github.com/WeebNetsu/simple-wildduck#readme",
+    "homepage": "https://github.com/Absolit-FOSS/simple-wildduck#readme",
     "types": "dist/index.d.ts",
     "files": [
         "dist/"

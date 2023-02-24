@@ -2,19 +2,19 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { CreationResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { CreateMailboxBodyParameterModel } from "./models";
+import { UploadFileToStorageBodyParameterModel } from "./models";
 
 /**
- * Create a new mailbox
+ * This method allows to upload an attachment to be linked from a draft
  *
- * https://docs.wildduck.email/api/#operation/createMailbox
+ * https://docs.wildduck.email/api/#operation/uploadFile
  *
  * @param userId the users wildduck ID
  * @param bodyData body parameters to create a user
  */
-export const createMailbox = async (
+export const uploadFileToStorage = async (
 	userId: string,
-	bodyData: CreateMailboxBodyParameterModel
+	bodyData: UploadFileToStorageBodyParameterModel
 ): Promise<CreationResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		access_token: wdData.accessToken,

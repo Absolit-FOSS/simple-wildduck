@@ -4,12 +4,12 @@ import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 
 /**
- * Delete a mailbox
+ * Delete a Mailbox
  *
  * https://docs.wildduck.email/api/#operation/deleteMailbox
  *
- * @param userId the users wildduck ID
- * @param mailboxId the users mailbox ID
+ * @param userId Users unique ID
+ * @param mailboxId Mailbox unique ID. Special use folders and INBOX can not be deleted
  */
 export const deleteMailbox = async (
 	userId: string,

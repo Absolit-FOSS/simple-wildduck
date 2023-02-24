@@ -27,6 +27,7 @@ export const updateUser = async (
 
 	return res.data;
 };
+
 /**
  * Log out all users sessions in IMAP
  *
