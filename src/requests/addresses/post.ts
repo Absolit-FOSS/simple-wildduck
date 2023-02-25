@@ -1,64 +1,60 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { DefaultResponseModel, UserIdentifierModel } from "../../models";
+import {
+	CreationResponseModel,
+	DefaultResponseModel,
+	UserIdentifierModel,
+} from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { CreateNewAddressModel, CreateNewForwardedAddressModel } from "./models";
+import { CreateAddressBodyParameterModel } from "./models";
 
 /**
  * Create new Address
+ * 
+ * Add a new email address for a User. Addresses can contain unicode characters.
+ * Dots in usernames are normalized so no need to create both "firstlast@example.com" and "first.last@example.com"
+ * Special addresses *@example.com, *suffix@example.com and username@* catches all emails to these domains
+ * or users without a registered destination (requires allowWildcard argument)
  *
  * https://docs.wildduck.email/api/#operation/createUserAddress
- *
+ * 
  * @param userId ID of the User
+ * @param bodyData body parameters to create a user
  */
-export const createNewAddress = async (
-	userId: string
-): Promise<CreateNewAddressModel> => {
-	const url = urlQueryBuilder(`${URL}/forwarded/${userId}`, {
+export const createAddress = async (
+	userId: string,
+	bodyData: CreateAddressBodyParameterModel
+): Promise<CreationResponseModel> => {
+	const url = urlQueryBuilder(`/users/${userId}/${URL}/`, {
 		access_token: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url);
+	const res = await axiosConf.post(url, bodyData);
 
 	return res.data;
 };
 
 /**
  * Create new forwarded Address
+ * 
+ * Add a new forwarded email address. Addresses can contain unicode characters
+ * Dots in usernames are normalized so no need to create both "firstlast@example.com" and
+ * "first.last@example.com" Special addresses *@example.com and username@
+ * catches all emails to these domains or users without a registered destination
+ * (requires allowWildcard argument)
  *
- * https://docs.wildduck.email/api/#operation/createForwardedAddress
+ * http://docs.wildduck.email/api/#operation/restoreUser
  *
- * @param address E-mail Address
- * @param name Identity name
- * @param targetsAn array of forwarding targets. The value could either be an email address or a relay url to next MX server ("smtp://mx2.zone.eu:25") or an URL where mail contents are POSTed to
- * @param forwards Daily allowed forwarding count for this address
- * @param allowWildcard If true then address value can be in the form of *@example.com,
- * 						otherwise using * is not allowed
- * @param tags A list of tags associated with this address
- * @param metaData Optional metadata, must be an object or JSON formatted string
- * @param internalData Optional metadata for internal use, must be an object or JSON formatted string of an object
- * 				       Not available for user-role tokens
- * @param autoreply Autoreply information
+ * @param bodyData body parameters to cancel user deletion
  */
-export const createNewForwardedAddress = async (
-	address: string,
-	name?: string,
-	targets?: string[],
-	forwards?: number,
-	allowWildcard?: boolean,
-	tags?: string[],
-	metaData?: object | string,
-	internalData?: object | string,
-	autoreply?: object
-): Promise<CreateNewForwardedAddressModel> => {
-	const url = urlQueryBuilder(`/user/${address}/restore`, {
+export const cancelUserDeletion = async (
+	bodyData: UserIdentifierModel
+): Promise<CreationResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/forwarded/`, {
 		access_token: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url);
+	const res = await axiosConf.post(url, bodyData);
 
 	return res.data;
 };
-
-// all parameters were left unchange because there were no
-// path parameters in POST

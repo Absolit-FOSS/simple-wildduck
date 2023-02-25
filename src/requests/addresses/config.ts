@@ -1,1 +1,1 @@
-export const URL = "/addresses/{addressId}";
+export const URL = "/addresses";

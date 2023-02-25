@@ -2,7 +2,11 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { UpdateForwardedAddressInformationModel, UpdateAddressInformationModel } from './models';
+import {
+	RenameDomainInAddressesBodyParametersModel,
+	UpdateAddressInforBodyParametersModel,
+	UpdateForwardedAddressInforBodyParametersModel
+} from "./models";
 
 /**
  * Update forwarded Address information
@@ -10,59 +14,62 @@ import { UpdateForwardedAddressInformationModel, UpdateAddressInformationModel }
  * https://docs.wildduck.email/api/#operation/updateForwardedAddress
  *
  * @param addressId ID of the Address
+ * @param bodyData data to update on the user
  */
-export const updateForwardsAddressInformation = async (
+export const updateUser = async (
 	addressId: string,
-): Promise<UpdateForwardedAddressInformationModel> => {
-	const url = urlQueryBuilder(`${URL}/${addressId}`, {
+	bodyData: UpdateForwardedAddressInforBodyParametersModel
+): Promise<DefaultResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/forwarded/${addressId}`, {
 		access_token: wdData.accessToken,
+		// fix ...queryData
 	});
 
-	const res = await axiosConf.put(url);
+	const res = await axiosConf.put(url, bodyData);
 
 	return res.data;
 };
 
 /**
  * Update Address information
- *
+ * 
  * https://docs.wildduck.email/api/#operation/updateUserAddress
- *
+ * 
  * @param userId ID of the User
  * @param addressId ID of the Address
+ * @param bodyData data to update on the user
  */
-export const updateAddressInformation = async (
+export const updateAddressInfo = async (
 	userId: string,
-	addressId: string
-): Promise<UpdateAddressInformationModel> => {
-	const url = urlQueryBuilder(`/user/${userId}/logout`, {
+	addressId: string,
+	bodyData: UpdateAddressInforBodyParametersModel
+): Promise<DefaultResponseModel> => {
+	const url = urlQueryBuilder(`/users/${userId}/${addressId}`, {
 		access_token: wdData.accessToken,
 	});
 
-	const res = await axiosConf.put(url);
+	const res = await axiosConf.put(url, bodyData);
 
 	return res.data;
 };
 
 /**
  * Rename domain in addresses
- *
+ * 
  * https://docs.wildduck.email/api/#operation/renameDomain
- *
- * @param oldDomain Old Domain Name
- * @param newDomain New Domain Name
+ * 
+ * @param userId ID of the User
+ * @param bodyData data to update on the user
  */
 export const renameDomainInAddresses = async (
-	oldDomain: string,
-	newDomain: string
+	userId: string,
+	bodyData: RenameDomainInAddressesBodyParametersModel
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${newDomain}/logout`, {
+	const url = urlQueryBuilder(`${URL}/${userId}/renameDomain`, {
 		access_token: wdData.accessToken,
 	});
 
-	const res = await axiosConf.put(url);
+	const res = await axiosConf.put(url, bodyData);
 
 	return res.data;
 };
-
-// help requested, I feel a tad unsure about this one
