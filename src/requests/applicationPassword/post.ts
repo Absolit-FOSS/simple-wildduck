@@ -2,7 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { CreateAppPasswordModel } from "./models";
+import { CreateAppPasswordResponseModel, CreateNewAppPasswordBodyParametersModel } from "./models";
 
 /**
  * Create new Application Password
@@ -10,15 +10,17 @@ import { CreateAppPasswordModel } from "./models";
  * https://docs.wildduck.email/api/#operation/createASP
  *
  * @param userId ID of the User
+ * @param bodyData body parameters to reset user password
  */
 export const createNewAppPassword = async (
-	userId: string
-): Promise<CreateAppPasswordModel> => {
-	const url = urlQueryBuilder(`/user/${userId}`, {
+	userId: string,
+	bodyData: CreateNewAppPasswordBodyParametersModel
+): Promise<CreateAppPasswordResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/${userId}`, {
 		access_token: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url);
+	const res = await axiosConf.post(url, bodyData);
 
 	return res.data;
 };

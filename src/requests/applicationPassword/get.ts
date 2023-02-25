@@ -2,7 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultMailboxModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { RequestAppPasswordInformationModel, ListApplicationPasswordsModel } from './models';
+import { GetAppPasswordInformationResponseModel, ListAppPasswordsQueryParametersModel, ListAppPasswordsResponseModel } from './models';
 
 /**
  * Request ASP information
@@ -15,8 +15,8 @@ import { RequestAppPasswordInformationModel, ListApplicationPasswordsModel } fro
 export const getAppPasswordInformation = async (
 	userId: string,
 	aspId: string
-): Promise<RequestAppPasswordInformationModel> => {
-	const url = urlQueryBuilder(`/user/${userId}/${aspId}`, {
+): Promise<GetAppPasswordInformationResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/${userId}/${aspId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -31,14 +31,15 @@ export const getAppPasswordInformation = async (
  * https://docs.wildduck.email/api/#operation/getASPs
  *
  * @param userId ID of the User
- * @param showAll If not true then skips entries with a TTL set
+ * @param queryData query parameters for additional options
  */
 export const listApplicationPasswords = async (
 	userId: string,
-	showAll: boolean
-): Promise<ListApplicationPasswordsModel> => {
-	const url = urlQueryBuilder(`/user/${userId}`, {
+	queryData: ListAppPasswordsQueryParametersModel
+): Promise<ListAppPasswordsResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/${userId}`, {
 		access_token: wdData.accessToken,
+		...queryData,
 	});
 
 	const res = await axiosConf.get(url);

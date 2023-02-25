@@ -2,7 +2,6 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { DeleteAppPasswordModel } from "./models";
 
 /**
  * Delete an Application Password
@@ -10,13 +9,13 @@ import { DeleteAppPasswordModel } from "./models";
  * https://docs.wildduck.email/api/#operation/deleteASP
  *
  * @param userId ID of the User
- * @param asp ID of the Application Password
+ * @param aspId ID of the Application Password
  */
 export const deleteAppPassword = async (
 	userId: string,
 	aspId: string
-): Promise<DeleteAppPasswordModel> => {
-	const url = urlQueryBuilder(`${URL}/${aspId}`, {
+): Promise<DefaultResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/${userId}/${aspId}`, {
 		access_token: wdData.accessToken,
 	});
 

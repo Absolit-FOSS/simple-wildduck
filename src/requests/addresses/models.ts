@@ -4,23 +4,23 @@ export interface AutoreplyModel {
   /**
    * If true, then autoreply is enabled for this address
    */
-  "status": boolean,
+  status: boolean;
   /**
    * Name that is used for the From: header in autoreply message
    */
-  "name": string,
+  name: string;
   /**
    * Autoreply subject line
    */
-  "subject": string,
+  subject: string;
   /**
    * Autoreply plaintext content
    */
-  "text": string,
+  text: string;
   /**
    * Autoreply HTML content
    */
-  "html": string
+  html: string;
 }
 
 export interface DateStringAutoreplyModel extends AutoreplyModel {
@@ -28,171 +28,171 @@ export interface DateStringAutoreplyModel extends AutoreplyModel {
    * <date-time>
    * Either a date string or boolean false to disable start time checks
    */
-  "start": string,
+  start: string;
   /**
    * <date-time>
    * Either a date string or boolean false to disable end time checks
    */
-  "end": string,
+  end: string;
 }
 
 export interface GetForwardedAddressInfoResponseModel {
   /**
    * Indicates successful response
    */
-  "success": boolean,
+  success: boolean;
   /**
    * ID of the Address
    */
-  "id": string,
+  id: string;
   /**
    * E-mail address string
    */
-  "address": string,
+  address: string;
   /**
    * Identity name
    */
-  "name": string,
+  name: string;
   /**
    * List of forwarding targets
    */
-  "targets": string[],
+  targets: string[];
   /**
    * Account limits and usage
    */
-  "limits": {
+  limits: {
     /**
      * Forwarding quota
      */
-    "forwards": LimitUsageTTLModel;
-  }
+    forwards: LimitUsageTTLModel;
+  };
   /**
    * Autoreply information
    */
-  "autoreply": AutoreplyModel,
+  autoreply: AutoreplyModel;
   /**
    * Datestring of the time the address was created
    */
-  "created": string,
+  created: string;
   /**
    * List of tags associated with the Address
    */
-  "tags": string[],
+  tags: string[];
   /**
    * If true then the forwarded address is disabled
    */
-  "forwardedDisabled": boolean
+  forwardedDisabled: boolean;
 }
 
 export interface UpdateForwardedAddressInforBodyParametersModel {
   /**
    * New address. Only affects normal addresses, special addresses that include * can not be changed
    */
-  "address"?: string,
+  address?: string;
   /**
    * Identity name
    */
-  "name"?: string,
+  name?: string;
   /**
    * An array of forwarding targets. The value could either be an email address or a relay
    * url to next MX server ("smtp://mx2.zone.eu:25") or an URL where mail contents are
    * POSTed to. If set then overwrites previous targets array
    */
-  "targets"?: string[],
+  targets?: string[];
   /**
    * Daily allowed forwarding count for this address
    */
-  "forwards"?: number,
+  forwards?: number;
   /**
    * A list of tags associated with this address
    */
-  "tags"?: string[],
+  tags?: string[];
   /**
    * Optional metadata, must be an object or JSON formatted string
    */
-  "metaData"?: any,
+  metaData?: any;
   /**
    * Optional metadata for internal use, must be an object or JSON formatted string of an
    * object. Not available for user-role tokens
    */
-  "internalData"?: any,
+  internalData?: any;
   /**
    * If true then disables forwarded address (stops forwarding messages)
    */
-  "forwardedDisabled"?: boolean,
+  forwardedDisabled?: boolean;
   /**
    * Autoreply information
    */
-  "autoreply"?: DateStringAutoreplyModel;
+  autoreply?: DateStringAutoreplyModel;
 }
 
 export interface UpdateAddressInforBodyParametersModel {
   /**
    * Identity name
    */
-  "name"?: string,
+  name?: string;
   /**
    * New address if you want to rename existing address
    * Only affects normal addresses, special addresses that include * can not be changed
    */
-  "address"?: string,
+  address?: string;
   /**
    * Indicates if this is the default address for the User
    */
-  "main": boolean,
+  main: boolean;
   /**
    * Optional metadata, must be an object or JSON formatted string
    */
-  "metaData"?: any,
+  metaData?: any;
   /**
    * Optional metadata for internal use, must be an object or JSON formatted string of an object
    * Not available for user-role tokens
    */
-  "internalData"?: any,
+  internalData?: any;
   /**
    * A list of tags associated with this address
    */
-  "tags"?: string[]
+  tags?: string[];
 }
 
 export interface GetAddressesInfoResponseModelModel {
   /**
    * Indicates successful response
    */
-  "success": boolean,
+  success: boolean;
   /**
    * ID of the Address
    */
-  "id": string,
+  id: string;
   /**
    * Identity name
    */
-  "name": string,
+  name: string;
   /**
    * E-mail address string
    */
-  "address": string,
+  address: string;
   /**
    * List of tags associated with the Address
    */
-  "tags": string[],
+  tags: string[];
   /**
    * Metadata object (if available)
    */
-  "metaData"?: any,
+  metaData?: any;
   /**
    * Internal metadata object (if available), not included for user-role requests
    */
-  "internalData"?: any,
+  internalData?: any;
   /**
    * Indicates if this is the default address for the User
    */
-  "main": boolean,
+  main: boolean;
   /**
    * <date-time>
    * Datestring of the time the address was created
    */
-  "created": string
+  created: string;
 }
 
 export interface GetAddressInfoQueryParametersModel {
@@ -206,59 +206,59 @@ export interface GetAddressInfoResponseModel {
   /**
    * Indicates successful response
    */
-  "success": boolean,
+  success: boolean;
   /**
    * ID of the Address
    */
-  "id": string,
+  id: string;
   /**
    * E-mail address string
    */
-  "address": string,
+  address: string;
   /**
    * Identity name
    */
-  "name": string,
+  name: string;
   /**
    * ID of the user if the address belongs to a User
    */
-  "user": string,
+  user: string;
   /**
    * List of forwarding targets if this is a Forwarded address
    */
-  "targets": string[],
+  targets: string[];
   /**
    * Account limits and usage
    */
-  "limits": {
+  limits: {
     /**
      * Forwarding quota
      */
-    "forwards": LimitUsageTTLModel
-  },
+    forwards: LimitUsageTTLModel;
+  };
   /**
    * Autoreply information
    */
-  "autoreply": AutoreplyModel,
+  autoreply: AutoreplyModel;
   /**
    * List of tags associated with the Address
    */
-  "tags": string[],
+  tags: string[];
   /**
    * Datestring of the time the address was created
    */
-  "created": string
+  created: string;
 }
 
 export interface ListRegisteredAddressesQueryParametersModel {
   /**
    * Partial match of an address
    */
-  query?: string,
+  query?: string;
   /**
    * Partial match of a forward email address or URL
    */
-  forward?: string
+  forward?: string;
   /**
    * Comma separated list of tags. The Address must have at least one to be set
    */
@@ -297,58 +297,58 @@ export interface ListRegisteredAddressesResultsModel {
   /**
    * ID of the Address
    */
-  "id": string,
+  id: string;
   /**
    * Identity name
    */
-  "name": string,
+  name: string;
   /**
    * E-mail address string
    */
-  "address": string,
+  address: string;
   /**
    * User ID this address belongs to if this is a User address
    */
-  "user": string,
+  user: string;
   /**
    * If true then it is a forwarded address
    */
-  "forwarded": boolean,
+  forwarded: boolean;
   /**
    * If true then the forwarded address is disabled
    */
-  "forwardedDisabled": boolean,
+  forwardedDisabled: boolean;
   /**
    * List of forwarding targets
    */
-  "target"?: string[]
+  target?: string[];
 }
 
 export interface ListRegisteredAddressesResponseModel {
   /**
    * Indicates successful response
    */
-  "success": boolean,
+  success: boolean;
   /**
    * How many results were found
    */
-  "total": number,
+  total: number;
   /**
    * Current page number. Derived from page query argument
    */
-  "page": number,
+  page: number;
   /**
    * Either a cursor string or false if there are not any previous results
    */
-  "previousCursor": string,
+  previousCursor: string;
   /**
    * Either a cursor string or false if there are not any next results
    */
-  "nextCursor": string,
+  nextCursor: string;
   /**
    * Address listing
    */
-  "results": ListRegisteredAddressesResultsModel[]
+  results: ListRegisteredAddressesResultsModel[];
 }
 
 export interface ListRegisteredAddressesForUserQueryParametersModel {
@@ -366,46 +366,46 @@ export interface ListRegisteredAddressesForUserResultsModel {
   /**
    * ID of the Address
    */
-  "id": string,
+  id: string;
   /**
    * Identity name
    */
-  "name": string,
+  name: string;
   /**
    * E-mail address string
    */
-  "address": string,
+  address: string;
   /**
    * Indicates if this is the default address for the User
    */
-  "main": boolean,
+  main: boolean;
   /**
    * Datestring of the time the address was created
    */
-  "created": string,
+  created: string;
   /**
    * List of tags associated with the Address
    */
-  "tags": string[],
+  tags: string[];
   /**
    * Metadata object (if available)
    */
-  "metaData"?: any,
+  metaData?: any;
   /**
    * Internal metadata object (if available), not included for user-role requests
    */
-  "internalData"?: any
+  internalData?: any;
 }
 
 export interface ListRegisteredAddressesForUserResponseModel {
   /**
    * Indicates successful response
    */
-  "success": boolean,
+  success: boolean;
   /**
    * Address listing
    */
-  "results": ListRegisteredAddressesForUserResultsModel[]
+  results: ListRegisteredAddressesForUserResultsModel[];
 }
 
 export interface ListAddressesFromCommunicationRegisterQueryParametersModel {
@@ -425,37 +425,37 @@ export interface ListAddressesFromCommunicationRegisterResultsModel {
   /**
    * ID of the Address
    */
-  "id": string,
+  id: string;
   /**
    * Name from address header
    */
-  "name"?: string,
+  name?: string;
   /**
    * E-mail address string
    */
-  "address": string;
+  address: string;
 }
 
 export interface ListAddressesFromCommunicationRegisterResponseModel {
   /**
    * Indicates successful response
    */
-  "success": true,
+  success: true;
   /**
    * Address listing
    */
-  "results": ListAddressesFromCommunicationRegisterResultsModel[]
+  results: ListAddressesFromCommunicationRegisterResultsModel[];
 }
 
 export interface RenameDomainInAddressesBodyParametersModel {
   /**
    * Old Domain Name
    */
-  "oldDomain": string,
+  oldDomain: string;
   /**
    * New Domain Name
    */
-  "newDomain": string
+  newDomain: string;
 }
 
 export interface CreateAddressBodyParameterModel {
@@ -495,40 +495,40 @@ export interface CreateNewForwardedAddressBodyParameterModel {
   /**
    * E-mail Address
    */
-  "address": string,
+  address: string;
   /**
    * Identity name
    */
-  "name"?: string,
+  name?: string;
   /**
    * An array of forwarding targets. The value could either be an email address
    * or a relay url to next MX server ("smtp://mx2.zone.eu:25")
    * or an URL where mail contents are POSTed to
    */
-  "targets"?: string,
+  targets?: string;
   /**
    * Daily allowed forwarding count for this address
    */
-  "forwards"?: number,
+  forwards?: number;
   /**
    * If true then address value can be in the form of *@example.com, otherwise using * is not allowed
    */
-  "allowWildcard"?: boolean,
+  allowWildcard?: boolean;
   /**
    * A list of tags associated with this address
    */
-  "tags"?: string[]
+  tags?: string[];
   /**
    * Optional metadata, must be an object or JSON formatted string
    */
-  "metaData"?: any,
+  metaData?: any;
   /**
    * Optional metadata for internal use, must be an object or JSON formatted string of an object.
    * Not available for user-role tokens
    */
-  "internalData"?: any,
+  internalData?: any;
   /**
    * Autoreply information
    */
-  "autoreply"?: DateStringAutoreplyModel;
+  autoreply?: DateStringAutoreplyModel;
 }
