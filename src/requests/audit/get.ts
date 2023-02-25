@@ -2,7 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { RequestAuditInformationModel } from "./models";
+import { GetAuditInformationResponseModel } from "./models";
 import { DefaultMailboxModel } from '../../models/index';
 
 /**
@@ -12,10 +12,10 @@ import { DefaultMailboxModel } from '../../models/index';
  *
  * @param auditId ID of the Audit
  */
-export const requestAuditInformation = async (
-	auditId: string
-): Promise<RequestAuditInformationModel> => {
-	const url = urlQueryBuilder(`/user/${auditId}`, {
+export const getAuditInformation = async (
+	auditId: string,
+): Promise<GetAuditInformationResponseModel> => {
+	const url = urlQueryBuilder(`${URL}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -34,7 +34,7 @@ export const requestAuditInformation = async (
 export const exportAuditedEmails = async (
 	auditId: string
 ): Promise<DefaultMailboxModel> => {
-	const url = urlQueryBuilder(`/users/mailboxes/${auditId}`, {
+	const url = urlQueryBuilder(`${URL}/export/export.mbox`, {
 		access_token: wdData.accessToken,
 	});
 

@@ -1,162 +1,176 @@
-export interface FromToCcBccModelModel {
+export interface ListArchivedMessageQueryParameterModel {
+  /**
+   * How many records to return
+   */
+  limit?: number;
+  /**
+   * Current page number. Informational only, page numbers start from 1
+   */
+  page?: number;
+  /**
+   * Enum: "asc" "desc" 
+   * Ordering of the records by insert date
+   */
+  order?: string;
+  /**
+   * Cursor value for next page, retrieved from nextCursor response value
+   */
+  next?: string;
+  /**
+   * Cursor value for previous page, retrieved from previousCursor response value
+   */
+  previous?: string;
+}
+
+export interface ContentTypeModel {
+  /**
+   * MIME type of the message, eg. "multipart/mixed"
+   */
+  value: string;
+  /**
+   * An object with Content-Type params as key-value pairs
+   */
+  params: any;
+}
+
+export interface FromToCcBccModel {
   /**
    * Name of the sender/recipient
    */
-  name: string;
+  "name": string,
   /**
    * Address of the sender/recipient
    */
-  address: string;
+  "address": string
 }
-
-// export interface ToModel {
-//   name: string;
-//   address: string;
-// }
-
-// export interface CcModel {
-//   name: string;
-//   address: string;
-// }
-
-// export interface BccModel {
-//   name: string;
-//   address: string;
-// }
 
 export interface ResultsModel {
   /**
    * ID of the Message (24 byte hex)
    */
-  id: string;
+  "id": string,
   /**
    * ID of the Mailbox
    */
-  mailbox: string;
+  "mailbox": string,
   /**
    * ID of the Thread
    */
-  thread: string;
+  "thread": string,
   /**
-   * E-mail of the sender
+   * Recipients in From: field
    */
-  from: FromToCcBccModelModel;
+  "from": FromToCcBccModel,
   /**
    * Recipients in To: field
    */
-  to: FromToCcBccModelModel[];
+  "to": FromToCcBccModel[],
   /**
    * Recipients in Cc: field
    */
-  cc: FromToCcBccModelModel[];
+  "cc": FromToCcBccModel[],
   /**
    * Recipients in Bcc: field. Usually only available for drafts
    */
-  bcc: FromToCcBccModelModel[];
+  "bcc": FromToCcBccModel[],
   /**
    * Message subject
    */
-  subject:string;
+  "subject": string,
   /**
+   * <date-time>
    * Date string from header
-   * <date-time>
    */
-  date: string;
+  "date": string,
   /**
-   * Date string of receive time
    * <date-time>
+   * Date string of receive time
    */
-  idate?: string;
+  "idate"?: string,
   /**
    * First 128 bytes of the message
    */
-  intro:string;
+  "intro": string,
   /**
    * Does the message have attachments
    */
-  attachments: true;
+  "attachments": boolean,
   /**
    * Is this message alread seen or not
    */
-  seen: true;
+  "seen": boolean,
   /**
-   * Does this message have a \Deleted flag
-   * (should not have as messages are automatically deleted once this flag is set)
+   * Does this message have a \Deleted flag (should not have as messages are automatically deleted once this flag is set)
    */
-  deleted: true;
+  "deleted": boolean,
   /**
    * Does this message have a \Flagged flag
    */
-  flagged: true;
+  "flagged": boolean,
   /**
-   * Parsed Content-Type header
-   * Usually needed to identify encrypted messages and such
+   * Parsed Content-Type header. Usually needed to identify encrypted messages and such
    */
-  contentType: {
-    /**
-     * MIME type of the message, eg. "multipart/mixed"
-     */
-    value:string;
-    /**
-     * An object with Content-Type params as key-value pairs
-     */
-    params: {};
-  };
+  "contentType": ContentTypeModel;
 }
 
-export interface ListArchivedMessageModel {
+export interface ListArchivedMessageResponseModel {
   /**
    * Indicates successful response
    */
-  success: boolean;
+  "success": boolean,
   /**
    * How many results were found
    */
-  total: number;
+  "total": number,
   /**
    * Current page number. Derived from page query argument
    */
-  page: number;
+  "page": number,
   /**
    * Either a cursor string or false if there are not any previous results
    */
-  previousCursor: string;
+  "previousCursor": string,
   /**
    * Either a cursor string or false if there are not any next results
    */
-  nextCursor: string;
+  "nextCursor": string,
   /**
    * Message listing
    */
-  results: ResultsModel[];
+  "results": ResultsModel[];
 }
 
-export interface RestoreArchivedMessageModel {
+export interface RestoreArchivedMessageBodyParametersModel {
   /**
-   * Indicates successful response
-   */
-  success: boolean;
-  /**
-   * Maibox ID the message was moved to
-   */
-  id: number;
-  /**
-   * New ID for the Message
+   * ID of the target Mailbox. If not set then original mailbox is used.
    */
   mailbox: string;
 }
 
-export interface RestoreArchivedMessagesModel {
+export interface RestoreArchivedMessageResponseModel {
   /**
    * Indicates successful response
    */
-  success: boolean;
+  "success": boolean,
   /**
-   * Datestring <date-time>
+   * Maibox ID the message was moved to
+   */
+  "mailbox": string,
+  /**
+   * New ID for the Message
+   */
+  "id": number,
+}
+
+export interface RestoreArchivedMessagesBodyParametersModel {
+  /**
+   * <date-time>
+   * Datestring
    */
   start: string;
   /**
-   * Datestring <date-time>
+   * <date-time>
+   * Datestring
    */
   end: string;
 }

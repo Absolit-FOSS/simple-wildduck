@@ -1,17 +1,19 @@
-export interface RequestAuditInformationModel {
+export interface GetAuditInformationResponseModel {
   /**
    * Indicates successful response
    */
   success: boolean;
   /**
-   * Users unique ID
+   *Users unique ID
    */
   user: string;
   /**
+   * <date-time>
    * Start time as ISO date
    */
   start?: string;
   /**
+   * <date-time>
    * End time as ISO date
    */
   end?: string;
@@ -21,9 +23,28 @@ export interface RequestAuditInformationModel {
   expires: string;
 }
 
+export interface CreateNewAuditBodyParametersModel {
+  /**
+   * Users unique ID
+   */
+  user: string;
+  /**
+   * <date-time>
+   * Start time as ISO date
+   */
+  start?: string;
+  /**
+   * <date-time>
+   * End time as ISO date
+   */
+  end?: string;
+  /**
+   * Expiration date. Audit data is deleted after this date
+   */
+  expires: string;
+}
 
-
-export interface CreateNewAuditModel {
+export interface CreateNewAuditResponseModel {
   /**
    * Indicates successful response
    */

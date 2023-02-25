@@ -2,7 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultMailboxModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { ListArchivedMessageModel } from "./models";
+import { ListArchivedMessageResponseModel,  ListArchivedMessageQueryParameterModel} from "./models";
 
 /**
  * List archived messages
@@ -10,21 +10,14 @@ import { ListArchivedMessageModel } from "./models";
  * https://docs.wildduck.email/api/#operation/getArchivedMessages
  *
  * @param userId ID of the User
- * @param limit How many records to return
- * @param page Current page number. Informational only, page numbers start from 1
- * @param order  Enum: "asc" "desc". Ordering of the records by insert date
- * @param next Cursor value for next page, retrieved from nextCursor response value
- * @param previous Cursor value for previous page, retrieved from previousCursor response value
+ * @param queryData query parameters for additional options
+ * 
  */
 export const listArchivedMessage = async (
 	userId: string,
-	limit?: number,
-	page?: number,
-	order?: string,
-	next?: string,
-	previous?: string
-): Promise<ListArchivedMessageModel> => {
-	const url = urlQueryBuilder(`/users/${userId}`, {
+	queryData: ListArchivedMessageQueryParameterModel
+): Promise<ListArchivedMessageResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/${userId}/archived/messages/`, {
 		access_token: wdData.accessToken,
 	});
 

@@ -99,7 +99,7 @@ export const listRegisteredAddressesForUser = async (
 	userId: string,
 	queryData: ListRegisteredAddressesForUserQueryParametersModel
 ): Promise<ListRegisteredAddressesForUserResponseModel> => {
-	const url = urlQueryBuilder(`/users/${userId}/${URL}`, {
+	const url = urlQueryBuilder(`/users/${userId}/address`, {
 		access_token: wdData.accessToken,
 		...queryData,
 	});
@@ -111,6 +111,7 @@ export const listRegisteredAddressesForUser = async (
 
 /**
  * List addresses from communication register
+ * Lists addresses from email headers. Includes addresses both from sent and received messages. Sorted by last usage
  *
  * https://docs.wildduck.email/api/#operation/getUserAddressregister
  *
@@ -121,7 +122,7 @@ export const listAddressesFromCommunicationRegister = async (
 	userId: string,
 	queryData: ListAddressesFromCommunicationRegisterQueryParametersModel
 ): Promise<ListAddressesFromCommunicationRegisterResponseModel> => {
-	const url = urlQueryBuilder(`/users/${userId}/${URL}`, {
+	const url = urlQueryBuilder(`/users/${userId}/addressregister`, {
 		access_token: wdData.accessToken,
 		...queryData,
 	});

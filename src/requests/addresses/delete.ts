@@ -26,7 +26,7 @@ export const deleteForwardedAddress = async (
 /**
  * Delete an Address
  *
- * https://docs.wildduck.email/api/#operation/deleteForwardedAddress
+ * https://docs.wildduck.email/api/#operation/deleteUserAddress
  *
  * @param userId ID of the User
  * @param addressId ID of the Address

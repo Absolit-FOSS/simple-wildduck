@@ -32,6 +32,7 @@ export const updateUser = async (
 
 /**
  * Update Address information
+ * Renames domain names for addresses, DKIM keys and Domain Aliases
  * 
  * https://docs.wildduck.email/api/#operation/updateUserAddress
  * 

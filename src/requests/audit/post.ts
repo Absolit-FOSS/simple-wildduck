@@ -2,25 +2,18 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { CreateNewAuditModel } from "./models";
+import { CreateNewAuditResponseModel } from "./models";
 
 /**
  * Create new audit
+ * Initiates a message audit
  *
  * https://docs.wildduck.email/api/#operation/createAudit
  *
- * @param userId Users unique ID
- * @param start Start time as ISO date <date-time>
- * @param end End time as ISO date <date-time>
- * @param expires Expiration date. Audit data is deleted after this date <date-time>
+ * No path parameters
  */
-export const createNewAudit = async (
-	userId: string,
-	expires: string,
-	start?: string,
-	end?: string
-): Promise<CreateNewAuditModel> => {
-	const url = urlQueryBuilder(`/user/${userId}/audit/`, {
+export const createNewAudit = async (): Promise<CreateNewAuditResponseModel> => {
+	const url = urlQueryBuilder(`${URL}`, {
 		access_token: wdData.accessToken,
 	});
 
