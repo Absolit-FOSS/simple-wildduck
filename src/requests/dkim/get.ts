@@ -1,8 +1,8 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { UserIdentifierModel } from "../../models";
+import { CreationResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { RequestDkimInformationModel, ResolveIdForDkimDomainModel } from "./models";
+import { ListRegisteredDkimKeysQueryParameters, ListRegisteredDkimKeysResponseParameters, RequestDkimInformationResponseModel } from "./models";
 import { GetUsersQueryParametersModel } from "../users";
 
 /**
@@ -12,7 +12,9 @@ import { GetUsersQueryParametersModel } from "../users";
  *
  * @param dkimId ID of the DKIM
  */
-export const requestDkimInformation = async (dkimId: string): Promise<RequestDkimInformationModel> => {
+export const requestDkimInformation = async (
+	dkimId: string
+): Promise<RequestDkimInformationResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${dkimId}`, {
 		access_token: wdData.accessToken,
 	});
@@ -28,21 +30,10 @@ export const requestDkimInformation = async (dkimId: string): Promise<RequestDki
  * https://docs.wildduck.email/api/#operation/getDkimKeys
  *
  * @param queryData query parameters for additional options
- * @param query Partial match of a Domain name
- * @param limit How many records to return
- * @param page Current page number. Informational only, page numbers start from 1
- * @param next Cursor value for next page, retrieved from nextCursor response value
- * @param previous Cursor value for previous page, retrieved from previousCursor response value
- * 
  */
 export const listRegisteredDkimKeys = async (
-	queryData: GetUsersQueryParametersModel,
-	query: string,
-	limit: number,
-	page: number,
-	next: string,
-	previous: string
-): Promise<ResolveIdForDkimDomainModel> => {
+	queryData: ListRegisteredDkimKeysQueryParameters,
+): Promise<ListRegisteredDkimKeysResponseParameters> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		access_token: wdData.accessToken,
 		...queryData,
@@ -62,7 +53,7 @@ export const listRegisteredDkimKeys = async (
  */
 export const resolveIdForDkimDomain = async (
 	domain: string
-): Promise<ResolveIdForDkimDomainModel> => {
+): Promise<CreationResponseModel > => {
 	const url = urlQueryBuilder(`${URL}/${domain}/resolve`, {
 		access_token: wdData.accessToken,
 	});

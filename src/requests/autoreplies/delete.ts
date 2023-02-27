@@ -2,7 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { DeleteAutoreplyInformationModel } from "./models";
+import {  } from "./models";
 
 /**
  * Delete Autoreply information
@@ -11,10 +11,10 @@ import { DeleteAutoreplyInformationModel } from "./models";
  *
  * @param userId ID of the User
  */
-export const deleteAutoreplyInformation = async (
+export const deleteAutoreplyInfo = async (
 	userId: string
-): Promise<DeleteAutoreplyInformationModel> => {
-	const url = urlQueryBuilder(`${URL}/${userId}`, {
+): Promise<DefaultResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/users/${userId}`, {
 		access_token: wdData.accessToken,
 	});
 

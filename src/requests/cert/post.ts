@@ -2,7 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { CreateOrUpdateTlsCertificateForServerNameModel } from "./models";
+import { CreateOrUpdateTlsCertForServerNameBodyParametersModel, CreateOrUpdateTlsCertForServerNameResponseModel,  } from "./models";
 import { CreateUserBodyParameterModel } from "../users";
 
 /**
@@ -19,8 +19,8 @@ import { CreateUserBodyParameterModel } from "../users";
  * @param bodyData body parameters to create a user
  */
 export const createOrUpdateTlsCertificateForServerName = async (
-	bodyData: CreateUserBodyParameterModel
-): Promise<CreateOrUpdateTlsCertificateForServerNameModel> => {
+	bodyData: CreateOrUpdateTlsCertForServerNameBodyParametersModel
+): Promise<CreateOrUpdateTlsCertForServerNameResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/`, {
 		access_token: wdData.accessToken,
 	});

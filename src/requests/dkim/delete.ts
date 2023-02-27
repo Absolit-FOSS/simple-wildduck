@@ -2,7 +2,6 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { DeleteDkimKeyModel } from "./models";
 
 /**
  * Delete a DKIM key
@@ -13,7 +12,7 @@ import { DeleteDkimKeyModel } from "./models";
  */
 export const deleteDkimKey = async (
 	dkimId: string,
-): Promise<DeleteDkimKeyModel> => {
+): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${dkimId}`, {
 		access_token: wdData.accessToken,
 	});

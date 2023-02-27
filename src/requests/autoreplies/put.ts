@@ -2,8 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { UpdateAutoreplyInformationModel } from "./models";
-import { UpdateUserBodyParametersModel } from "../users";
+import { UpdateAutoreplyBodyParametersModel } from "./models";
 
 /**
  * Update Autoreply information
@@ -15,8 +14,8 @@ import { UpdateUserBodyParametersModel } from "../users";
  */
 export const updateAutoreplyInformation = async (
 	userId: string,
-	bodyData: UpdateUserBodyParametersModel
-): Promise<UpdateAutoreplyInformationModel> => {
+	bodyData: UpdateAutoreplyBodyParametersModel
+): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`/${URL}/users/${userId}`, {
 		access_token: wdData.accessToken,
 	});

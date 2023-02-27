@@ -2,7 +2,8 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { ListRegisteredDomainAliasesModel, RequestAliasInformationModel, ResolveIdForDomainModel } from "./models";
+import { GetAliasInfoResponseModel, ListRegisteredDomainAliasesQueryParametersModel, ListRegisteredDomainAliasesResponseModel } from "./models";
+import { CreationResponseModel } from '../../models/index';
 
 /**
  * Request Alias information
@@ -11,7 +12,7 @@ import { ListRegisteredDomainAliasesModel, RequestAliasInformationModel, Resolve
  *
  * @param aliasId ID of the Alias
  */
-export const requestAliasInformation = async (aliasId: string): Promise<RequestAliasInformationModel> => {
+export const getAliasInformation = async (aliasId: string): Promise<GetAliasInfoResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${aliasId}`, {
 		access_token: wdData.accessToken,
 	});
@@ -29,14 +30,11 @@ export const requestAliasInformation = async (aliasId: string): Promise<RequestA
  * @param query Partial match of a Domain Alias or Domain name
  */
 export const listRegisteredDomainAliases = async (
-	query: string,
-	limit: number,
-	page: number,
-	next: string,
-	previous: string
-): Promise<ListRegisteredDomainAliasesModel> => {
-	const url = urlQueryBuilder(`${URL}/${query}`, {
+	queryData: ListRegisteredDomainAliasesQueryParametersModel
+): Promise<ListRegisteredDomainAliasesResponseModel> => {
+	const url = urlQueryBuilder(`${URL}`, {
 		access_token: wdData.accessToken,
+		...queryData
 	});
 
 	const res = await axiosConf.get(url);
@@ -49,12 +47,12 @@ export const listRegisteredDomainAliases = async (
  *
  * https://docs.wildduck.email/api/#operation/resolveDomainAlias
  *
- * @param alias Alias domain
+ * @param aliasId Alias domain
  */
 export const resolveIdForDomainAlias = async (
-	alias: string
-): Promise<ResolveIdForDomainModel> => {
-	const url = urlQueryBuilder(`${URL}/${alias}/updates`, {
+	aliasId: string
+): Promise<CreationResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/resolve/${aliasId}`, {
 		access_token: wdData.accessToken,
 	});
 

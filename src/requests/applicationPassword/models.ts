@@ -136,7 +136,7 @@ export interface CreateAppPasswordResponseModel {
    */
   password: string;
   /**
-   * Base64 encoded mobileconfig file. Generated profile file should be sent
+   * Base64 encoded mobileconfig "string" file. Generated profile file should be sent
    * to the client with Content-Type value of application/x-apple-aspen-config
    */
   mobileconfig: string;

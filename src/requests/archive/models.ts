@@ -8,7 +8,7 @@ export interface ListArchivedMessageQueryParameterModel {
    */
   page?: number;
   /**
-   * Enum: "asc" "desc" 
+   * Enum: "asc" "desc"
    * Ordering of the records by insert date
    */
   order?: string;
@@ -37,107 +37,107 @@ export interface FromToCcBccModel {
   /**
    * Name of the sender/recipient
    */
-  "name": string,
+  name: string;
   /**
    * Address of the sender/recipient
    */
-  "address": string
+  address: string;
 }
 
 export interface ResultsModel {
   /**
    * ID of the Message (24 byte hex)
    */
-  "id": string,
+  id: string;
   /**
    * ID of the Mailbox
    */
-  "mailbox": string,
+  mailbox: string;
   /**
    * ID of the Thread
    */
-  "thread": string,
+  thread: string;
   /**
    * Recipients in From: field
    */
-  "from": FromToCcBccModel,
+  from: FromToCcBccModel;
   /**
    * Recipients in To: field
    */
-  "to": FromToCcBccModel[],
+  to: FromToCcBccModel[];
   /**
    * Recipients in Cc: field
    */
-  "cc": FromToCcBccModel[],
+  cc: FromToCcBccModel[];
   /**
    * Recipients in Bcc: field. Usually only available for drafts
    */
-  "bcc": FromToCcBccModel[],
+  bcc: FromToCcBccModel[];
   /**
    * Message subject
    */
-  "subject": string,
+  subject: string;
   /**
    * <date-time>
    * Date string from header
    */
-  "date": string,
+  date: string;
   /**
    * <date-time>
    * Date string of receive time
    */
-  "idate"?: string,
+  idate?: string;
   /**
    * First 128 bytes of the message
    */
-  "intro": string,
+  intro: string;
   /**
    * Does the message have attachments
    */
-  "attachments": boolean,
+  attachments: boolean;
   /**
    * Is this message alread seen or not
    */
-  "seen": boolean,
+  seen: boolean;
   /**
    * Does this message have a \Deleted flag (should not have as messages are automatically deleted once this flag is set)
    */
-  "deleted": boolean,
+  deleted: boolean;
   /**
    * Does this message have a \Flagged flag
    */
-  "flagged": boolean,
+  flagged: boolean;
   /**
    * Parsed Content-Type header. Usually needed to identify encrypted messages and such
    */
-  "contentType": ContentTypeModel;
+  contentType: ContentTypeModel;
 }
 
 export interface ListArchivedMessageResponseModel {
   /**
    * Indicates successful response
    */
-  "success": boolean,
+  success: boolean;
   /**
    * How many results were found
    */
-  "total": number,
+  total: number;
   /**
    * Current page number. Derived from page query argument
    */
-  "page": number,
+  page: number;
   /**
    * Either a cursor string or false if there are not any previous results
    */
-  "previousCursor": string,
+  previousCursor: string;
   /**
    * Either a cursor string or false if there are not any next results
    */
-  "nextCursor": string,
+  nextCursor: string;
   /**
    * Message listing
    */
-  "results": ResultsModel[];
+  results: ResultsModel[];
 }
 
 export interface RestoreArchivedMessageBodyParametersModel {
@@ -151,15 +151,15 @@ export interface RestoreArchivedMessageResponseModel {
   /**
    * Indicates successful response
    */
-  "success": boolean,
+  success: boolean;
   /**
    * Maibox ID the message was moved to
    */
-  "mailbox": string,
+  mailbox: string;
   /**
    * New ID for the Message
    */
-  "id": number,
+  id: number;
 }
 
 export interface RestoreArchivedMessagesBodyParametersModel {

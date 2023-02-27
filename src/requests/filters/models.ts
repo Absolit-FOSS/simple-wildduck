@@ -1,10 +1,5 @@
-import { LimitUsageModel } from '../../models/index';
-export interface DeleteFilterModel {
-  /**
-   * Indicates successful response
-   */
-  success: boolean;
-}
+import { LimitUsageModel } from "../../models/index";
+export interface UpdateFilterInfoBodyParametersModel {}
 
 export interface QueryModel {
   /**
@@ -33,7 +28,7 @@ export interface QueryModel {
   ha?: boolean;
   /**
    * Message size in bytes. If the value is a positive number then message needs to be larger,
-   * if negative then message needs to be smaller than abs(size) value
+   * negative then message needs to be smaller than abs(size) value
    */
   size?: number;
 }
@@ -60,21 +55,13 @@ export interface ActionModel {
    */
   mailbox?: string;
   /**
-   * An array of forwarding targets. The value could either be an email address
-   * relay url to next MX server ("smtp://mx2.zone.eu:25") or an URL where mail contents are POSTed to
+   * An array of forwarding targets. The value could either be an email address or a relay url to next
+   * MX server ("smtp://mx2.zone.eu:25") or an URL where mail contents are POSTed to
    */
   targets?: string[];
 }
 
-export interface CreateNewFilterModel {
-  /**
-   * Indicates successful response
-   */
-  success: boolean;
-  /**
-   * ID for the created Filter
-   */
-  id: string;
+export interface CreateNewFilterBodyParametersModel {
   /**
    * Name of the Filter
    */
@@ -93,34 +80,7 @@ export interface CreateNewFilterModel {
   disabled?: boolean;
 }
 
-export interface UpdateFilterInformationModel {
-  /**
-   * Indicates successful response
-   */
-  success: boolean;
-  /**
-   * ID for the created Filter
-   */
-  id: string;
-  /**
-   * Name of the Filter
-   */
-  name?: string;
-  /**
-   * Rules that a message must match
-   */
-  query?: QueryModel;
-  /**
-   * Action to take with a matching message
-   */
-  action?: ActionModel;
-  /**
-   * If true then this filter is ignored
-   */
-  disabled: boolean;
-}
-
-export interface RequestFilterInformationModel {
+export interface RequestFilterInfoResponseModel {
   /**
    * Indicates successful response
    */
@@ -147,7 +107,30 @@ export interface RequestFilterInformationModel {
   disabled: boolean;
 }
 
-export interface ListAllFiltersModelResultsModel {
+export interface ListAllFiltersQueryParametersModel {
+  /**
+   * Partial match of a forward email address or URL
+   */
+  forward: string;
+  /**
+   * How many records to return
+   */
+  limit: number;
+  /**
+   * Current page number. Informational only, page numbers start from 1
+   */
+  page: number;
+  /**
+   * Cursor value for next page, retrieved from nextCursor response value
+   */
+  next: number;
+  /**
+   * Cursor value for previous page, retrieved from previousCursor response value
+   */
+  previous: number;
+}
+
+export interface ResultsModel {
   /**
    * Filter ID
    */
@@ -161,7 +144,7 @@ export interface ListAllFiltersModelResultsModel {
    */
   name: string;
   /**
-   * Datestring of the time the filter was created <date-time>
+   * Datestring of the time the filter was created
    */
   created: string;
   /**
@@ -179,10 +162,10 @@ export interface ListAllFiltersModelResultsModel {
   /**
    * List of forwarding targets
    */
-  targets?: string[];
+  targets: [string];
 }
 
-export interface ListAllFiltersModel {
+export interface ListAllFiltersResponseModel {
   /**
    * Indicates successful response
    */
@@ -206,37 +189,10 @@ export interface ListAllFiltersModel {
   /**
    * Address listing
    */
-  results: ListAllFiltersModelResultsModel[];
+  results: ResultsModel[];
 }
 
-export interface ListFiltersForUserModelResultsModel {
-  /**
-   * Filter ID
-   */
-  id: string;
-  /**
-   * Name for the filter
-   */
-  name: string;
-  /**
-   * Datestring of the time the filter was created <date-time>
-   */
-  created: string;
-  /**
-   * Array of Array of strings
-   */
-  query: [string[]];
-  /**
-   * Array of Array of strings
-   */
-  action: [string[]];
-  /**
-   * If true, then this filter is ignored
-   */
-  disabled: boolean;
-}
-
-export interface ListFiltersForUserModel {
+export interface ListFiltersForUserResponseModel {git 
   /**
    * Indicates successful response
    */
@@ -248,5 +204,5 @@ export interface ListFiltersForUserModel {
   /**
    * Filter description
    */
-  results: ListFiltersForUserModelResultsModel[];
+  results: ResultsModel[];
 }

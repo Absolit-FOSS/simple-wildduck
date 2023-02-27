@@ -1,11 +1,4 @@
-export interface DeleteAutoreplyInformationModel {
-  /**
-   * Indicates successful response
-   */
-  success: boolean;
-}
-
-export interface RequestAutoreplyInformationModel {
+export interface GetAutoreplyResponseModel {
   /**
    * Indicates successful response
    */
@@ -40,39 +33,35 @@ export interface RequestAutoreplyInformationModel {
   end: string;
 }
 
-export interface UpdateAutoreplyInformationModel {
-  /**
-   * Indicates successful response
-   */
-  success: true;
+export interface UpdateAutoreplyBodyParametersModel {
   /**
    * Is the autoreply enabled (true) or not (false)
    */
-  status?: true;
+  "status"?: boolean,
   /**
    * Name that is used for the From: header in autoreply message
    */
-  name?: string;
+  "name"?: string,
   /**
    * Subject line for the autoreply. If empty then uses subject of the original message
    */
-  subject?: string;
+  "subject"?: string,
   /**
    * HTML formatted content of the autoreply message
    */
-  html?: string;
+  "html"?: string,
   /**
    * Plaintext formatted content of the autoreply message
    */
-  text?: string;
+  "text"?: string,
   /**
-   * Datestring of the start of the autoreply or boolean false to disable end checks
-   * <date-time>
+   * <date-time>  
+   * Datestring of the start of the autoreply or boolean false to disable start checks
    */
-  start?: string;
+  "start"?: string,
   /**
+   * <date-time>
    * Datestring of the end of the autoreply or boolean false to disable end checks
-   * <date-time>
    */
-  end?: string;
+  "end"?: string
 }

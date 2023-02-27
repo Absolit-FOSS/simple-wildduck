@@ -2,7 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { CreatNewDomainAliasModel } from "./models";
+import { CreateNewDomainAliasBodyParameterModel } from "./models";
 import { CreateUserBodyParameterModel } from "../users";
 
 /**
@@ -13,11 +13,11 @@ import { CreateUserBodyParameterModel } from "../users";
  *
  * https://docs.wildduck.email/api/#operation/createDomainAlias
  *
- * no parameters
+ * @param bodyData body parameters to reset user password+
  */
 export const createNewDomainAlias = async (
-	bodyData: CreateUserBodyParameterModel
-): Promise<CreatNewDomainAliasModel> => {
+	bodyData: CreateNewDomainAliasBodyParameterModel
+): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/`, {
 		access_token: wdData.accessToken,
 	});

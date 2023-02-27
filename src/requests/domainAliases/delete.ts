@@ -2,7 +2,6 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { DeleteAliasModel } from "./models";
 
 /**
  * Delete an Alias
@@ -13,7 +12,7 @@ import { DeleteAliasModel } from "./models";
  */
 export const deleteAlias = async (
 	aliasId: string,
-): Promise<DeleteAliasModel> => {
+): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${aliasId}`, {
 		access_token: wdData.accessToken,
 	});

@@ -2,7 +2,6 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { DeleteFilterModel } from ".";
 
 /**
  * Delete a Filter
@@ -15,8 +14,8 @@ import { DeleteFilterModel } from ".";
 export const deleteFilter = async (
 	userId: string,
 	filterId: string
-): Promise<DeleteFilterModel> => {
-	const url = urlQueryBuilder(`/users/${filterId}`, {
+): Promise<DefaultResponseModel> => {
+	const url = urlQueryBuilder(`/users/${userId}/${filterId}`, {
 		access_token: wdData.accessToken,
 	});
 

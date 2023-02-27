@@ -1,8 +1,36 @@
-export interface DeleteDkimKeyModel {
-  success: boolean;
+export interface CreateOrUpdateDkimKeyForDomainBodyParametersModel {
+  /**
+   * Domain name this DKIM key applies to. Use "*" as a special value that will be used for domains
+   * that do not have their own DKIM key set
+   */
+  domain: string;
+  /**
+   * Selector for the key
+   */
+  selector: string;
+  /**
+   * Key description
+   */
+  description?: string;
+  /**
+   * Pem formatted DKIM private key. If not set then a new 2048 bit RSA key is generated,
+   * though that it can take several seconds to complete.
+   */
+  privateKey?: string;
 }
 
-export interface CreateOrUpdateDkimKeyForDomainModel {
+export interface DnsTxtModel {
+  /**
+   * Is the domain name of TXT
+   */
+  name: string;
+  /**
+   * Is the value of TXT
+   */
+  value: string;
+}
+
+export interface CreateOrUpdateDkimKeyForDomainResponseModel {
   /**
    * Indicates successful response
    */
@@ -34,51 +62,51 @@ export interface CreateOrUpdateDkimKeyForDomainModel {
   /**
    * Value for DNS TXT entry
    */
-  dnsTxt: {
-    name: string;
-    value: string;
-  };
-  /**
-   * Pem formatted DKIM private key. If not set then a new 2048 bit RSA key is generated,
-   * beware though that it can take several seconds to complete
-   */
-  privateKey?: string;
+  dnsTxt: DnsTxtModel;
 }
 
-export interface RequestDkimInformationModel {
+export interface RequestDkimInformationResponseModel {
   /**
    * Indicates successful response
    */
   success: boolean;
   /**
-   * How many results were found
+   * ID of the DKIM
    */
-  total: number;
+  id: string;
   /**
-   * Current page number. Derived from page query argument
+   * The domain this DKIM key applies to
    */
-  page: number;
+  domain: string;
   /**
-   * Either a cursor string or false if there are not any previous results
+   * DKIM selector
    */
-  previousCursor: string;
+  selector: string;
   /**
-   * Either a cursor string or false if there are not any next results
+   * Key description
    */
-  nextCursor: string;
+  description: string;
   /**
-   * DKIM listing
+   * Key fingerprint (SHA1)
    */
-  results: [
-    {
-      id: string;
-      domain: string;
-      selector: string;
-      description: string;
-      fingerprint: string;
-      created: string;
-    }
-  ];
+  fingerprint: string;
+  /**
+   * Public key in DNS format (no prefix/suffix, single line)
+   */
+  publicKey: string;
+  /**
+   * (DnsTxt)
+   * Value for DNS TXT entry
+   */
+  dnsTxt: DnsTxtModel;
+  /**
+   * <date-time>
+   * Datestring
+   */
+  created: string;
+}
+
+export interface ListRegisteredDkimKeysQueryParameters {
   /**
    * Partial match of a Domain name
    */
@@ -87,6 +115,10 @@ export interface RequestDkimInformationModel {
    * How many records to return
    */
   limit?: number;
+  /**
+   * Current page number. Informational only, page numbers start from 1
+   */
+  page?: number;
   /**
    * Cursor value for next page, retrieved from nextCursor response value
    */
@@ -120,12 +152,11 @@ export interface ResultsModel {
   fingerprint: string;
   /**
    * Datestring
-   * <date-time>
    */
   created: string;
 }
 
-export interface ListRegisteredDkimKeysModel {
+export interface ListRegisteredDkimKeysResponseParameters {
   /**
    * Indicates successful response
    */
@@ -150,15 +181,4 @@ export interface ListRegisteredDkimKeysModel {
    * DKIM listing
    */
   results: ResultsModel[];
-}
-
-export interface ResolveIdForDkimDomainModel {
-  /**
-   * Indicates successful response
-   */
-  success: boolean;
-  /**
-   * Unique ID (24 byte hex)
-   */
-  id: string;
 }

@@ -2,7 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { ListAllowedlistedDomainsModel, ListBlockedlistedDomainsModel } from "./models";
+import { ListAllowAndBlocklistedDomainsResponseModel } from "./models";
 
 /**
  * List allowlisted domains
@@ -11,10 +11,10 @@ import { ListAllowedlistedDomainsModel, ListBlockedlistedDomainsModel } from "./
  *
  * @param tag Tag to look for
  */
-export const listAllowedlistedDomains = async (
+export const listAllowlistedDomains = async (
 	tag: string
-): Promise<ListAllowedlistedDomainsModel> => {
-	const url = urlQueryBuilder(`${URL}/${tag}`, {
+): Promise<ListAllowAndBlocklistedDomainsResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/${tag}/allow`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -30,10 +30,10 @@ export const listAllowedlistedDomains = async (
  * 
  * @param tag Tag to look for
  */
-export const listBlockedlistedDomains = async (
+export const listBlocklistedDomains = async (
 	tag: string
-): Promise<ListBlockedlistedDomainsModel> => {
-	const url = urlQueryBuilder(`${URL}/${tag}`, {
+): Promise<ListAllowAndBlocklistedDomainsResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/${tag}/block`, {
 		access_token: wdData.accessToken,
 	});
 

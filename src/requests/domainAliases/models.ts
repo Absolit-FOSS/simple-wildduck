@@ -1,11 +1,15 @@
-export interface DeleteAliasModel {
+export interface CreateNewDomainAliasBodyParameterModel {
   /**
-   * Indicates successful response
+   * Domain Alias
    */
-  success: boolean;
+  alias: string;
+  /**
+   * Domain name this Alias applies to
+   */
+  domain: string;
 }
 
-export interface RequestAliasInformationModel {
+export interface GetAliasInfoResponseModel {
   /**
    * Indicates successful response
    */
@@ -23,28 +27,33 @@ export interface RequestAliasInformationModel {
    */
   domain: string;
   /**
-   * Datestring of the time the alias was created <date-time>
+   * <date-time>
+   * Datestring of the time the alias was created
    */
   created: string;
 }
 
-export interface CreatNewDomainAliasModel {
+export interface ListRegisteredDomainAliasesQueryParametersModel {
   /**
-   * Indicates successful response
+   * Partial match of a Domain Alias or Domain name
    */
-  success: boolean;
+  query?: string;
   /**
-   * ID of the Domain Alias
+   * How many records to return
    */
-  id: string;
+  limit?: number;
   /**
-   * Domain Alias
+   * Current page number. Informational only, page numbers start from 1
    */
-  alias: string;
+  page?: number;
   /**
-   * Domain name this Alias applies to
+   * Cursor value for next page, retrieved from nextCursor response value
    */
-  domain: string;
+  next?: string;
+  /**
+   * Cursor value for previous page, retrieved from previousCursor response value
+   */
+  previous?: string;
 }
 
 export interface ResultsModel {
@@ -62,7 +71,7 @@ export interface ResultsModel {
   domain: string;
 }
 
-export interface ListRegisteredDomainAliasesModel {
+export interface ListRegisteredDomainAliasesResponseModel {
   /**
    * Indicates successful response
    */
@@ -87,15 +96,4 @@ export interface ListRegisteredDomainAliasesModel {
    * Aliases listing
    */
   results: ResultsModel[];
-}
-
-export interface ResolveIdForDomainModel {
-  /**
-   * Indicates successful response
-   */
-  success: boolean;
-  /**
-   * Unique ID (24 byte hex)
-   */
-  id: string;
 }
