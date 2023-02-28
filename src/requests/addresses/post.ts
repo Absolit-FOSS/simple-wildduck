@@ -1,12 +1,8 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import {
-	CreationResponseModel,
-	DefaultResponseModel,
-	UserIdentifierModel,
-} from "../../models";
+import { CreationResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { CreateAddressBodyParameterModel } from "./models";
+import { CreateNewAddressBodyParameterModel, CreateNewForwardedAddressBodyParameterModel } from "./models";
 
 /**
  * Create new Address
@@ -23,7 +19,7 @@ import { CreateAddressBodyParameterModel } from "./models";
  */
 export const createAddress = async (
 	userId: string,
-	bodyData: CreateAddressBodyParameterModel
+	bodyData: CreateNewAddressBodyParameterModel
 ): Promise<CreationResponseModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/${URL}/`, {
 		access_token: wdData.accessToken,
@@ -48,7 +44,7 @@ export const createAddress = async (
  * @param bodyData body parameters to cancel user deletion
  */
 export const cancelUserDeletion = async (
-	bodyData: UserIdentifierModel
+	bodyData: CreateNewForwardedAddressBodyParameterModel
 ): Promise<CreationResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/forwarded/`, {
 		access_token: wdData.accessToken,

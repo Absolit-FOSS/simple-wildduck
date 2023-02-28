@@ -2,7 +2,7 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { ListAllFiltersQueryParametersModel, ListAllFiltersResponseModel, RequestFilterInfoResponseModel } from "./models";
+import { ListAllFiltersQueryParametersModel, ListAllFiltersResponseModel, ListFiltersForUserResponseModel, RequestFilterInfoResponseModel } from "./models";
 
 /**
  * Request Filter information
@@ -54,7 +54,7 @@ export const listAllFilters = async (
  */
 export const listFiltersForUser = async (
 	userId: string
-): Promise<ListFiltersForUserModel> => {
+): Promise<ListFiltersForUserResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${userId}/updates`, {
 		access_token: wdData.accessToken,
 	});

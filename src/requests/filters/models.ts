@@ -192,7 +192,7 @@ export interface ListAllFiltersResponseModel {
   results: ResultsModel[];
 }
 
-export interface ListFiltersForUserResponseModel {git 
+export interface ListFiltersForUserResponseModel {
   /**
    * Indicates successful response
    */

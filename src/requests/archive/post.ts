@@ -1,8 +1,8 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { RestoreArchivedMessageBodyParametersModel, RestoreArchivedMessageResponseModel, RestoreArchivedMessagesBodyParametersModel, RestoreArchivedMessagesResponseModel } from "./models";
+import { RestoreArchivedMessageBodyParametersModel, RestoreArchivedMessageResponseModel, RestoreArchivedMessagesBodyParametersModel } from "./models";
+import { DefaultResponseModel } from "../../models";
 
 /**
  * Restore archived Message
@@ -18,7 +18,7 @@ export const restoreArchivedMessage = async (
 	messageId: number,
 	bodyData: RestoreArchivedMessageBodyParametersModel
 ): Promise<RestoreArchivedMessageResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${userId}/archived/${messageId}/restore/`, {
+	const url = urlQueryBuilder(`${URL}/restore`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -45,7 +45,7 @@ export const restoreArchivedMessages = async (
 		access_token: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url);
+	const res = await axiosConf.post(url, bodyData);
 
 	return res.data;
 };

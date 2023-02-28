@@ -1,5 +1,4 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { DefaultMailboxModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import { ListArchivedMessageResponseModel,  ListArchivedMessageQueryParameterModel} from "./models";
@@ -19,6 +18,7 @@ export const listArchivedMessage = async (
 ): Promise<ListArchivedMessageResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${userId}/archived/messages/`, {
 		access_token: wdData.accessToken,
+		...queryData
 	});
 
 	const res = await axiosConf.get(url);

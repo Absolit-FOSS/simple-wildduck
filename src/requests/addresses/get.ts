@@ -1,8 +1,19 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { DefaultMailboxModel, DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { GetAddressesInfoResponseModelModel, GetAddressInfoQueryParametersModel, GetAddressInfoResponseModel, GetForwardedAddressInfoResponseModel, ListAddressesFromCommunicationRegisterQueryParametersModel, ListAddressesFromCommunicationRegisterResponseModel, ListRegisteredAddressesForUserQueryParametersModel, ListRegisteredAddressesForUserResponseModel, ListRegisteredAddressesQueryParametersModel, ListRegisteredAddressesResponseModel, UpdateAddressInforBodyParametersModel } from "./models";
+import { 
+	GetAddressesInfoResponseModelModel, 
+	GetAddressInfoQueryParametersModel, 
+	GetAddressInfoResponseModel, 
+	GetForwardedAddressInfoResponseModel, 
+	ListAddressesFromCommunicationRegisterQueryParametersModel,
+	ListAddressesFromCommunicationRegisterResponseModel, 
+	ListRegisteredAddressesForUserQueryParametersModel, 
+	ListRegisteredAddressesForUserResponseModel, 
+	ListRegisteredAddressesQueryParametersModel, 
+	ListRegisteredAddressesResponseModel, 
+	UpdateAddressInfoBodyParametersModel 
+} from "./models";
 
 /**
  * Request forwarded Addresses information
@@ -34,7 +45,7 @@ export const getForwardedAddressInfo = async (
 export const getAddressesInfo = async (
 	userId: string,
 	addressId: string,
-	bodyData: UpdateAddressInforBodyParametersModel
+	bodyData: UpdateAddressInfoBodyParametersModel
 ): Promise<GetAddressesInfoResponseModelModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/${addressId}`, {
 		access_token: wdData.accessToken,

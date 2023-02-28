@@ -4,7 +4,7 @@ import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
 	RenameDomainInAddressesBodyParametersModel,
-	UpdateAddressInforBodyParametersModel,
+	UpdateAddressInfoBodyParametersModel,
 	UpdateForwardedAddressInforBodyParametersModel
 } from "./models";
 
@@ -22,7 +22,6 @@ export const updateUser = async (
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/forwarded/${addressId}`, {
 		access_token: wdData.accessToken,
-		// fix ...queryData
 	});
 
 	const res = await axiosConf.put(url, bodyData);
@@ -43,7 +42,7 @@ export const updateUser = async (
 export const updateAddressInfo = async (
 	userId: string,
 	addressId: string,
-	bodyData: UpdateAddressInforBodyParametersModel
+	bodyData: UpdateAddressInfoBodyParametersModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/${addressId}`, {
 		access_token: wdData.accessToken,

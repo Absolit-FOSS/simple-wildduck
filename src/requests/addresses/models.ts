@@ -126,7 +126,7 @@ export interface UpdateForwardedAddressInforBodyParametersModel {
   autoreply?: DateStringAutoreplyModel;
 }
 
-export interface UpdateAddressInforBodyParametersModel {
+export interface UpdateAddressInfoBodyParametersModel {
   /**
    * Identity name
    */
@@ -458,7 +458,7 @@ export interface RenameDomainInAddressesBodyParametersModel {
   newDomain: string;
 }
 
-export interface CreateAddressBodyParameterModel {
+export interface CreateNewAddressBodyParameterModel {
   /**
    * E-mail Address
    */

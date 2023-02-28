@@ -1,9 +1,7 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import { CreateOrUpdateTlsCertForServerNameBodyParametersModel, CreateOrUpdateTlsCertForServerNameResponseModel,  } from "./models";
-import { CreateUserBodyParameterModel } from "../users";
 
 /**
  * Add a new TLS certificate for a server name or update existing one. You can

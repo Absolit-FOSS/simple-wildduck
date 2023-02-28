@@ -44,13 +44,21 @@ export interface CreateNewAuditBodyParametersModel {
   expires: string;
 }
 
-export interface CreateNewAuditResponseModel {
+export interface CreateNewAuditBodyParametersModel {
   /**
-   * Indicates successful response
+   * Users unique ID
    */
-  success: boolean;
+  user: string;
   /**
-   * ID for the created Audit
+   * Start time as ISO date
    */
-  id: string;
+  start?: string;
+  /**
+   * End time as ISO date
+   */
+  end?: string;
+  /**
+   * Expiration date. Audit data is deleted after this date
+   */
+  expires: string;
 }

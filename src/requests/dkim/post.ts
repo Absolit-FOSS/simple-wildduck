@@ -1,5 +1,4 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import { CreateOrUpdateDkimKeyForDomainBodyParametersModel, CreateOrUpdateDkimKeyForDomainResponseModel } from "./models";
@@ -21,7 +20,7 @@ export const createOrUpdateDkimKeyForDomain = async (
     access_token: wdData.accessToken,
   });
 
-  const res = await axiosConf.post(url);
+  const res = await axiosConf.post(url, bodyData);
 
   return res.data;
 };
