@@ -14,7 +14,7 @@ import { GetAutoreplyResponseModel } from "./models";
 export const requestAutoreplyInformation = async (
 	userId: string
 ): Promise<GetAutoreplyResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/users/${userId}/autoreply`, {
+	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		access_token: wdData.accessToken,
 	});
 

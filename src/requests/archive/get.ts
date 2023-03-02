@@ -16,7 +16,7 @@ export const listArchivedMessage = async (
 	userId: string,
 	queryData: ListArchivedMessageQueryParameterModel
 ): Promise<ListArchivedMessageResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${userId}/archived/messages/`, {
+	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		access_token: wdData.accessToken,
 		...queryData
 	});

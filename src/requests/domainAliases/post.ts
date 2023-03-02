@@ -3,7 +3,6 @@ import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import { CreateNewDomainAliasBodyParameterModel } from "./models";
-import { CreateUserBodyParameterModel } from "../users";
 
 /**
  * Add a new Alias for a Domain.
@@ -18,7 +17,7 @@ import { CreateUserBodyParameterModel } from "../users";
 export const createNewDomainAlias = async (
 	bodyData: CreateNewDomainAliasBodyParameterModel
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/`, {
+	const url = urlQueryBuilder(`/domainaliases`, {
 		access_token: wdData.accessToken,
 	});
 

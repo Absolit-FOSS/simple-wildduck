@@ -15,7 +15,7 @@ import { CreationResponseModel } from '../../models/index';
 export const createNewAudit = async (
 	bodyData: CreateNewAuditBodyParametersModel
 ): Promise<CreationResponseModel> => {
-	const url = urlQueryBuilder(`${URL}`, {
+	const url = urlQueryBuilder(`/audit`, {
 		access_token: wdData.accessToken,
 	});
 

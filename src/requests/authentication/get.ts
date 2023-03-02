@@ -1,8 +1,10 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { ListAuthenticationEventsQueryParametersModel, ListAuthenticationEventsResponseModel, RequestEventInformationResponseModel } from "./models";
+import { ListAuthenticationEventsQueryParametersModel,
+	ListAuthenticationEventsResponseModel,
+	RequestEventInformationResponseModel
+} from "./models";
 
 /**
  * List authentication Events
@@ -16,7 +18,7 @@ export const listAuthenticationEvents = async (
 	userId: string,
 	queryData: ListAuthenticationEventsQueryParametersModel
 ): Promise<ListAuthenticationEventsResponseModel> => {
-	const url = urlQueryBuilder(`/users/${URL}`, {
+	const url = urlQueryBuilder(`/users/${URL.replace("/authenticate", userId)}/authlog`, {
 		access_token: wdData.accessToken,
 		...queryData
 	});
@@ -38,7 +40,7 @@ export const requestEventInformation = async (
 	userId: string,
 	eventId: string
 ): Promise<RequestEventInformationResponseModel> => {
-	const url = urlQueryBuilder(`/users/${userId}/autholog/${eventId}`, {
+	const url = urlQueryBuilder(`/users/${URL.replace("/authenticate", userId)}/authlog/${eventId}`, {
 		access_token: wdData.accessToken,
 	});
 

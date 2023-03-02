@@ -13,7 +13,7 @@ import { AuthenticateUserBodyParametersModel, AuthenticateUserResponseModel, Pre
 export const authenticateUser = async (
 	bodyData: AuthenticateUserBodyParametersModel
 ): Promise<AuthenticateUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/`, {
+	const url = urlQueryBuilder(`${URL}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -33,7 +33,7 @@ export const authenticateUser = async (
 export const preAuthenticationCheck = async (
 	bodyData: PreAuthCheckBodyParametersModel
 ): Promise<PreAuthCheckResponseModel> => {
-	const url = urlQueryBuilder(`/preauth/${URL}`, {
+	const url = urlQueryBuilder(`/preauth)}`, {
 		access_token: wdData.accessToken,
 	});
 

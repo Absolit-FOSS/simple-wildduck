@@ -19,7 +19,7 @@ import { CreateOrUpdateTlsCertForServerNameBodyParametersModel, CreateOrUpdateTl
 export const createOrUpdateTlsCertificateForServerName = async (
 	bodyData: CreateOrUpdateTlsCertForServerNameBodyParametersModel
 ): Promise<CreateOrUpdateTlsCertForServerNameResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/`, {
+	const url = urlQueryBuilder(`/certs`, {
 		access_token: wdData.accessToken,
 	});
 

@@ -13,7 +13,7 @@ import { URL } from "./config";
 export const deleteTlsCert = async (
 	certId: string,
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/`, {
+	const url = urlQueryBuilder(`${URL.replace("{certId}", certId)}`, {
 		access_token: wdData.accessToken,
 	});
 

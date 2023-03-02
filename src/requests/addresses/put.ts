@@ -44,7 +44,7 @@ export const updateAddressInfo = async (
 	addressId: string,
 	bodyData: UpdateAddressInfoBodyParametersModel
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`/users/${userId}/${addressId}`, {
+	const url = urlQueryBuilder(`/users/${userId}/addresses/${addressId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -65,7 +65,7 @@ export const renameDomainInAddresses = async (
 	userId: string,
 	bodyData: RenameDomainInAddressesBodyParametersModel
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${userId}/renameDomain`, {
+	const url = urlQueryBuilder(`${URL}/renameDomain`, {
 		access_token: wdData.accessToken,
 	});
 

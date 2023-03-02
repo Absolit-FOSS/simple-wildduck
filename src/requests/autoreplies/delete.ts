@@ -14,7 +14,7 @@ import {  } from "./models";
 export const deleteAutoreplyInfo = async (
 	userId: string
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/users/${userId}`, {
+	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		access_token: wdData.accessToken,
 	});
 

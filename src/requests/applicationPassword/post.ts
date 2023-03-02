@@ -1,5 +1,4 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import { CreateAppPasswordResponseModel, CreateNewAppPasswordBodyParametersModel } from "./models";
@@ -16,7 +15,7 @@ export const createNewAppPassword = async (
 	userId: string,
 	bodyData: CreateNewAppPasswordBodyParametersModel
 ): Promise<CreateAppPasswordResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${userId}`, {
+	const url = urlQueryBuilder(`/users/${userId}/asps`, {
 		access_token: wdData.accessToken,
 	});
 

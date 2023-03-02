@@ -16,7 +16,7 @@ export const requestFilterInformation = async (
 	userId: string,
 	filterId: string
 ): Promise<RequestFilterInfoResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${userId}/${filterId}`, {
+	const url = urlQueryBuilder(`${URL.replace("{userId}", userId).replace("{filter}", filterId)}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -35,7 +35,7 @@ export const requestFilterInformation = async (
 export const listAllFilters = async (
 	queryData: ListAllFiltersQueryParametersModel
 ): Promise<ListAllFiltersResponseModel> => {
-	const url = urlQueryBuilder(`${URL}`, {
+	const url = urlQueryBuilder(`/filters`, {
 		access_token: wdData.accessToken,
 		...queryData
 	});
@@ -55,7 +55,7 @@ export const listAllFilters = async (
 export const listFiltersForUser = async (
 	userId: string
 ): Promise<ListFiltersForUserResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${userId}/updates`, {
+	const url = urlQueryBuilder(`/users/${userId}/filters`, {
 		access_token: wdData.accessToken,
 	});
 

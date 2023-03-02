@@ -15,7 +15,7 @@ import { GetUsersQueryParametersModel } from "../users";
 export const requestTlsCertificateInformation = async (
 	certId: string
 ): Promise<RequestTlsCertInfoResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/certs/${certId}`, {
+	const url = urlQueryBuilder(`${URL.replace("{certId}", certId)}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -34,7 +34,7 @@ export const requestTlsCertificateInformation = async (
 export const listRegisteredTlsCertificates = async (
 	queryData: ListRegisteredTlsCertQueryParametersModel,
 ): Promise<ListRegisteredTlsCertResponseModel> => {
-	const url = urlQueryBuilder(`${URL}`, {
+	const url = urlQueryBuilder(`certs`, {
 		access_token: wdData.accessToken,
 		...queryData,
 	});
@@ -54,7 +54,7 @@ export const listRegisteredTlsCertificates = async (
 export const resolveIdForServerName = async (
 	servername: string
 ): Promise<ResolveIdForServerNameResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/updates/${servername}`, {
+	const url = urlQueryBuilder(`certs/resolve/${servername}}`, {
 		access_token: wdData.accessToken,
 	});
 

@@ -16,7 +16,7 @@ export const updateAutoreplyInformation = async (
 	userId: string,
 	bodyData: UpdateAutoreplyBodyParametersModel
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`/${URL}/users/${userId}`, {
+	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		access_token: wdData.accessToken,
 	});
 

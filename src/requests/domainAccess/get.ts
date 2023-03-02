@@ -14,7 +14,7 @@ import { ListAllowAndBlocklistedDomainsResponseModel } from "./models";
 export const listAllowlistedDomains = async (
 	tag: string
 ): Promise<ListAllowAndBlocklistedDomainsResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${tag}/allow`, {
+	const url = urlQueryBuilder(`${URL.replace("{domain}", tag)}/allow`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -33,7 +33,7 @@ export const listAllowlistedDomains = async (
 export const listBlocklistedDomains = async (
 	tag: string
 ): Promise<ListAllowAndBlocklistedDomainsResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${tag}/block`, {
+	const url = urlQueryBuilder(`${URL.replace("{domain}", tag)}/block`, {
 		access_token: wdData.accessToken,
 	});
 

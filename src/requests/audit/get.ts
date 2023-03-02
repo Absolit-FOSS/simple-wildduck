@@ -15,7 +15,7 @@ import { DefaultMailboxModel } from '../../models/index';
 export const getAuditInformation = async (
 	auditId: string,
 ): Promise<GetAuditInformationResponseModel> => {
-	const url = urlQueryBuilder(`${URL}`, {
+	const url = urlQueryBuilder(`${URL.replace("{auditId}", auditId)}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -34,7 +34,7 @@ export const getAuditInformation = async (
 export const exportAuditedEmails = async (
 	auditId: string
 ): Promise<DefaultMailboxModel> => {
-	const url = urlQueryBuilder(`${URL}/export/export.mbox`, {
+	const url = urlQueryBuilder(`${URL.replace("{auditId}", auditId)}/export.mbox`, {
 		access_token: wdData.accessToken,
 	});
 

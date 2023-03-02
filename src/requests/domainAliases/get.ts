@@ -12,8 +12,10 @@ import { CreationResponseModel } from '../../models/index';
  *
  * @param aliasId ID of the Alias
  */
-export const getAliasInformation = async (aliasId: string): Promise<GetAliasInfoResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${aliasId}`, {
+export const getAliasInformation = async (
+	aliasId: string
+): Promise<GetAliasInfoResponseModel> => {
+	const url = urlQueryBuilder(`${URL.replace("{aliasId}", aliasId)}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -32,7 +34,7 @@ export const getAliasInformation = async (aliasId: string): Promise<GetAliasInfo
 export const listRegisteredDomainAliases = async (
 	queryData: ListRegisteredDomainAliasesQueryParametersModel
 ): Promise<ListRegisteredDomainAliasesResponseModel> => {
-	const url = urlQueryBuilder(`${URL}`, {
+	const url = urlQueryBuilder(`/domainaliases`, {
 		access_token: wdData.accessToken,
 		...queryData
 	});
@@ -52,7 +54,7 @@ export const listRegisteredDomainAliases = async (
 export const resolveIdForDomainAlias = async (
 	aliasId: string
 ): Promise<CreationResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/resolve/${aliasId}`, {
+	const url = urlQueryBuilder(`domainaliases/resolve/${aliasId}`, {
 		access_token: wdData.accessToken,
 	});
 

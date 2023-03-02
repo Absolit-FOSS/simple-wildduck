@@ -15,7 +15,7 @@ export const deleteAppPassword = async (
 	userId: string,
 	aspId: string
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/users/${userId}`, {
+	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/${aspId}`, {
 		access_token: wdData.accessToken,
 	});
 

@@ -12,7 +12,6 @@ import {
 	ListRegisteredAddressesForUserResponseModel, 
 	ListRegisteredAddressesQueryParametersModel, 
 	ListRegisteredAddressesResponseModel, 
-	UpdateAddressInfoBodyParametersModel 
 } from "./models";
 
 /**
@@ -44,14 +43,13 @@ export const getForwardedAddressInfo = async (
  */
 export const getAddressesInfo = async (
 	userId: string,
-	addressId: string,
-	bodyData: UpdateAddressInfoBodyParametersModel
+	addressId: string
 ): Promise<GetAddressesInfoResponseModelModel> => {
-	const url = urlQueryBuilder(`/users/${userId}/${addressId}`, {
+	const url = urlQueryBuilder(`/users/${userId}/addresses/${addressId}`, {
 		access_token: wdData.accessToken,
 	});
 
-	const res = await axiosConf.put(url, bodyData);
+	const res = await axiosConf.get(url);
 
 	return res.data;
 };
@@ -73,7 +71,7 @@ export const getAddressInfo = async (
 		...queryData,
 	});
 
-	const res = await axiosConf.put(url);
+	const res = await axiosConf.get(url);
 
 	return res.data;
 };
@@ -83,9 +81,11 @@ export const getAddressInfo = async (
  *
  * https://docs.wildduck.email/api/#operation/getAddresses
  *
+ * @param userId ID of the User
  * @param queryData query parameters for additional options
  */
 export const listRegisteredAddresses = async (
+	userId: string,
 	queryData: ListRegisteredAddressesQueryParametersModel
 ): Promise<ListRegisteredAddressesResponseModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
@@ -93,7 +93,7 @@ export const listRegisteredAddresses = async (
 		...queryData,
 	});
 
-	const res = await axiosConf.put(url);
+	const res = await axiosConf.get(url);
 
 	return res.data;
 };
@@ -110,12 +110,12 @@ export const listRegisteredAddressesForUser = async (
 	userId: string,
 	queryData: ListRegisteredAddressesForUserQueryParametersModel
 ): Promise<ListRegisteredAddressesForUserResponseModel> => {
-	const url = urlQueryBuilder(`/users/${userId}/address`, {
+	const url = urlQueryBuilder(`/users/${userId}/addresses`, {
 		access_token: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.put(url);
+	const res = await axiosConf.get(url);
 
 	return res.data;
 };
@@ -138,7 +138,7 @@ export const listAddressesFromCommunicationRegister = async (
 		...queryData,
 	});
 
-	const res = await axiosConf.put(url);
+	const res = await axiosConf.get(url);
 
 	return res.data;
 };

@@ -13,7 +13,7 @@ import { URL } from "./config";
 export const deleteDkimKey = async (
 	dkimId: string,
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${dkimId}`, {
+	const url = urlQueryBuilder(`${URL.replace("{dkimId}", dkimId)}`, {
 		access_token: wdData.accessToken,
 	});
 

@@ -17,7 +17,7 @@ export const createNewFilter = async (
 	userId: string,
 	bodyData: CreateNewFilterBodyParametersModel
 ): Promise<CreationResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/filters`, {
+	const url = urlQueryBuilder(`/users/${userId}/filters`, {
 		access_token: wdData.accessToken,
 	});
 

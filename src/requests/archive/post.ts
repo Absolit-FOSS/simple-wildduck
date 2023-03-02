@@ -18,7 +18,7 @@ export const restoreArchivedMessage = async (
 	messageId: number,
 	bodyData: RestoreArchivedMessageBodyParametersModel
 ): Promise<RestoreArchivedMessageResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/restore`, {
+	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/${messageId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -41,7 +41,7 @@ export const restoreArchivedMessages = async (
 	userId: string,
 	bodyData: RestoreArchivedMessagesBodyParametersModel
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${userId}/archived/restore`, {
+	const url = urlQueryBuilder(`${URL.replace("{userId}", userId).replace("messages", "restore")}`, {
 		access_token: wdData.accessToken,
 	});
 

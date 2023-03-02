@@ -15,7 +15,7 @@ export const deleteFilter = async (
 	userId: string,
 	filterId: string
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`/users/${userId}/${filterId}`, {
+	const url = urlQueryBuilder(`${URL.replace("{userId}", userId).replace("{filter}", filterId)}`, {
 		access_token: wdData.accessToken,
 	});
 

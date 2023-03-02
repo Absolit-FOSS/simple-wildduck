@@ -13,7 +13,7 @@ import { URL } from "./config";
 export const deleteDomainFromListing = async (
 	domainId: string
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${domainId}`, {
+	const url = urlQueryBuilder(`${URL.replace("{domainId}", domainId)}`, {
 		access_token: wdData.accessToken,
 	});
 

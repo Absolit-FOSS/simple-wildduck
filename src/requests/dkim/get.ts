@@ -3,7 +3,6 @@ import { CreationResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import { ListRegisteredDkimKeysQueryParameters, ListRegisteredDkimKeysResponseParameters, RequestDkimInformationResponseModel } from "./models";
-import { GetUsersQueryParametersModel } from "../users";
 
 /**
  * Request DKIM information
@@ -15,7 +14,7 @@ import { GetUsersQueryParametersModel } from "../users";
 export const requestDkimInformation = async (
 	dkimId: string
 ): Promise<RequestDkimInformationResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/${dkimId}`, {
+	const url = urlQueryBuilder(`${URL.replace("{dkimId}", dkimId)}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -34,7 +33,7 @@ export const requestDkimInformation = async (
 export const listRegisteredDkimKeys = async (
 	queryData: ListRegisteredDkimKeysQueryParameters,
 ): Promise<ListRegisteredDkimKeysResponseParameters> => {
-	const url = urlQueryBuilder(`${URL}`, {
+	const url = urlQueryBuilder(`/dkim`, {
 		access_token: wdData.accessToken,
 		...queryData,
 	});
@@ -54,7 +53,7 @@ export const listRegisteredDkimKeys = async (
 export const resolveIdForDkimDomain = async (
 	domain: string
 ): Promise<CreationResponseModel > => {
-	const url = urlQueryBuilder(`${URL}/${domain}/resolve`, {
+	const url = urlQueryBuilder(`/dkim/resolve/${domain}`, {
 		access_token: wdData.accessToken,
 	});
 

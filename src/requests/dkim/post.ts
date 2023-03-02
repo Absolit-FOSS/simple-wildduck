@@ -16,7 +16,7 @@ import { CreateOrUpdateDkimKeyForDomainBodyParametersModel, CreateOrUpdateDkimKe
 export const createOrUpdateDkimKeyForDomain = async (
   bodyData: CreateOrUpdateDkimKeyForDomainBodyParametersModel
 ): Promise<CreateOrUpdateDkimKeyForDomainResponseModel> => {
-  const url = urlQueryBuilder(`${URL}/`, {
+  const url = urlQueryBuilder(`${URL}`, {
     access_token: wdData.accessToken,
   });
 
