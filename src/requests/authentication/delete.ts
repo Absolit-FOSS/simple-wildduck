@@ -5,18 +5,18 @@ import { URL } from "./config";
 
 /**
  * Invalidate authentication token
+ *
  * This method invalidates currently used authentication token. If token is not provided then nothing happens
- * 
+ *
  * https://docs.wildduck.email/api/#operation/invalidateAccessToken
- * 
- * no parameters
  */
-export const invalidateAuthenticationToken = async (): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL}`, {
-		access_token: wdData.accessToken,
-	});
+export const invalidateAuthenticationToken =
+	async (): Promise<DefaultResponseModel> => {
+		const url = urlQueryBuilder(`${URL}`, {
+			access_token: wdData.accessToken,
+		});
 
-	const res = await axiosConf.delete(url);
+		const res = await axiosConf.delete(url);
 
-	return res.data;
-};
+		return res.data;
+	};

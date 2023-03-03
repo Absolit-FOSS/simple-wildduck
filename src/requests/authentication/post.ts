@@ -1,7 +1,12 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { AuthenticateUserBodyParametersModel, AuthenticateUserResponseModel, PreAuthCheckBodyParametersModel, PreAuthCheckResponseModel } from "./models";
+import {
+	AuthenticateUserBodyParametersModel,
+	AuthenticateUserResponseModel,
+	PreAuthCheckBodyParametersModel,
+	PreAuthCheckResponseModel,
+} from "./models";
 
 /**
  * Authenticate a User
@@ -33,7 +38,7 @@ export const authenticateUser = async (
 export const preAuthenticationCheck = async (
 	bodyData: PreAuthCheckBodyParametersModel
 ): Promise<PreAuthCheckResponseModel> => {
-	const url = urlQueryBuilder(`/preauth)}`, {
+	const url = urlQueryBuilder(`/preauth`, {
 		access_token: wdData.accessToken,
 	});
 

@@ -1,16 +1,16 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
 import { axiosConf, wdData } from "../../setup";
-import { URL } from "./config";
-import { ListAuthenticationEventsQueryParametersModel,
+import {
+	ListAuthenticationEventsQueryParametersModel,
 	ListAuthenticationEventsResponseModel,
-	RequestEventInformationResponseModel
+	RequestEventInformationResponseModel,
 } from "./models";
 
 /**
  * List authentication Events
  *
  * https://docs.wildduck.email/api/#operation/getAuthlog
- * 
+ *
  * @param userId ID of the User
  * @param queryData query parameters for additional options
  */
@@ -18,9 +18,9 @@ export const listAuthenticationEvents = async (
 	userId: string,
 	queryData: ListAuthenticationEventsQueryParametersModel
 ): Promise<ListAuthenticationEventsResponseModel> => {
-	const url = urlQueryBuilder(`/users/${URL.replace("/authenticate", userId)}/authlog`, {
+	const url = urlQueryBuilder(`/users/${userId}/authlog`, {
 		access_token: wdData.accessToken,
-		...queryData
+		...queryData,
 	});
 
 	const res = await axiosConf.get(url);
@@ -33,14 +33,14 @@ export const listAuthenticationEvents = async (
  *
  * https://docs.wildduck.email/api/#operation/getAuthlogEvent
  *
- * @param userId query parameters for additional options
+ * @param userId ID of the User
  * @param eventId ID of the Event
  */
 export const requestEventInformation = async (
 	userId: string,
 	eventId: string
 ): Promise<RequestEventInformationResponseModel> => {
-	const url = urlQueryBuilder(`/users/${URL.replace("/authenticate", userId)}/authlog/${eventId}`, {
+	const url = urlQueryBuilder(`/users/${userId}/authlog/${eventId}`, {
 		access_token: wdData.accessToken,
 	});
 
