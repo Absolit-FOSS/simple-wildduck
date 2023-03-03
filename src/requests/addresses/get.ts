@@ -1,17 +1,17 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { 
-	GetAddressesInfoResponseModelModel, 
-	GetAddressInfoQueryParametersModel, 
-	GetAddressInfoResponseModel, 
-	GetForwardedAddressInfoResponseModel, 
+import {
+	GetAddressesInfoResponseModelModel,
+	GetAddressInfoQueryParametersModel,
+	GetAddressInfoResponseModel,
+	GetForwardedAddressInfoResponseModel,
 	ListAddressesFromCommunicationRegisterQueryParametersModel,
-	ListAddressesFromCommunicationRegisterResponseModel, 
-	ListRegisteredAddressesForUserQueryParametersModel, 
-	ListRegisteredAddressesForUserResponseModel, 
-	ListRegisteredAddressesQueryParametersModel, 
-	ListRegisteredAddressesResponseModel, 
+	ListAddressesFromCommunicationRegisterResponseModel,
+	ListRegisteredAddressesForUserQueryParametersModel,
+	ListRegisteredAddressesForUserResponseModel,
+	ListRegisteredAddressesQueryParametersModel,
+	ListRegisteredAddressesResponseModel,
 } from "./models";
 
 /**
@@ -85,7 +85,6 @@ export const getAddressInfo = async (
  * @param queryData query parameters for additional options
  */
 export const listRegisteredAddresses = async (
-	userId: string,
 	queryData: ListRegisteredAddressesQueryParametersModel
 ): Promise<ListRegisteredAddressesResponseModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
@@ -121,7 +120,6 @@ export const listRegisteredAddressesForUser = async (
 };
 
 /**
- * List addresses from communication register
  * Lists addresses from email headers. Includes addresses both from sent and received messages. Sorted by last usage
  *
  * https://docs.wildduck.email/api/#operation/getUserAddressregister

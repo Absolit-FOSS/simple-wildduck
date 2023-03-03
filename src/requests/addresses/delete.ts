@@ -3,7 +3,6 @@ import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 
-
 /**
  * Delete a forwarded Address
  *
@@ -12,7 +11,7 @@ import { URL } from "./config";
  * @param addressId ID of the Address
  */
 export const deleteForwardedAddress = async (
-	addressId: string,
+	addressId: string
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/forwarded/${addressId}`, {
 		access_token: wdData.accessToken,
@@ -33,7 +32,7 @@ export const deleteForwardedAddress = async (
  */
 export const deleteAddress = async (
 	userId: string,
-	addressId: string,
+	addressId: string
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/addresses/${addressId}`, {
 		access_token: wdData.accessToken,
