@@ -1,8 +1,12 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { RestoreArchivedMessageBodyParametersModel, RestoreArchivedMessageResponseModel, RestoreArchivedMessagesBodyParametersModel } from "./models";
-import { DefaultResponseModel } from "../../models";
+import {
+	RestoreArchivedMessageBodyParametersModel,
+	RestoreArchivedMessageResponseModel,
+	RestoreArchivedMessagesBodyParametersModel,
+} from "./models";
 
 /**
  * Restore archived Message
@@ -18,9 +22,12 @@ export const restoreArchivedMessage = async (
 	messageId: number,
 	bodyData: RestoreArchivedMessageBodyParametersModel
 ): Promise<RestoreArchivedMessageResponseModel> => {
-	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/${messageId}`, {
-		access_token: wdData.accessToken,
-	});
+	const url = urlQueryBuilder(
+		`${URL.replace("{userId}", userId)}/messages/${messageId}/restore`,
+		{
+			access_token: wdData.accessToken,
+		}
+	);
 
 	const res = await axiosConf.post(url, bodyData);
 
@@ -33,7 +40,7 @@ export const restoreArchivedMessage = async (
  * is fully recovered, except any email addresses that might have been
  * already recycled
  *
- * http://docs.wildduck.email/api/#operation/restoreUser
+ * https://docs.wildduck.email/api/#operation/restoreMessages
  *
  * @param userId ID of the User
  */
@@ -41,7 +48,7 @@ export const restoreArchivedMessages = async (
 	userId: string,
 	bodyData: RestoreArchivedMessagesBodyParametersModel
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL.replace("{userId}", userId).replace("messages", "restore")}`, {
+	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/restore`, {
 		access_token: wdData.accessToken,
 	});
 

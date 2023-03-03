@@ -1,1 +1,1 @@
-export const URL = "/users/{userId}/archived/messages";
+export const URL = "/users/{userId}/archived";
