@@ -5,7 +5,7 @@ import { URL } from "./config";
 import {
 	RenameDomainInAddressesBodyParametersModel,
 	UpdateAddressInfoBodyParametersModel,
-	UpdateForwardedAddressInforBodyParametersModel
+	UpdateForwardedAddressInfoBodyParametersModel,
 } from "./models";
 
 /**
@@ -16,9 +16,9 @@ import {
  * @param addressId ID of the Address
  * @param bodyData data to update on the user
  */
-export const updateUser = async (
+export const updateForwardedAddressInfo = async (
 	addressId: string,
-	bodyData: UpdateForwardedAddressInforBodyParametersModel
+	bodyData: UpdateForwardedAddressInfoBodyParametersModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/forwarded/${addressId}`, {
 		access_token: wdData.accessToken,
@@ -32,9 +32,9 @@ export const updateUser = async (
 /**
  * Update Address information
  * Renames domain names for addresses, DKIM keys and Domain Aliases
- * 
+ *
  * https://docs.wildduck.email/api/#operation/updateUserAddress
- * 
+ *
  * @param userId ID of the User
  * @param addressId ID of the Address
  * @param bodyData data to update on the user
@@ -55,14 +55,12 @@ export const updateAddressInfo = async (
 
 /**
  * Rename domain in addresses
- * 
+ *
  * https://docs.wildduck.email/api/#operation/renameDomain
- * 
- * @param userId ID of the User
+ *
  * @param bodyData data to update on the user
  */
 export const renameDomainInAddresses = async (
-	userId: string,
 	bodyData: RenameDomainInAddressesBodyParametersModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/renameDomain`, {

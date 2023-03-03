@@ -84,7 +84,7 @@ export interface GetForwardedAddressInfoResponseModel {
 	forwardedDisabled: boolean;
 }
 
-export interface UpdateForwardedAddressInforBodyParametersModel {
+export interface UpdateForwardedAddressInfoBodyParametersModel {
 	/**
 	 * New address. Only affects normal addresses, special addresses that include * can not be changed
 	 */
