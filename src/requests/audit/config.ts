@@ -1,1 +1,1 @@
-export const URL = "/audit/{auditId}";
+export const URL = "/audit";
