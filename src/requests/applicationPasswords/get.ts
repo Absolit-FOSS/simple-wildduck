@@ -1,7 +1,11 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { GetAppPasswordInformationResponseModel, ListAppPasswordsQueryParametersModel, ListAppPasswordsResponseModel } from './models';
+import {
+	GetAppPasswordInformationResponseModel,
+	ListAppPasswordsQueryParametersModel,
+	ListAppPasswordsResponseModel,
+} from "./models";
 
 /**
  * Request ASP information
@@ -36,7 +40,7 @@ export const listApplicationPasswords = async (
 	userId: string,
 	queryData: ListAppPasswordsQueryParametersModel
 ): Promise<ListAppPasswordsResponseModel> => {
-	const url = urlQueryBuilder(`/users/${userId}/asps`, {
+	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		access_token: wdData.accessToken,
 		...queryData,
 	});
