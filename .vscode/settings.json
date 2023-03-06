@@ -4,6 +4,7 @@
 		"Blocklisted",
 		"Datestring",
 		"mbox",
-		"mobileconfig"
+		"mobileconfig",
+    "bimi"
 	]
 }

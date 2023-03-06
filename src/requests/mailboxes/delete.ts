@@ -9,7 +9,7 @@ import { URL } from "./config";
  * https://docs.wildduck.email/api/#operation/deleteMailbox
  *
  * @param userId Users unique ID
- * @param mailboxId Mailbox unique ID. Special use folders and INBOX can not be deleted
+ * @param mailboxId Mailbox unique ID.
  */
 export const deleteMailbox = async (
 	userId: string,
