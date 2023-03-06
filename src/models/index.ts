@@ -104,6 +104,12 @@ export interface PageQueryModel {
 	previous?: string;
 }
 
+export interface FullQueryModel extends PageQueryModel {
+	/**
+	 * Partial match of a Domain Alias or Domain name
+	 */
+}
+
 export interface FromToModel {
 	/**
 	 * Name of the sender/receiver
