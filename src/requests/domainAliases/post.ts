@@ -1,5 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { DefaultResponseModel, UserIdentifierModel } from "../../models";
+import { CreationResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import { CreateNewDomainAliasBodyParameterModel } from "./models";
@@ -7,8 +7,6 @@ import { CreateNewDomainAliasBodyParameterModel } from "./models";
 /**
  * Add a new Alias for a Domain.
  * This allows to accept mail on username@domain and username@alias
- * 
- * Create new Domain Alias
  *
  * https://docs.wildduck.email/api/#operation/createDomainAlias
  *
@@ -16,8 +14,8 @@ import { CreateNewDomainAliasBodyParameterModel } from "./models";
  */
 export const createNewDomainAlias = async (
 	bodyData: CreateNewDomainAliasBodyParameterModel
-): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`/domainaliases`, {
+): Promise<CreationResponseModel> => {
+	const url = urlQueryBuilder(URL, {
 		access_token: wdData.accessToken,
 	});
 

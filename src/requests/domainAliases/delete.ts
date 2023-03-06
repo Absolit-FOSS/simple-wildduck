@@ -11,9 +11,9 @@ import { URL } from "./config";
  * @param aliasId the users wildduck ID
  */
 export const deleteAlias = async (
-	aliasId: string,
+	aliasId: string
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL.replace("{aliasId}", aliasId)}`, {
+	const url = urlQueryBuilder(`${URL}/${aliasId}`, {
 		access_token: wdData.accessToken,
 	});
 

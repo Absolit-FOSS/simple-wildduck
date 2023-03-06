@@ -1,1 +1,1 @@
-export const URL = "/domainaliases/{aliasId}";
+export const URL = "/domainaliases";

@@ -1,1 +1,1 @@
-export const URL = "/domainaccess/{domainId}";
+export const URL = "/domainaccess";
