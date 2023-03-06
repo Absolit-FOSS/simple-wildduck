@@ -1,7 +1,10 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { CreateOrUpdateTlsCertForServerNameBodyParametersModel, CreateOrUpdateTlsCertForServerNameResponseModel,  } from "./models";
+import {
+	CreateOrUpdateTlsCertForServerNameBodyParametersModel,
+	CreateOrUpdateTlsCertForServerNameResponseModel,
+} from "./models";
 
 /**
  * Add a new TLS certificate for a server name or update existing one. You can
@@ -9,17 +12,18 @@ import { CreateOrUpdateTlsCertForServerNameBodyParametersModel, CreateOrUpdateTl
  * well. For example you can add a sertificate for "mydomain.com" that includes
  * "*.mydomain.com" in SAN and the same certificate would be used for requests
  * that do not have it's own server name registered but match the SAN value.
- * 
- * Create or update TLS certificate for server name
  *
- * http://docs.wildduck.email/api/#operation/createUser
+ * NB! you must ensure yourself that the servername value is actually listed in
+ * certificate's common name or SAN as WildDuck is going to use this certificate regardless.
+ *
+ * https://docs.wildduck.email/api/#operation/updateTLSCertificate
  *
  * @param bodyData body parameters to create a user
  */
 export const createOrUpdateTlsCertificateForServerName = async (
 	bodyData: CreateOrUpdateTlsCertForServerNameBodyParametersModel
 ): Promise<CreateOrUpdateTlsCertForServerNameResponseModel> => {
-	const url = urlQueryBuilder(`/certs`, {
+	const url = urlQueryBuilder(URL, {
 		access_token: wdData.accessToken,
 	});
 

@@ -11,9 +11,9 @@ import { URL } from "./config";
  * @param dkimId ID of the DKIM
  */
 export const deleteDkimKey = async (
-	dkimId: string,
+	dkimId: string
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL.replace("{dkimId}", dkimId)}`, {
+	const url = urlQueryBuilder(`${URL}/${dkimId}`, {
 		access_token: wdData.accessToken,
 	});
 

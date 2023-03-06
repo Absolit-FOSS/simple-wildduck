@@ -1,1 +1,1 @@
-export const URL = "/dkim/{dkimId}";
+export const URL = "/dkim";

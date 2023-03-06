@@ -1,8 +1,12 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { CreationResponseModel, UserIdentifierModel } from "../../models";
+import { CreationResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { ListRegisteredDkimKeysQueryParameters, ListRegisteredDkimKeysResponseParameters, RequestDkimInformationResponseModel } from "./models";
+import {
+	ListRegisteredDkimKeysQueryParameters,
+	ListRegisteredDkimKeysResponseParameters,
+	RequestDkimInformationResponseModel,
+} from "./models";
 
 /**
  * Request DKIM information
@@ -14,7 +18,7 @@ import { ListRegisteredDkimKeysQueryParameters, ListRegisteredDkimKeysResponsePa
 export const requestDkimInformation = async (
 	dkimId: string
 ): Promise<RequestDkimInformationResponseModel> => {
-	const url = urlQueryBuilder(`${URL.replace("{dkimId}", dkimId)}`, {
+	const url = urlQueryBuilder(`${URL}/${dkimId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -31,9 +35,9 @@ export const requestDkimInformation = async (
  * @param queryData query parameters for additional options
  */
 export const listRegisteredDkimKeys = async (
-	queryData: ListRegisteredDkimKeysQueryParameters,
+	queryData: ListRegisteredDkimKeysQueryParameters
 ): Promise<ListRegisteredDkimKeysResponseParameters> => {
-	const url = urlQueryBuilder(`/dkim`, {
+	const url = urlQueryBuilder(URL, {
 		access_token: wdData.accessToken,
 		...queryData,
 	});
@@ -45,15 +49,15 @@ export const listRegisteredDkimKeys = async (
 
 /**
  * Resolve ID for a DKIM domain
- * 
+ *
  * https://docs.wildduck.email/api/#operation/resolveDkim
  *
  * @param domain DKIM domain
  */
 export const resolveIdForDkimDomain = async (
 	domain: string
-): Promise<CreationResponseModel > => {
-	const url = urlQueryBuilder(`/dkim/resolve/${domain}`, {
+): Promise<CreationResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/resolve/${domain}`, {
 		access_token: wdData.accessToken,
 	});
 

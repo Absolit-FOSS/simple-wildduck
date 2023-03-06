@@ -1,1 +1,1 @@
-export const URL = "/certs/{certId}";
+export const URL = "/certs";

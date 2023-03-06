@@ -7,7 +7,7 @@ import { UpdateAutoreplyBodyParametersModel } from "./models";
 /**
  * Update Autoreply information
  *
- * http://docs.wildduck.email/api/#operation/updateUser
+ * https://docs.wildduck.email/api/#operation/updateAutoreply
  *
  * @param userId the users wildduck ID
  * @param bodyData data to update on the user

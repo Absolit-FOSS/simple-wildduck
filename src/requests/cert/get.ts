@@ -1,9 +1,12 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { UserIdentifierModel } from "../../models";
+import { CreationResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { ListRegisteredTlsCertQueryParametersModel, ListRegisteredTlsCertResponseModel, RequestTlsCertInfoResponseModel, ResolveIdForServerNameResponseModel } from "./models";
-import { GetUsersQueryParametersModel } from "../users";
+import {
+	ListRegisteredTlsCertQueryParametersModel,
+	ListRegisteredTlsCertResponseModel,
+	RequestTlsCertInfoResponseModel,
+} from "./models";
 
 /**
  * Request TLS certificate information
@@ -15,7 +18,7 @@ import { GetUsersQueryParametersModel } from "../users";
 export const requestTlsCertificateInformation = async (
 	certId: string
 ): Promise<RequestTlsCertInfoResponseModel> => {
-	const url = urlQueryBuilder(`${URL.replace("{certId}", certId)}`, {
+	const url = urlQueryBuilder(`${URL}/${certId}`, {
 		access_token: wdData.accessToken,
 	});
 
@@ -32,9 +35,9 @@ export const requestTlsCertificateInformation = async (
  * @param queryData query parameters for additional options
  */
 export const listRegisteredTlsCertificates = async (
-	queryData: ListRegisteredTlsCertQueryParametersModel,
+	queryData: ListRegisteredTlsCertQueryParametersModel
 ): Promise<ListRegisteredTlsCertResponseModel> => {
-	const url = urlQueryBuilder(`certs`, {
+	const url = urlQueryBuilder(URL, {
 		access_token: wdData.accessToken,
 		...queryData,
 	});
@@ -53,8 +56,8 @@ export const listRegisteredTlsCertificates = async (
  */
 export const resolveIdForServerName = async (
 	servername: string
-): Promise<ResolveIdForServerNameResponseModel> => {
-	const url = urlQueryBuilder(`certs/resolve/${servername}}`, {
+): Promise<CreationResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/resolve/${servername}}`, {
 		access_token: wdData.accessToken,
 	});
 

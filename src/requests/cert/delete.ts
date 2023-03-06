@@ -11,9 +11,9 @@ import { URL } from "./config";
  * @param certId ID of the TLS certificate
  */
 export const deleteTlsCert = async (
-	certId: string,
+	certId: string
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL.replace("{certId}", certId)}`, {
+	const url = urlQueryBuilder(`${URL}/${certId}`, {
 		access_token: wdData.accessToken,
 	});
 
