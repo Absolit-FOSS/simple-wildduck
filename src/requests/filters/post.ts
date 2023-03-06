@@ -1,8 +1,7 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { DefaultResponseModel, UserIdentifierModel } from "../../models";
+import { CreationResponseModel } from "../../models/index";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { CreationResponseModel } from '../../models/index';
 import { CreateNewFilterBodyParametersModel } from "./models";
 
 /**
@@ -17,7 +16,7 @@ export const createNewFilter = async (
 	userId: string,
 	bodyData: CreateNewFilterBodyParametersModel
 ): Promise<CreationResponseModel> => {
-	const url = urlQueryBuilder(`/users/${userId}/filters`, {
+	const url = urlQueryBuilder(URL.replace("{userId}", userId), {
 		access_token: wdData.accessToken,
 	});
 

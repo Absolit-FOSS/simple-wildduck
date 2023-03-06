@@ -118,7 +118,7 @@ export interface ListAuthenticationEventsQueryParametersModel
 	filterIp?: string;
 }
 
-export interface ResultsModel {
+interface ResultsModel {
 	/**
 	 * ID of the Event
 	 */

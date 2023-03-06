@@ -58,7 +58,7 @@ export interface ListRegisteredDomainAliasesQueryParametersModel {
 	previous?: string;
 }
 
-export interface ResultsModel {
+interface ResultsModel {
 	/**
 	 * ID of the Domain Alias
 	 */

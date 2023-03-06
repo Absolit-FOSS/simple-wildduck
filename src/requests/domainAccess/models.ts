@@ -1,4 +1,4 @@
-export interface ResultsModel {
+interface ResultsModel {
 	/**
 	 * Entry ID
 	 */

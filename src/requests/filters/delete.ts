@@ -15,9 +15,12 @@ export const deleteFilter = async (
 	userId: string,
 	filterId: string
 ): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL.replace("{userId}", userId).replace("{filter}", filterId)}`, {
-		access_token: wdData.accessToken,
-	});
+	const url = urlQueryBuilder(
+		`${URL.replace("{userId}", userId)}/${filterId}`,
+		{
+			access_token: wdData.accessToken,
+		}
+	);
 
 	const res = await axiosConf.delete(url);
 

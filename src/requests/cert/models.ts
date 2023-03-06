@@ -111,7 +111,7 @@ export interface ListRegisteredTlsCertQueryParametersModel
 	altNames?: boolean;
 }
 
-export interface ResultsModel {
+interface ResultsModel {
 	/**
 	 * ID of the certificate
 	 */

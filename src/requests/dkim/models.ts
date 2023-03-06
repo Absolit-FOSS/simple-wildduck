@@ -114,7 +114,7 @@ export interface ListRegisteredDkimKeysQueryParameters extends PageQueryModel {
 	query?: string;
 }
 
-export interface ResultsModel {
+interface ResultsModel {
 	/**
 	 * ID of the DKIM
 	 */

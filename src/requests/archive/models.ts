@@ -30,7 +30,7 @@ export interface FromToCcBccModel {
 	address: string;
 }
 
-export interface ResultsModel {
+interface ResultsModel {
 	/**
 	 * ID of the Message (24 byte hex)
 	 */

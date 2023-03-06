@@ -1,7 +1,7 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { CreationResponseModel } from "../../models/index";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
-import { CreationResponseModel, DefaultResponseModel } from '../../models/index';
 import { UpdateFilterInfoBodyParametersModel } from "./models";
 
 /**
@@ -11,19 +11,21 @@ import { UpdateFilterInfoBodyParametersModel } from "./models";
  *
  * @param userId the users wildduck ID
  * @param filterId Filters unique ID
- * @param queryData query parameters for additional options
+ * @param bodyData query parameters for additional options
  */
 export const updateFilterInformation = async (
 	userId: string,
 	filterId: string,
-	queryData: UpdateFilterInfoBodyParametersModel
-): Promise<DefaultResponseModel> => {
-	const url = urlQueryBuilder(`${URL.replace("{userId}", userId).replace("{filterId}", filterId)}`, {
-		access_token: wdData.accessToken,
-		...queryData
-	});
+	bodyData: UpdateFilterInfoBodyParametersModel
+): Promise<CreationResponseModel> => {
+	const url = urlQueryBuilder(
+		`${URL.replace("{userId}", userId)}/${filterId}`,
+		{
+			access_token: wdData.accessToken,
+		}
+	);
 
-	const res = await axiosConf.put(url);
+	const res = await axiosConf.put(url, bodyData);
 
 	return res.data;
 };

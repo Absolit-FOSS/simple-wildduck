@@ -45,7 +45,7 @@ export interface ListAppPasswordsQueryParametersModel {
 	showAll: boolean;
 }
 
-export interface ResultsModel {
+interface ResultsModel {
 	/**
 	 * ID of the Application Password
 	 */
