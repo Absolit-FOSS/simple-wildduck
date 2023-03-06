@@ -4,6 +4,10 @@ import { URL } from "./config";
 import {
 	ForwardStoredMessageBodyParameterModel,
 	ForwardStoredMessageResponseModel,
+	SearchUpdateMessageBodyParameterModel,
+	SearchUpdateMessageResponseModel,
+	SubmitDraftMessageBodyParameterModel,
+	SubmitDraftMessageResponseModel,
 	UploadMessageBodyParameterModel,
 	UploadMessageResponseModel,
 } from "./models";
@@ -64,6 +68,61 @@ export const forwardStoredMessage = async (
 			"{mailboxId}",
 			mailboxId
 		)}/${messageId}`,
+		{
+			access_token: wdData.accessToken,
+		}
+	);
+
+	const res = await axiosConf.post(url, bodyData);
+
+	return res.data;
+};
+
+/**
+ * This method allows applying an action to all matching messages.
+ * This is an async method so that it will return immediately.
+ * Actual modifications are run in the background.
+ *
+ * https://docs.wildduck.email/api/#operation/searchApplyMessages
+ *
+ * @param userId the users wildduck ID
+ * @param bodyData body parameters to update
+ */
+export const searchUpdateMessage = async (
+	userId: string,
+	bodyData: SearchUpdateMessageBodyParameterModel
+): Promise<SearchUpdateMessageResponseModel> => {
+	const url = urlQueryBuilder(`/users/${userId}/search`, {
+		access_token: wdData.accessToken,
+	});
+
+	const res = await axiosConf.post(url, bodyData);
+
+	return res.data;
+};
+
+/**
+ * This method allows to submit a draft message for delivery.
+ * Draft is moved to Sent mail folder.
+ *
+ * https://docs.wildduck.email/api/#operation/submitStoredMessage
+ *
+ * @param userId the users wildduck ID
+ * @param mailboxId the mailbox wildduck ID
+ * @param messageId the message wildduck ID
+ * @param bodyData body parameters to update
+ */
+export const submitDraftMessage = async (
+	userId: string,
+	mailboxId: string,
+	messageId: string,
+	bodyData: SubmitDraftMessageBodyParameterModel
+): Promise<SubmitDraftMessageResponseModel> => {
+	const url = urlQueryBuilder(
+		`${URL.replace("{userId}", userId).replace(
+			"{mailboxId}",
+			mailboxId
+		)}/${messageId}/submit`,
 		{
 			access_token: wdData.accessToken,
 		}

@@ -489,6 +489,120 @@ export interface UploadMessageRefModel {
 	attachments: string[];
 }
 
+interface SearchUpdateMessageOrModel {
+	/**
+	 * Search string, uses MongoDB fulltext index. Covers data from
+	 * message body and also common headers like from, to, subject etc.
+	 */
+	query?: string;
+	/**
+	 * Partial match for the From: header line
+	 */
+	from?: string;
+	/**
+	 * Partial match for the To: and Cc: header lines
+	 */
+	to?: string;
+	/**
+	 * Partial match for the Subject: header line
+	 */
+	subject?: string;
+}
+
+interface SearchUpdateMessageActionModel {
+	/**
+	 * ID of the target Mailbox if you want to move messages
+	 */
+	moveTo?: string;
+	/**
+	 * State of the \Seen flag
+	 */
+	seen?: boolean;
+	/**
+	 * State of the \Flagged flag
+	 */
+	flagged?: boolean;
+}
+
+export interface SearchUpdateMessageBodyParameterModel {
+	/**
+	 * ID of the Mailbox
+	 */
+	mailbox?: string;
+	/**
+	 * Thread ID
+	 */
+	thread?: string;
+	/**
+	 * Search string, uses MongoDB fulltext index. Covers data from mesage body
+	 * and also common headers like from, to, subject etc.
+	 */
+	query?: string;
+	/**
+	 * Datestring for the earliest message storing time
+	 */
+	datestart?: string;
+	/**
+	 * Datestring for the latest message storing time
+	 */
+	dateend?: string;
+	/**
+	 * Partial match for the From: header line
+	 */
+	from?: string;
+	/**
+	 * Partial match for the To: and Cc: header lines
+	 */
+	to?: string;
+	/**
+	 * Partial match for the Subject: header line
+	 */
+	subject?: string;
+	/**
+	 * If true, then matches only messages with attachments
+	 */
+	attachments?: boolean;
+	/**
+	 * If true, then matches only messages with \Flagged flags
+	 */
+	flagged?: boolean;
+	/**
+	 * If true, then matches only messages without \Seen flags
+	 */
+	unseen?: boolean;
+	/**
+	 * If true, then matches messages not in Junk or Trash
+	 */
+	searchable?: boolean;
+	/**
+	 * At least onOne of the included terms must match
+	 */
+	or?: SearchUpdateMessageOrModel;
+	/**
+	 * Minimal message size in bytes
+	 */
+	minSize?: number;
+	/**
+	 * Maximal message size in bytes
+	 */
+	maxSize?: number;
+	/**
+	 * Maximal message size in bytes
+	 */
+	action?: SearchUpdateMessageActionModel;
+}
+
+export interface SearchUpdateMessageResponseModel {
+	/**
+	 * Indicates if the action succeeded or not
+	 */
+	success: boolean;
+	/**
+	 * ID of the scheduled operation
+	 */
+	scheduled: string;
+}
+
 export interface UploadMessageBodyParameterModel extends UserIdentifierModel {
 	/**
 	 * Is the message unseen or not
@@ -640,4 +754,43 @@ export interface ForwardStoredMessageResponseModel {
 		type: string;
 		value: string;
 	}[];
+}
+
+export interface SubmitDraftMessageBodyParameterModel {
+	/**
+	 * If true then deletes attachment files listed in metaData.files array
+	 */
+	deleteFiles?: boolean;
+	/**
+	 * Datestring for delivery if message should be sent some later time
+	 */
+	sendTime?: string;
+}
+
+export interface SubmitDraftMessageResponseModel {
+	/**
+	 * Indicates successful response
+	 */
+	success: boolean;
+	/**
+	 * Message ID in outbound queue
+	 */
+	queueId: string;
+	/**
+	 * Message information
+	 */
+	message?: {
+		/**
+		 * Message ID in mailbox
+		 */
+		id: number;
+		/**
+		 * Mailbox ID the message was stored into
+		 */
+		mailbox: string;
+		/**
+		 * Size of the RFC822 formatted email
+		 */
+		size?: number;
+	};
 }

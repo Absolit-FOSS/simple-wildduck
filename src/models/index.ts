@@ -108,6 +108,7 @@ export interface FullQueryModel extends PageQueryModel {
 	/**
 	 * Partial match of a Domain Alias or Domain name
 	 */
+	query?: string;
 }
 
 export interface FromToModel {
