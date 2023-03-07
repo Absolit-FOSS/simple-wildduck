@@ -1,6 +1,6 @@
 {
-    "name": "simple-wildduck",
-    "version": "1.0.0",
+    "name": "@absolit/simple-wildduck",
+    "version": "0.8.0",
     "description": "Simple interface for the WildDuck API",
     "main": "dist/index.js",
     "scripts": {
@@ -13,7 +13,8 @@
         "url": "git+https://github.com/Absolit-FOSS/simple-wildduck.git"
     },
     "keywords": [
-        "wildduck"
+        "wildduck",
+        "absolit"
     ],
     "author": "Absolit",
     "license": "Apache-2.0",
