@@ -24,7 +24,7 @@ export const createUser = async (
 	bodyData: CreateUserBodyParameterModel
 ): Promise<CreationResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);
@@ -48,7 +48,7 @@ export const cancelUserDeletion = async (
 	bodyData: UserIdentifierModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${id}/restore`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);
@@ -70,7 +70,7 @@ export const recalculateUserQuota = async (
 	id: string
 ): Promise<RecalculateUserQuotaResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${id}/quota/reset`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url);
@@ -90,7 +90,7 @@ export const recalculateUserQuota = async (
 export const recalculateQuotaForAllUsers =
 	async (): Promise<DefaultResponseModel> => {
 		const url = urlQueryBuilder(`${URL}/quota/reset`, {
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 		});
 
 		const res = await axiosConf.post(url);
@@ -111,7 +111,7 @@ export const resetUserPassword = async (
 	bodyData: ResetUserPasswordBodyParametersModel
 ): Promise<ResetUserPasswordResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${id}/password/reset`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);

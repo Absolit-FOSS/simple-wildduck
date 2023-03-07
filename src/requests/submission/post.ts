@@ -19,7 +19,7 @@ export const submitMessageForDelivery = async (
 	bodyData: SubmitMessageForDeliveryBodyParameterModel
 ): Promise<SubmitMessageForDeliveryResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);

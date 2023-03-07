@@ -19,7 +19,7 @@ export const createNewAppPassword = async (
 	bodyData: CreateNewAppPasswordBodyParametersModel
 ): Promise<CreateAppPasswordResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);

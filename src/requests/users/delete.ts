@@ -17,7 +17,7 @@ export const deleteUser = async (
 	queryData: DeleteUserQueryParametersModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${id}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 

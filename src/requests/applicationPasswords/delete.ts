@@ -16,7 +16,7 @@ export const deleteAppPassword = async (
 	aspId: string
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/${aspId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.delete(url);

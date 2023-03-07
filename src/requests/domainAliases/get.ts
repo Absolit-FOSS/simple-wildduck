@@ -18,7 +18,7 @@ export const getAliasInformation = async (
 	aliasId: string
 ): Promise<GetAliasInfoResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${aliasId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);
@@ -37,7 +37,7 @@ export const listRegisteredDomainAliases = async (
 	queryData: FullQueryModel
 ): Promise<ListRegisteredDomainAliasesResponseModel> => {
 	const url = urlQueryBuilder(URL, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
@@ -57,7 +57,7 @@ export const resolveIdForDomainAlias = async (
 	aliasId: string
 ): Promise<CreationResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/resolve/${aliasId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);

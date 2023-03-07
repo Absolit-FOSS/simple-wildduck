@@ -14,7 +14,7 @@ export const deleteForwardedAddress = async (
 	addressId: string
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/forwarded/${addressId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.delete(url);
@@ -35,7 +35,7 @@ export const deleteAddress = async (
 	addressId: string
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/addresses/${addressId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.delete(url);

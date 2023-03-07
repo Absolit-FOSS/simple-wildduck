@@ -25,7 +25,7 @@ export const createAddress = async (
 	bodyData: CreateNewAddressBodyParameterModel
 ): Promise<CreationResponseModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/addresses`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);
@@ -50,7 +50,7 @@ export const createNewForwardedAddress = async (
 	bodyData: CreateNewForwardedAddressBodyParameterModel
 ): Promise<CreationResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/forwarded/`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);

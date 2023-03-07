@@ -19,7 +19,7 @@ import {
  */
 export const getUser = async (id: string): Promise<GetUserResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${id}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);
@@ -38,7 +38,7 @@ export const getUsers = async (
 	queryData: GetUsersQueryParametersModel
 ): Promise<GetUsersResponseModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
@@ -60,7 +60,7 @@ export const getChangeStream = async (
 	id: string
 ): Promise<GetUserResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${id}/updates`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);
@@ -79,7 +79,7 @@ export const getUserIdByUsername = async (
 	username: string
 ): Promise<GetUserIdByUsernameResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/resolve/${username}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);
@@ -100,7 +100,7 @@ export const getDeletedUserInfo = async (
 	queryData: UserIdentifierModel
 ): Promise<GetDeletedUserInfoResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${id}/restore`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 

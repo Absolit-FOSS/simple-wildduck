@@ -17,7 +17,7 @@ export const getRegisteredWebhooks = async (
 	queryData: GetRegisteredWebhooksQueryParametersModel
 ): Promise<GetRegisteredWebhooksResponseModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 

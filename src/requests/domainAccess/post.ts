@@ -20,7 +20,7 @@ export const addDomainToAllowlist = async (
 	bodyData: AddDomainToAllowOrBlocklistBodyParametersModel
 ): Promise<CreationResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${tag}/allow`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);
@@ -44,7 +44,7 @@ export const addDomainToBlocklisted = async (
 	bodyData: AddDomainToAllowOrBlocklistBodyParametersModel
 ): Promise<CreationResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${tag}/block`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);

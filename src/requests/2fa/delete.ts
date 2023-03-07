@@ -17,7 +17,7 @@ export const disable2FA = async (
 	queryData: UserIdentifierModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
@@ -41,7 +41,7 @@ export const disableCustom2FA = async (
 	queryData: UserIdentifierModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/custom`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
@@ -64,7 +64,7 @@ export const disableTOTPAuth = async (
 	queryData: UserIdentifierModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/totp`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 

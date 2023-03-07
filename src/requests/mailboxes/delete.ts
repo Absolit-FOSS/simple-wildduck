@@ -18,7 +18,7 @@ export const deleteMailbox = async (
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId)}/${mailboxId}`,
 		{
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 		}
 	);
 

@@ -25,7 +25,7 @@ export const getForwardedAddressInfo = async (
 	addressId: string
 ): Promise<GetForwardedAddressInfoResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/forwarded/${addressId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);
@@ -46,7 +46,7 @@ export const getAddressesInfo = async (
 	addressId: string
 ): Promise<GetAddressesInfoResponseModelModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/addresses/${addressId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);
@@ -67,7 +67,7 @@ export const getAddressInfo = async (
 	queryData: GetAddressInfoQueryParametersModel
 ): Promise<GetAddressInfoResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/resolve/${addressId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
@@ -88,7 +88,7 @@ export const listRegisteredAddresses = async (
 	queryData: ListRegisteredAddressesQueryParametersModel
 ): Promise<ListRegisteredAddressesResponseModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
@@ -110,7 +110,7 @@ export const listRegisteredAddressesForUser = async (
 	queryData: ListRegisteredAddressesForUserQueryParametersModel
 ): Promise<ListRegisteredAddressesForUserResponseModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/addresses`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
@@ -132,7 +132,7 @@ export const listAddressesFromCommunicationRegister = async (
 	queryData: ListAddressesFromCommunicationRegisterQueryParametersModel
 ): Promise<ListAddressesFromCommunicationRegisterResponseModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/addressregister`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 

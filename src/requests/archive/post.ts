@@ -25,7 +25,7 @@ export const restoreArchivedMessage = async (
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId)}/messages/${messageId}/restore`,
 		{
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 		}
 	);
 
@@ -49,7 +49,7 @@ export const restoreArchivedMessages = async (
 	bodyData: RestoreArchivedMessagesBodyParametersModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/restore`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);

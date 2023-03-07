@@ -17,7 +17,7 @@ export const uploadFileToStorage = async (
 	bodyData: UploadFileToStorageBodyParameterModel
 ): Promise<CreationResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);

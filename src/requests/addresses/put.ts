@@ -21,7 +21,7 @@ export const updateForwardedAddressInfo = async (
 	bodyData: UpdateForwardedAddressInfoBodyParametersModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/forwarded/${addressId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.put(url, bodyData);
@@ -45,7 +45,7 @@ export const updateAddressInfo = async (
 	bodyData: UpdateAddressInfoBodyParametersModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/addresses/${addressId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.put(url, bodyData);
@@ -64,7 +64,7 @@ export const renameDomainInAddresses = async (
 	bodyData: RenameDomainInAddressesBodyParametersModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/renameDomain`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.put(url, bodyData);

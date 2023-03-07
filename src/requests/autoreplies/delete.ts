@@ -15,7 +15,7 @@ export const deleteAutoreplyInfo = async (
 	userId: string
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.delete(url);

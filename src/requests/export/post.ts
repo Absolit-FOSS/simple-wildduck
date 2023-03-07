@@ -23,7 +23,7 @@ export const exportUserData = async (
 	bodyData: ExportUserDataBodyParameterModel
 ): Promise<any> => {
 	const url = urlQueryBuilder(`${URL}/export`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);
@@ -45,7 +45,7 @@ export const importUserData = async (
 	bodyData: any
 ): Promise<ImportUserDataResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/import`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);

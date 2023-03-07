@@ -15,7 +15,7 @@ export const getAuditInformation = async (
 	auditId: string
 ): Promise<GetAuditInformationResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${auditId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);
@@ -34,7 +34,7 @@ export const exportAuditedEmails = async (
 	auditId: string
 ): Promise<DefaultMailboxModel> => {
 	const url = urlQueryBuilder(`${URL}/${auditId}/export.mbox`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);

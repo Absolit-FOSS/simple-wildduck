@@ -19,7 +19,7 @@ export const downloadFile = async (
 	fileId: string
 ): Promise<any> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/${fileId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);
@@ -40,7 +40,7 @@ export const getStoredFiles = async (
 	queryData: GetStoredFilesQueryParametersModel
 ): Promise<GetStoredFilesResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 

@@ -18,7 +18,7 @@ export const deleteFilter = async (
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId)}/${filterId}`,
 		{
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 		}
 	);
 

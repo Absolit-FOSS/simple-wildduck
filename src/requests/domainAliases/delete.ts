@@ -14,7 +14,7 @@ export const deleteAlias = async (
 	aliasId: string
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${aliasId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.delete(url);

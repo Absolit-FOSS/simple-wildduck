@@ -34,7 +34,7 @@ export const uploadMessage = async (
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace("{mailboxId}", mailboxId)}`,
 		{
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 		}
 	);
 
@@ -69,7 +69,7 @@ export const forwardStoredMessage = async (
 			mailboxId
 		)}/${messageId}`,
 		{
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 		}
 	);
 
@@ -93,7 +93,7 @@ export const searchUpdateMessage = async (
 	bodyData: SearchUpdateMessageBodyParameterModel
 ): Promise<SearchUpdateMessageResponseModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/search`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);
@@ -124,7 +124,7 @@ export const submitDraftMessage = async (
 			mailboxId
 		)}/${messageId}/submit`,
 		{
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 		}
 	);
 

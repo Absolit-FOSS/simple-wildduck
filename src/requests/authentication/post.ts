@@ -19,7 +19,7 @@ export const authenticateUser = async (
 	bodyData: AuthenticateUserBodyParametersModel
 ): Promise<AuthenticateUserResponseModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);
@@ -39,7 +39,7 @@ export const preAuthenticationCheck = async (
 	bodyData: PreAuthCheckBodyParametersModel
 ): Promise<PreAuthCheckResponseModel> => {
 	const url = urlQueryBuilder(`/preauth`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);

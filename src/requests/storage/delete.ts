@@ -16,7 +16,7 @@ export const deleteStorageFile = async (
 	fileId: string
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/${fileId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.delete(url);

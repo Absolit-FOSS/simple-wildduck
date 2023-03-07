@@ -23,7 +23,7 @@ export const requestFilterInformation = async (
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId)}/${filterId}`,
 		{
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 		}
 	);
 
@@ -43,7 +43,7 @@ export const listAllFilters = async (
 	queryData: ListAllFiltersQueryParametersModel
 ): Promise<ListAllFiltersResponseModel> => {
 	const url = urlQueryBuilder(`/filters`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
@@ -63,7 +63,7 @@ export const listFiltersForUser = async (
 	userId: string
 ): Promise<ListFiltersForUserResponseModel> => {
 	const url = urlQueryBuilder(URL.replace("{userId}", userId), {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);

@@ -14,7 +14,7 @@ export const deleteTlsCert = async (
 	certId: string
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${certId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.delete(url);

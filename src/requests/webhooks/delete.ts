@@ -14,7 +14,7 @@ export const deleteWebhook = async (
 	webhookId: string
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${webhookId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.delete(url);

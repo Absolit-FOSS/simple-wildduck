@@ -14,7 +14,7 @@ export const listAllowlistedDomains = async (
 	tag: string
 ): Promise<ListAllowAndBlocklistedDomainsResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${tag}/allow`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);
@@ -33,7 +33,7 @@ export const listBlocklistedDomains = async (
 	tag: string
 ): Promise<ListAllowAndBlocklistedDomainsResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${tag}/block`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);

@@ -19,7 +19,7 @@ export const requestTlsCertificateInformation = async (
 	certId: string
 ): Promise<RequestTlsCertInfoResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${certId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);
@@ -38,7 +38,7 @@ export const listRegisteredTlsCertificates = async (
 	queryData: ListRegisteredTlsCertQueryParametersModel
 ): Promise<ListRegisteredTlsCertResponseModel> => {
 	const url = urlQueryBuilder(URL, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
@@ -58,7 +58,7 @@ export const resolveIdForServerName = async (
 	servername: string
 ): Promise<CreationResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/resolve/${servername}}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);

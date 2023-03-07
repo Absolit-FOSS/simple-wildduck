@@ -16,7 +16,7 @@ export const createNewDomainAlias = async (
 	bodyData: CreateNewDomainAliasBodyParameterModel
 ): Promise<CreationResponseModel> => {
 	const url = urlQueryBuilder(URL, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);

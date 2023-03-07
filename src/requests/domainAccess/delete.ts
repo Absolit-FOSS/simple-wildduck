@@ -14,7 +14,7 @@ export const deleteDomainFromListing = async (
 	domainId: string
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${domainId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.delete(url);

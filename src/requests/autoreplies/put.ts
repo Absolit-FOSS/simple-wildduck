@@ -17,7 +17,7 @@ export const updateAutoreplyInformation = async (
 	bodyData: UpdateAutoreplyBodyParametersModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.put(url, bodyData);

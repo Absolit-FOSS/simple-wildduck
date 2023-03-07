@@ -1,5 +1,4 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
-import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import { GetAutoreplyResponseModel } from "./models";
@@ -15,7 +14,7 @@ export const requestAutoreplyInformation = async (
 	userId: string
 ): Promise<GetAutoreplyResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);

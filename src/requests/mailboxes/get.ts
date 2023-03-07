@@ -22,7 +22,7 @@ export const getMailboxInfo = async (
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId)}/${mailboxId}`,
 		{
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 		}
 	);
 
@@ -44,7 +44,7 @@ export const getUserMailboxes = async (
 	queryData: GetUserMailboxesQueryParametersModel
 ): Promise<GetUserMailboxesResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 

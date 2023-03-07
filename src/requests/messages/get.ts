@@ -30,7 +30,7 @@ export const getMessageInfo = async (
 			mailboxId
 		)}/${messageId}`,
 		{
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 			...queryData,
 		}
 	);
@@ -57,7 +57,7 @@ export const getMessagesInMailbox = async (
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace("{mailboxId}", mailboxId)}`,
 		{
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 			...queryData,
 		}
 	);
@@ -89,7 +89,7 @@ export const getMessageAttachment = async (
 			mailboxId
 		)}/${messageId}/attachments/${attachmentId}`,
 		{
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 		}
 	);
 
@@ -119,7 +119,7 @@ export const getMessageSource = async (
 			mailboxId
 		)}/${messageId}/message.eml`,
 		{
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 		}
 	);
 

@@ -20,7 +20,7 @@ export const getAppPasswordInformation = async (
 	aspId: string
 ): Promise<GetAppPasswordInformationResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/${aspId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);
@@ -41,7 +41,7 @@ export const listApplicationPasswords = async (
 	queryData: ListAppPasswordsQueryParametersModel
 ): Promise<ListAppPasswordsResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 

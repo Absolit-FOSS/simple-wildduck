@@ -9,7 +9,7 @@ https://docs.wildduck.email/api/
 ## Basic Usage
 
 ```typescript
-import wd from "simple-wildduck";
+import wd from "@absolit/simple-wildduck";
 
 // initial setup, only have to do once
 wd.wdInit({

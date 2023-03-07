@@ -18,7 +18,7 @@ export const createOrUpdateDkimKeyForDomain = async (
 	bodyData: CreateOrUpdateDkimKeyForDomainBodyParametersModel
 ): Promise<CreateOrUpdateDkimKeyForDomainResponseModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);

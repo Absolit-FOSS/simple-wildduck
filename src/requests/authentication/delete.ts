@@ -13,7 +13,7 @@ import { URL } from "./config";
 export const invalidateAuthenticationToken =
 	async (): Promise<DefaultResponseModel> => {
 		const url = urlQueryBuilder(`${URL}`, {
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 		});
 
 		const res = await axiosConf.delete(url);

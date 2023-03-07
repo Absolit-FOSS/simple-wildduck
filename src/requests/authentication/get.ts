@@ -19,7 +19,7 @@ export const listAuthenticationEvents = async (
 	queryData: ListAuthenticationEventsQueryParametersModel
 ): Promise<ListAuthenticationEventsResponseModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/authlog`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
@@ -41,7 +41,7 @@ export const requestEventInformation = async (
 	eventId: string
 ): Promise<RequestEventInformationResponseModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/authlog/${eventId}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.get(url);

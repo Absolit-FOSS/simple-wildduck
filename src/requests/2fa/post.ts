@@ -23,7 +23,7 @@ export const validateTOTPToken = async (
 	bodyData: ValidateTOTPTokenBodyParameterModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/totp/check`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);
@@ -47,7 +47,7 @@ export const enableTOTPSeed = async (
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId)}/totp/enable`,
 		{
-			access_token: wdData.accessToken,
+			accessToken: wdData.accessToken,
 		}
 	);
 
@@ -71,7 +71,7 @@ export const generateTOTPSeed = async (
 	bodyData: GenerateTOTPSeedBodyParameterModel
 ): Promise<GenerateTOTPSeedResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/totp/setup`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.post(url, bodyData);

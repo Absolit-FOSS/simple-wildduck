@@ -20,7 +20,7 @@ export const updateUser = async (
 	bodyData: UpdateUserBodyParametersModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${id}`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.put(url, bodyData);
@@ -41,7 +41,7 @@ export const logoutUser = async (
 	bodyData: LogoutUserBodyParametersModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${id}/logout`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.put(url, bodyData);

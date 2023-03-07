@@ -16,7 +16,7 @@ export const enableCustom2FA = async (
 	bodyData: UserIdentifierModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/custom`, {
-		access_token: wdData.accessToken,
+		accessToken: wdData.accessToken,
 	});
 
 	const res = await axiosConf.put(url, bodyData);
