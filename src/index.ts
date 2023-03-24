@@ -16,5 +16,6 @@ export * from "./requests/mailboxes";
 export * from "./requests/messages";
 export * from "./requests/storage";
 export * from "./requests/submission";
+export * from "./requests/users";
 export * from "./requests/webhooks";
 export * from "./setup";

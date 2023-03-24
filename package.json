@@ -1,6 +1,6 @@
 {
     "name": "@absolit/simple-wildduck",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "description": "Simple interface for the WildDuck API",
     "main": "dist/index.js",
     "scripts": {
