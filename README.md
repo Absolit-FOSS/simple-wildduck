@@ -1,10 +1,8 @@
 # Simple WildDuck
 
-**NOTE THAT THIS PACKAGE IS STILL IN DEVELOPMENT AND NOT READY FOR PRODUCTION**
+Simple way to access the WildDuck api from your JavaScript.
 
-Simple way to access the WildDuck api from your JavaScript
-
-https://docs.wildduck.email/api/
+Based completely on the existing API: https://docs.wildduck.email/api/
 
 ## Basic Usage
 
