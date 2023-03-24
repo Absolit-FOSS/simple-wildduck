@@ -20,7 +20,7 @@ export interface ReferenceModel {
 	action: string;
 }
 
-export interface EnvelopeModel {
+export interface SubmitMessageEnvelopeModel {
 	from?: FromToModel;
 	/**
 	 * Recipients information
@@ -59,7 +59,7 @@ export interface SubmitMessageForDeliveryBodyParameterModel
 	 * SMTP envelope. If not provided then resolved either
 	 * from message headers or from referenced message
 	 */
-	envelope?: EnvelopeModel;
+	envelope?: SubmitMessageEnvelopeModel;
 	/**
 	 * Addresses for the From: header
 	 */
