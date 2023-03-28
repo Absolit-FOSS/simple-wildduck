@@ -23,7 +23,7 @@ import {
 export const createUser = async (
 	bodyData: CreateUserBodyParameterModel
 ): Promise<CreationResponseModel> => {
-	const url = urlQueryBuilder(`${URL}/`, {
+	const url = urlQueryBuilder(`${URL}`, {
 		accessToken: wdData.accessToken,
 	});
 
