@@ -21,7 +21,7 @@ import {
 export const getMessageInfo = async (
 	userId: string,
 	mailboxId: string,
-	messageId: string,
+	messageId: number,
 	queryData: GetMessageInfoQueryParametersModel
 ): Promise<GetMessageInfoResponseModel> => {
 	const url = urlQueryBuilder(
@@ -80,7 +80,7 @@ export const getMessagesInMailbox = async (
 export const getMessageAttachment = async (
 	userId: string,
 	mailboxId: string,
-	messageId: string,
+	messageId: number,
 	attachmentId: string
 ): Promise<any> => {
 	const url = urlQueryBuilder(
@@ -111,7 +111,7 @@ export const getMessageAttachment = async (
 export const getMessageSource = async (
 	userId: string,
 	mailboxId: string,
-	messageId: string
+	messageId: number
 ): Promise<any> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace(
