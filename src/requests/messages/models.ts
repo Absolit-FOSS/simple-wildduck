@@ -177,8 +177,8 @@ export interface GetMessageInfoResponseModel {
 	thread: string;
 	from: FromToModel;
 	to?: FromToModel[];
-	cc?: FromToModel;
-	bcc?: FromToModel;
+	cc?: FromToModel[];
+	bcc?: FromToModel[];
 	/**
 	 * Message subject
 	 */
