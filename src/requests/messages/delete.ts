@@ -19,7 +19,7 @@ import {
 export const deleteMessage = async (
 	userId: string,
 	mailboxId: string,
-	messageId: string
+	messageId: number
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace(

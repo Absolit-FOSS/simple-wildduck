@@ -60,7 +60,7 @@ export const uploadMessage = async (
 export const forwardStoredMessage = async (
 	userId: string,
 	mailboxId: string,
-	messageId: string,
+	messageId: number,
 	bodyData: ForwardStoredMessageBodyParameterModel
 ): Promise<ForwardStoredMessageResponseModel> => {
 	const url = urlQueryBuilder(
@@ -115,7 +115,7 @@ export const searchUpdateMessage = async (
 export const submitDraftMessage = async (
 	userId: string,
 	mailboxId: string,
-	messageId: string,
+	messageId: number,
 	bodyData: SubmitDraftMessageBodyParameterModel
 ): Promise<SubmitDraftMessageResponseModel> => {
 	const url = urlQueryBuilder(
