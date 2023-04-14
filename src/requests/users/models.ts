@@ -2,8 +2,10 @@ import {
 	AvailableEmailScopes,
 	CursorResponseModel,
 	DefaultMailboxModel,
+	FromToModel,
 	LimitUsageModel,
 	LimitUsageTTLModel,
+	PageQueryModel,
 } from "../../models";
 
 export interface GetUserResponseLimitUsageModel {
@@ -543,4 +545,183 @@ export interface RecalculateUserQuotaResponseModel {
 	 * Calculated quota usage for the user
 	 */
 	storageUsed: number;
+}
+
+export interface SearchUserMessagesQueryParametersModel extends PageQueryModel {
+	/**
+	 * ID of the Mailbox
+	 */
+	mailbox: string;
+	/**
+	 * Thread ID
+	 */
+	thread: string;
+	/**
+	 * Search string, uses MongoDB fulltext index. Covers data from message body and also common headers like from, to, subject etc.
+	 *
+	 */
+	query: string;
+	/**
+	 * Datestring for the earliest message storing time
+	 */
+	datestart: string;
+	/**
+	 * Datestring for the latest message storing time
+	 */
+	dateend: string;
+	/**
+	 * Partial match for the From: header line
+	 */
+	from: string;
+	/**
+	 * Partial match for the To: and Cc: header lines
+	 */
+	to: string;
+	/**
+	 * Partial match for the Subject: header line
+	 */
+	subject: string;
+	/**
+	 * If true, then matches only messages with attachments
+	 */
+	attachments: boolean;
+	/**
+	 * If true, then matches only messages with \Flagged flags
+	 */
+	flagged: boolean;
+	/**
+	 * If true, then matches only messages without \Seen flags
+	 */
+	unseen: boolean;
+	/**
+	 * If true, then matches messages not in Junk or Trash
+	 */
+	searchable: boolean;
+	/**
+	 * Search string, uses MongoDB fulltext index. Covers data from message body and also common headers like from, to, subject etc.
+	 */
+	"or.query": string;
+	/**
+	 * Partial match for the From: header line
+	 */
+	"or.from": string;
+	/**
+	 * Partial match for the To: and Cc: header lines
+	 */
+	"or.to": string;
+	/**
+	 * Partial match for the Subject: header line
+	 */
+	"or.subject": string;
+	/**
+	 * Minimal message size in bytes
+	 */
+	minSize: number;
+	/**
+	 * Maximal message size in bytes
+	 */
+	maxSize: number;
+	/**
+	 * If true, then includes threadMessageCount in the response. Counters come with some overhead
+	 */
+	threadCounters: boolean;
+	/**
+	 * Ordering of the records by insert date. If no order is supplied, results are sorted by heir mongoDB ObjectId.
+	 */
+	order: "asc" | "desc";
+}
+
+export interface SearchUserMessagesResponseModel extends CursorResponseModel {
+	results: {
+		/**
+		 * ID of the Message
+		 */
+		id: number;
+		/**
+		 * ID of the Mailbox
+		 */
+		mailbox: string;
+		/**
+		 * ID of the Thread
+		 */
+		thread: string;
+		/**
+		 * Amount of messages in the Thread. Included if threadCounters query argument was true
+		 */
+		threadMessageCount: number;
+		from: FromToModel;
+		/**
+		 * Recipients in To: field
+		 */
+		to: FromToModel[];
+		/**
+		 * Recipients in Cc: field
+		 */
+		cc: FromToModel[];
+		/**
+		 * Recipients in Bcc: field. Usually only available for drafts
+		 */
+		bcc: FromToModel[];
+		/**
+		 * Message subject
+		 */
+		subject: string;
+		/**
+		 * Date string from header
+		 */
+		date: string;
+		/**
+		 * Date string of receive time
+		 */
+		idate: string;
+		/**
+		 * Message size in bytes
+		 */
+		size: number;
+		/**
+		 * First 128 bytes of the message
+		 */
+		intro: string;
+		/**
+		 * Does the message have attachments
+		 */
+		attachments: boolean;
+		/**
+		 * Is this message already seen or not
+		 */
+		seen: boolean;
+		/**
+		 * Does this message have a \Deleted flag (should not have as messages are automatically deleted once this flag is set)
+		 */
+		deleted: boolean;
+		/**
+		 * Does this message have a \Flagged flag
+		 */
+		flagged: boolean;
+		/**
+		 * Does this message have a \Answered flag
+		 */
+		answered: boolean;
+		/**
+		 * Does this message have a $Forwarded flag
+		 */
+		forwarded: boolean;
+		/**
+		 * Parsed Content-Type header. Usually needed to identify encrypted messages and such
+		 */
+		contentType: {
+			/**
+			 * MIME type of the message, eg. "multipart/mixed"
+			 */
+			value: string;
+			/**
+			 * An object with Content-Type params as key-value pairs
+			 */
+			params: any;
+		};
+		/**
+		 * Custom metadata value. Included if metaData query argument was true
+		 */
+		metaData: any;
+	}[];
 }

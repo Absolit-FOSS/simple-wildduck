@@ -8,6 +8,8 @@ import {
 	GetUserResponseModel,
 	GetUsersQueryParametersModel,
 	GetUsersResponseModel,
+	SearchUserMessagesQueryParametersModel,
+	SearchUserMessagesResponseModel,
 } from "./models";
 
 /**
@@ -100,6 +102,28 @@ export const getDeletedUserInfo = async (
 	queryData: UserIdentifierModel
 ): Promise<GetDeletedUserInfoResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${id}/restore`, {
+		accessToken: wdData.accessToken,
+		...queryData,
+	});
+
+	const res = await axiosConf.get(url);
+
+	return res.data;
+};
+
+/**
+ * This method allows searching for matching messages.
+ *
+ * https://docs.wildduck.email/api/#operation/searchMessages
+ *
+ * @param userId the users wildduck ID
+ * @param queryData query parameters for additional options
+ */
+export const searchUserMessages = async (
+	userId: string,
+	queryData: SearchUserMessagesQueryParametersModel
+): Promise<SearchUserMessagesResponseModel> => {
+	const url = urlQueryBuilder(`${URL}/${userId}/search`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
