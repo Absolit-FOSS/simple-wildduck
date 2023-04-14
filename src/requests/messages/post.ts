@@ -70,11 +70,11 @@ export const uploadMessageReply = async (
 	const inReplyTo = messageResponse.id;
 	const references = messageResponse.reference;
 
-	const headers = {
-		"Content-Type": "application/json",
-		Authorization: `Bearer ${wdData.accessToken}`,
-		// Authorization: `Bearer ${process.env.WILDDUCK_API_TOKEN}`,
-	};
+	// const headers = [
+	// 	["Content-Type", "application/json"],
+	// 	["Authorization", `Bearer ${wdData.accessToken}`],
+	// 	// Authorization: `Bearer ${process.env.WILDDUCK_API_TOKEN}`,
+	// ];
 
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace("{mailboxId}", mailboxId)}`,
@@ -88,13 +88,22 @@ export const uploadMessageReply = async (
 		{
 			...bodyData,
 			subject: `Re: ${bodyData.subject}`,
-			headers: {
-				"In-Reply-To": inReplyTo,
-				References: references?.join(" "),
-			},
+			headers: [
+				{
+					key: "In-Reply-To",
+					value: inReplyTo,
+				},
+				{
+					key: "References",
+					value: references?.join(" "),
+				},
+			],
 		},
 		{
-			headers,
+			headers: {
+				Authorization: `Bearer ${wdData.accessToken}`,
+				"Content-Type": "application/json",
+			},
 		}
 	);
 
