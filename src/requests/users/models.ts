@@ -551,84 +551,83 @@ export interface SearchUserMessagesQueryParametersModel extends PageQueryModel {
 	/**
 	 * ID of the Mailbox
 	 */
-	mailbox: string;
+	mailbox?: string;
 	/**
 	 * Thread ID
 	 */
-	thread: string;
+	thread?: string;
 	/**
 	 * Search string, uses MongoDB fulltext index. Covers data from message body and also common headers like from, to, subject etc.
-	 *
 	 */
-	query: string;
+	query?: string;
 	/**
 	 * Datestring for the earliest message storing time
 	 */
-	datestart: string;
+	datestart?: string;
 	/**
 	 * Datestring for the latest message storing time
 	 */
-	dateend: string;
+	dateend?: string;
 	/**
 	 * Partial match for the From: header line
 	 */
-	from: string;
+	from?: string;
 	/**
 	 * Partial match for the To: and Cc: header lines
 	 */
-	to: string;
+	to?: string;
 	/**
 	 * Partial match for the Subject: header line
 	 */
-	subject: string;
+	subject?: string;
 	/**
 	 * If true, then matches only messages with attachments
 	 */
-	attachments: boolean;
+	attachments?: boolean;
 	/**
 	 * If true, then matches only messages with \Flagged flags
 	 */
-	flagged: boolean;
+	flagged?: boolean;
 	/**
 	 * If true, then matches only messages without \Seen flags
 	 */
-	unseen: boolean;
+	unseen?: boolean;
 	/**
 	 * If true, then matches messages not in Junk or Trash
 	 */
-	searchable: boolean;
+	searchable?: boolean;
 	/**
 	 * Search string, uses MongoDB fulltext index. Covers data from message body and also common headers like from, to, subject etc.
 	 */
-	"or.query": string;
+	"or.query"?: string;
 	/**
 	 * Partial match for the From: header line
 	 */
-	"or.from": string;
+	"or.from"?: string;
 	/**
 	 * Partial match for the To: and Cc: header lines
 	 */
-	"or.to": string;
+	"or.to"?: string;
 	/**
 	 * Partial match for the Subject: header line
 	 */
-	"or.subject": string;
+	"or.subject"?: string;
 	/**
 	 * Minimal message size in bytes
 	 */
-	minSize: number;
+	minSize?: number;
 	/**
 	 * Maximal message size in bytes
 	 */
-	maxSize: number;
+	maxSize?: number;
 	/**
 	 * If true, then includes threadMessageCount in the response. Counters come with some overhead
 	 */
-	threadCounters: boolean;
+	threadCounters?: boolean;
 	/**
 	 * Ordering of the records by insert date. If no order is supplied, results are sorted by heir mongoDB ObjectId.
 	 */
-	order: "asc" | "desc";
+	order?: "asc" | "desc";
 }
 
 export interface SearchUserMessagesResponseModel extends CursorResponseModel {
