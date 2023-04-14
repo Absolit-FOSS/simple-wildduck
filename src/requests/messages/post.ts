@@ -1,6 +1,7 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
+import { getMessageInfo } from "./get";
 import {
 	ForwardStoredMessageBodyParameterModel,
 	ForwardStoredMessageResponseModel,
@@ -9,6 +10,7 @@ import {
 	SubmitDraftMessageBodyParameterModel,
 	SubmitDraftMessageResponseModel,
 	UploadMessageBodyParameterModel,
+	UploadMessageReplyBodyParameterModel,
 	UploadMessageResponseModel,
 } from "./models";
 
@@ -39,6 +41,62 @@ export const uploadMessage = async (
 	);
 
 	const res = await axiosConf.post(url, bodyData);
+
+	return res.data;
+};
+
+/**
+ * This allows you to email a reply to a thread
+ *
+ * https://docs.wildduck.email/api/#operation/uploadMessage
+ *
+ * @param userId the users wildduck ID
+ * @param mailboxId the mailbox wildduck ID
+ * @param replyMessageId ID of the message you are replying to in a thread
+ * @param bodyData body parameters to update
+ */
+export const uploadMessageReply = async (
+	userId: string,
+	mailboxId: string,
+	replyMessageId: number,
+	bodyData: UploadMessageReplyBodyParameterModel
+): Promise<UploadMessageResponseModel> => {
+	const messageResponse = await getMessageInfo(
+		userId,
+		mailboxId,
+		replyMessageId,
+		{}
+	);
+	const inReplyTo = messageResponse.id;
+	const references = messageResponse.reference;
+
+	const headers = {
+		"Content-Type": "application/json",
+		Authorization: `Bearer ${wdData.accessToken}`,
+		// Authorization: `Bearer ${process.env.WILDDUCK_API_TOKEN}`,
+	};
+
+	const url = urlQueryBuilder(
+		`${URL.replace("{userId}", userId).replace("{mailboxId}", mailboxId)}`,
+		{
+			accessToken: wdData.accessToken,
+		}
+	);
+
+	const res = await axiosConf.post(
+		url,
+		{
+			...bodyData,
+			subject: `Re: ${bodyData.subject}`,
+			headers: {
+				"In-Reply-To": inReplyTo,
+				References: references.join(" "),
+			},
+		},
+		{
+			headers,
+		}
+	);
 
 	return res.data;
 };
