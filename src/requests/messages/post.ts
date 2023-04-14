@@ -90,7 +90,7 @@ export const uploadMessageReply = async (
 			subject: `Re: ${bodyData.subject}`,
 			headers: {
 				"In-Reply-To": inReplyTo,
-				References: references.join(" "),
+				References: references?.join(" "),
 			},
 		},
 		{
