@@ -91,7 +91,7 @@ export const uploadMessageReply = async (
 			headers: [
 				{
 					key: "In-Reply-To",
-					value: inReplyTo,
+					value: String(inReplyTo),
 				},
 				{
 					key: "References",
