@@ -87,7 +87,7 @@ export const uploadMessageReply = async (
 		url,
 		{
 			...bodyData,
-			subject: `Re: ${bodyData.subject}`,
+			subject: `${bodyData.subject}`,
 			headers: [
 				{
 					key: "In-Reply-To",
