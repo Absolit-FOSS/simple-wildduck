@@ -276,7 +276,7 @@ export interface GetMessageInfoResponseModel {
 	/**
 	 * Referenced message info
 	 */
-	reference?: any;
+	reference?: string[];
 	/**
 	 * List of files added to this message as attachments. Applies to
 	 * Drafts, normal messages do not have this property. Needed to
@@ -480,7 +480,7 @@ export interface UploadMessageRefModel {
 	/**
 	 * Either reply, replyAll or forward
 	 */
-	action: string;
+	action: "reply" | "replyAll" | "forward";
 	/**
 	 * If true, then includes all attachments from the original message.
 	 * If it is an array of attachment ID's includes attachments from the

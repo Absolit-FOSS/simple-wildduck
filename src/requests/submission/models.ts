@@ -17,7 +17,7 @@ export interface ReferenceModel {
 	/**
 	 * Either reply, replyAll or forward
 	 */
-	action: string;
+	action: "reply" | "replyAll" | "forward";
 }
 
 export interface SubmitMessageEnvelopeModel {
