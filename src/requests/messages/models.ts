@@ -488,6 +488,10 @@ export interface GetMessagesInMailboxResponseModel extends CursorResponseModel {
 		 */
 		size: number;
 		/**
+		 * Is this email a draft
+		 */
+		draft?: boolean;
+		/**
 		 * First 128 bytes of the message
 		 */
 		intro: string;
@@ -534,6 +538,10 @@ export interface GetMessagesInMailboxResponseModel extends CursorResponseModel {
 		 * Custom metadata value. Included if metaData query argument was true
 		 */
 		metaData?: any;
+		/**
+		 * Universal message ID that is recognized by other email providers
+		 */
+		messageId: string[];
 		/**
 		 * References of previous emails in a thread. This references
 		 * the message.messageId (not to be confused with message.id)
