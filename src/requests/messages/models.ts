@@ -541,7 +541,7 @@ export interface GetMessagesInMailboxResponseModel extends CursorResponseModel {
 		/**
 		 * Universal message ID that is recognized by other email providers
 		 */
-		messageId: string[];
+		messageId: string;
 		/**
 		 * References of previous emails in a thread. This references
 		 * the message.messageId (not to be confused with message.id)
