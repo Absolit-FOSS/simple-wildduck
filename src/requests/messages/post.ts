@@ -69,7 +69,7 @@ export const uploadMessageReply = async (
 	);
 	const inReplyTo = messageResponse.messageId;
 	// todo? add all prior emails to references?
-	const references = messageResponse.reference;
+	const references = messageResponse.references;
 
 	// const headers = [
 	// 	["Content-Type", "application/json"],
