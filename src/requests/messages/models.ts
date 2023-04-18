@@ -276,7 +276,7 @@ export interface GetMessageInfoResponseModel {
 	/**
 	 * Referenced message info
 	 */
-	reference?: string[];
+	references?: string[];
 	/**
 	 * List of files added to this message as attachments. Applies to
 	 * Drafts, normal messages do not have this property. Needed to
