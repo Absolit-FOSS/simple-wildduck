@@ -338,216 +338,117 @@ export interface GetMessagesInMailboxQueryParametersModel
 	order?: "asc" | "desc";
 }
 
-// export interface MessageModel {
-// 	/**
-// 	 * ID of the Message
-// 	 */
-// 	id: number;
-// 	/**
-// 	 * ID of the Mailbox
-// 	 */
-// 	mailbox: string;
-// 	/**
-// 	 * ID of the Thread
-// 	 */
-// 	thread: string;
-// 	/**
-// 	 * Amount of messages in the Thread. Included if threadCounters query
-// 	 * argument was true
-// 	 */
-// 	threadMessageCount?: number;
-// 	from: FromToModel;
-// 	/**
-// 	 * Recipients in To: field
-// 	 */
-// 	to: FromToModel[];
-// 	/**
-// 	 * Recipients in Cc: field
-// 	 */
-// 	cc: FromToModel[];
-// 	/**
-// 	 * Recipients in Bcc: field
-// 	 */
-// 	bcc: FromToModel[];
-// 	/**
-// 	 * Message subject
-// 	 */
-// 	subject: string;
-// 	/**
-// 	 * Date string from header
-// 	 */
-// 	date: string;
-// 	/**
-// 	 * Date string of receive time
-// 	 */
-// 	idate?: string;
-// 	/**
-// 	 * Message size in bytes
-// 	 */
-// 	size: number;
-// 	/**
-// 	 * First 128 bytes of the message
-// 	 */
-// 	intro: string;
-// 	/**
-// 	 * Does the message have attachments
-// 	 */
-// 	attachments: boolean;
-// 	/**
-// 	 * Is this message already seen or not
-// 	 */
-// 	seen: boolean;
-// 	/**
-// 	 * Does this message have a \Deleted flag (should not have as messages
-// 	 * are automatically deleted once this flag is set)
-// 	 */
-// 	deleted: boolean;
-// 	/**
-// 	 * Does this message have a \Flagged flag
-// 	 */
-// 	flagged: boolean;
-// 	/**
-// 	 * Does this message have a \Answered flag
-// 	 */
-// 	answered: boolean;
-// 	/**
-// 	 * Does this message have a $Forwarded flag
-// 	 */
-// 	forwarded: boolean;
-// 	/**
-// 	 * Parsed Content-Type header. Usually needed to identify encrypted
-// 	 * messages and such
-// 	 */
-// 	contentType: {
-// 		/**
-// 		 * MIME type of the message, eg. "multipart/mixed"
-// 		 */
-// 		value: string;
-// 		/**
-// 		 * An object with Content-Type params as key-value pairs
-// 		 */
-// 		params: any;
-// 	};
-// 	/**
-// 	 * Custom metadata value. Included if metaData query argument was true
-// 	 */
-// 	metaData?: any;
-// 	/**
-// 	 * References of previous emails in a thread. This references
-// 	 * the message.messageId (not to be confused with message.id)
-// 	 */
-// 	references: string[];
-// }
+export interface MessageInMailboxModel {
+	/**
+	 * ID of the Message
+	 */
+	id: number;
+	/**
+	 * ID of the Mailbox
+	 */
+	mailbox: string;
+	/**
+	 * ID of the Thread
+	 */
+	thread: string;
+	/**
+	 * Amount of messages in the Thread. Included if threadCounters query
+	 * argument was true
+	 */
+	threadMessageCount?: number;
+	from: FromToModel;
+	/**
+	 * Recipients in To: field
+	 */
+	to: FromToModel[];
+	/**
+	 * Recipients in Cc: field
+	 */
+	cc: FromToModel[];
+	/**
+	 * Recipients in Bcc: field
+	 */
+	bcc: FromToModel[];
+	/**
+	 * Message subject
+	 */
+	subject: string;
+	/**
+	 * Date string from header
+	 */
+	date: string;
+	/**
+	 * Date string of receive time
+	 */
+	idate?: string;
+	/**
+	 * Message size in bytes
+	 */
+	size: number;
+	/**
+	 * Is this email a draft
+	 */
+	draft?: boolean;
+	/**
+	 * First 128 bytes of the message
+	 */
+	intro: string;
+	/**
+	 * Does the message have attachments
+	 */
+	attachments: boolean;
+	/**
+	 * Is this message already seen or not
+	 */
+	seen: boolean;
+	/**
+	 * Does this message have a \Deleted flag (should not have as messages
+	 * are automatically deleted once this flag is set)
+	 */
+	deleted: boolean;
+	/**
+	 * Does this message have a \Flagged flag
+	 */
+	flagged: boolean;
+	/**
+	 * Does this message have a \Answered flag
+	 */
+	answered: boolean;
+	/**
+	 * Does this message have a $Forwarded flag
+	 */
+	forwarded: boolean;
+	/**
+	 * Parsed Content-Type header. Usually needed to identify encrypted
+	 * messages and such
+	 */
+	contentType: {
+		/**
+		 * MIME type of the message, eg. "multipart/mixed"
+		 */
+		value: string;
+		/**
+		 * An object with Content-Type params as key-value pairs
+		 */
+		params: any;
+	};
+	/**
+	 * Custom metadata value. Included if metaData query argument was true
+	 */
+	metaData?: any;
+	/**
+	 * Universal message ID that is recognized by other email providers
+	 */
+	messageId: string;
+	/**
+	 * References of previous emails in a thread. This references
+	 * the message.messageId (not to be confused with message.id)
+	 */
+	references: string[];
+}
 
 export interface GetMessagesInMailboxResponseModel extends CursorResponseModel {
-	results: {
-		/**
-		 * ID of the Message
-		 */
-		id: number;
-		/**
-		 * ID of the Mailbox
-		 */
-		mailbox: string;
-		/**
-		 * ID of the Thread
-		 */
-		thread: string;
-		/**
-		 * Amount of messages in the Thread. Included if threadCounters query
-		 * argument was true
-		 */
-		threadMessageCount?: number;
-		from: FromToModel;
-		/**
-		 * Recipients in To: field
-		 */
-		to: FromToModel[];
-		/**
-		 * Recipients in Cc: field
-		 */
-		cc: FromToModel[];
-		/**
-		 * Recipients in Bcc: field
-		 */
-		bcc: FromToModel[];
-		/**
-		 * Message subject
-		 */
-		subject: string;
-		/**
-		 * Date string from header
-		 */
-		date: string;
-		/**
-		 * Date string of receive time
-		 */
-		idate?: string;
-		/**
-		 * Message size in bytes
-		 */
-		size: number;
-		/**
-		 * Is this email a draft
-		 */
-		draft?: boolean;
-		/**
-		 * First 128 bytes of the message
-		 */
-		intro: string;
-		/**
-		 * Does the message have attachments
-		 */
-		attachments: boolean;
-		/**
-		 * Is this message already seen or not
-		 */
-		seen: boolean;
-		/**
-		 * Does this message have a \Deleted flag (should not have as messages
-		 * are automatically deleted once this flag is set)
-		 */
-		deleted: boolean;
-		/**
-		 * Does this message have a \Flagged flag
-		 */
-		flagged: boolean;
-		/**
-		 * Does this message have a \Answered flag
-		 */
-		answered: boolean;
-		/**
-		 * Does this message have a $Forwarded flag
-		 */
-		forwarded: boolean;
-		/**
-		 * Parsed Content-Type header. Usually needed to identify encrypted
-		 * messages and such
-		 */
-		contentType: {
-			/**
-			 * MIME type of the message, eg. "multipart/mixed"
-			 */
-			value: string;
-			/**
-			 * An object with Content-Type params as key-value pairs
-			 */
-			params: any;
-		};
-		/**
-		 * Custom metadata value. Included if metaData query argument was true
-		 */
-		metaData?: any;
-		/**
-		 * Universal message ID that is recognized by other email providers
-		 */
-		messageId: string;
-		/**
-		 * References of previous emails in a thread. This references
-		 * the message.messageId (not to be confused with message.id)
-		 */
-		references: string[];
-	}[];
+	results: MessageInMailboxModel[];
 }
 
 export interface UpdateMessagesBodyParameterModel {
