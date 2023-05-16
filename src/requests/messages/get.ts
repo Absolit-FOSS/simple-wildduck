@@ -68,7 +68,7 @@ export const getMessagesInMailbox = async (
 };
 
 /**
- * Download a message attachment
+ * Download a message attachment, return buffer string.
  *
  * https://docs.wildduck.email/api/#operation/getMessageAttachment
  *
@@ -82,7 +82,7 @@ export const getMessageAttachment = async (
 	mailboxId: string,
 	messageId: number,
 	attachmentId: string
-): Promise<any> => {
+): Promise<string> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace(
 			"{mailboxId}",
@@ -93,9 +93,10 @@ export const getMessageAttachment = async (
 		}
 	);
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get(url, { responseType: "arraybuffer" });
+	const data = Buffer.from(res.data, "binary").toString("base64");
 
-	return res.data;
+	return data;
 };
 
 /**
