@@ -5,6 +5,8 @@ Simple way to access the WildDuck api from your JavaScript.
 Based completely on the existing API: https://docs.wildduck.email/api/
 
 - [Setup and Usage](#setup-and-usage)
+- [Contributing](#contributing)
+  - [Project Structure](#project-structure)
 - [Request Functions](#request-functions)
   - [Messages](#messages)
     - [updateMessageInfo](#updateMessageInfo)
@@ -14,8 +16,6 @@ Based completely on the existing API: https://docs.wildduck.email/api/
     - [deleteAppPassword](#deleteapppassword)
     - [createNewAppPassword](#createnewapppassword)
     <!-- and all the rest -->
-- [Contributing](#contributing)
-  - [Project Structure](#project-structure)
 
 ## Setup and Usage
 
@@ -37,6 +37,22 @@ if (users.success && users.results.length > 0) {
 	console.log(users.results[0].address);
 }
 ```
+
+## Contributing
+
+### Project Structure
+
+- `src/` -> All source code goes here
+- `src/models` -> Models that can be used everywhere goes here
+- `src/requests` -> All WildDuck request endpoints
+  - `src/requests/.../index.ts` -> Exports all request functions
+  - `src/requests/.../config.ts` -> Config to be applied to all requests
+  - `src/requests/.../models.ts` -> All models used in related requests
+  - `src/requests/.../get.ts` -> All GET request functions
+  - `src/requests/.../delete.ts` -> All DELETE request functions
+  - `src/requests/.../post.ts` -> All POST request functions
+  - `src/requests/.../put.ts` -> All PUT request functions
+- `src/setup` -> Module setup, required functions when imported into your project
 
 ## Request Functions
 
@@ -699,19 +715,3 @@ Docs: [https://docs.wildduck.email/api/#operation/getAuditInformation](https://d
 Request exportAuditedEmails.
 
 Docs: [https://docs.wildduck.email/api/#operation/exportAuditedEmails](https://docs.wildduck.email/api/#operation/exportAuditedEmails)
-
-## Contributing
-
-### Project Structure
-
-- `src/` -> All source code goes here
-- `src/models` -> Models that can be used everywhere goes here
-- `src/requests` -> All WildDuck request endpoints
-  - `src/requests/.../index.ts` -> Exports all request functions
-  - `src/requests/.../config.ts` -> Config to be applied to all requests
-  - `src/requests/.../models.ts` -> All models used in related requests
-  - `src/requests/.../get.ts` -> All GET request functions
-  - `src/requests/.../delete.ts` -> All DELETE request functions
-  - `src/requests/.../post.ts` -> All POST request functions
-  - `src/requests/.../put.ts` -> All PUT request functions
-- `src/setup` -> Module setup, required functions when imported into your project
