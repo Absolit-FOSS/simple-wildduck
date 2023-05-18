@@ -29,7 +29,7 @@ export const disable2FA = async (
 /**
  * This method disables custom 2FA. If it was the only 2FA
  * set up, then account password for IMAP/POP3/SMTP gets
- * enabled again
+ * enabled again.
  *
  * https://docs.wildduck.email/api/#operation/disableCustom2FA
  *
@@ -52,7 +52,7 @@ export const disableCustom2FA = async (
 
 /**
  * This method disables TOTP for a user. Does not affect
- * other 2FA mechanisms a user might have set up
+ * other 2FA mechanisms a user might have set up.
  *
  * https://docs.wildduck.email/api/#operation/disableTotp2FA
  *

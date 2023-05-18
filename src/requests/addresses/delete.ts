@@ -4,7 +4,7 @@ import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 
 /**
- * Delete a forwarded Address
+ * Delete a forwarded Address.
  *
  * https://docs.wildduck.email/api/#operation/deleteForwardedAddress
  *
@@ -23,7 +23,7 @@ export const deleteForwardedAddress = async (
 };
 
 /**
- * Delete an Address
+ * Delete an Address.
  *
  * https://docs.wildduck.email/api/#operation/deleteUserAddress
  *
