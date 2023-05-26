@@ -135,7 +135,7 @@ export const forwardStoredMessage = async (
 		`${URL.replace("{userId}", userId).replace(
 			"{mailboxId}",
 			mailboxId
-		)}/${messageId}`,
+		)}/${messageId}/forward`,
 		{
 			accessToken: wdData.accessToken,
 		}
