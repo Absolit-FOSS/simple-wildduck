@@ -57,7 +57,7 @@ def process_directory(directory_path: str) -> str:
 
 
 def main():
-    process_directory(current_directory)
+    docs = process_directory(current_directory)
 
     with open("docs.md", "w") as file:
         file.write(docs)
