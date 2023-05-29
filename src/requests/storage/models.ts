@@ -49,5 +49,5 @@ export interface UploadFileToStorageBodyParameterModel {
 	/**
 	 * Binary file
 	 */
-	content: any;
+	content: string | Buffer;
 }
