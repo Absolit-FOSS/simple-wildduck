@@ -39,7 +39,7 @@ export const getStoredFiles = async (
 	userId: string,
 	queryData: GetStoredFilesQueryParametersModel
 ): Promise<GetStoredFilesResponseModel> => {
-	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/`, {
+	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
