@@ -34,7 +34,7 @@ export const getAliasInformation = async (
  * @param query Partial match of a Domain Alias or Domain name
  */
 export const listRegisteredDomainAliases = async (
-	queryData: FullQueryModel
+	queryData?: FullQueryModel
 ): Promise<ListRegisteredDomainAliasesResponseModel> => {
 	const url = urlQueryBuilder(URL, {
 		accessToken: wdData.accessToken,

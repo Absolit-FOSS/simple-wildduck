@@ -37,7 +37,7 @@ export const downloadFile = async (
  */
 export const getStoredFiles = async (
 	userId: string,
-	queryData: GetStoredFilesQueryParametersModel
+	queryData?: GetStoredFilesQueryParametersModel
 ): Promise<GetStoredFilesResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		accessToken: wdData.accessToken,

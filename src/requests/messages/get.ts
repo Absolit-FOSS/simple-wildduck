@@ -22,7 +22,7 @@ export const getMessageInfo = async (
 	userId: string,
 	mailboxId: string,
 	messageId: number,
-	queryData: GetMessageInfoQueryParametersModel
+	queryData?: GetMessageInfoQueryParametersModel
 ): Promise<GetMessageInfoResponseModel> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace(
@@ -52,7 +52,7 @@ export const getMessageInfo = async (
 export const getMessagesInMailbox = async (
 	userId: string,
 	mailboxId: string,
-	queryData: GetMessagesInMailboxQueryParametersModel
+	queryData?: GetMessagesInMailboxQueryParametersModel
 ): Promise<GetMessagesInMailboxResponseModel> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace("{mailboxId}", mailboxId)}`,

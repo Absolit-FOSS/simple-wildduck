@@ -14,7 +14,7 @@ import { DeleteUserQueryParametersModel } from "./models";
  */
 export const deleteUser = async (
 	id: string,
-	queryData: DeleteUserQueryParametersModel
+	queryData?: DeleteUserQueryParametersModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${id}`, {
 		accessToken: wdData.accessToken,

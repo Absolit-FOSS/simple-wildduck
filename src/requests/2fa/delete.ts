@@ -14,7 +14,7 @@ import { URL } from "./config";
  */
 export const disable2FA = async (
 	userId: string,
-	queryData: UserIdentifierModel
+	queryData?: UserIdentifierModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		accessToken: wdData.accessToken,
@@ -38,7 +38,7 @@ export const disable2FA = async (
  */
 export const disableCustom2FA = async (
 	userId: string,
-	queryData: UserIdentifierModel
+	queryData?: UserIdentifierModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/custom`, {
 		accessToken: wdData.accessToken,
@@ -61,7 +61,7 @@ export const disableCustom2FA = async (
  */
 export const disableTOTPAuth = async (
 	userId: string,
-	queryData: UserIdentifierModel
+	queryData?: UserIdentifierModel
 ): Promise<DefaultResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/totp`, {
 		accessToken: wdData.accessToken,

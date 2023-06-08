@@ -41,7 +41,7 @@ export const getMailboxInfo = async (
  */
 export const getUserMailboxes = async (
 	userId: string,
-	queryData: GetUserMailboxesQueryParametersModel
+	queryData?: GetUserMailboxesQueryParametersModel
 ): Promise<GetUserMailboxesResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		accessToken: wdData.accessToken,

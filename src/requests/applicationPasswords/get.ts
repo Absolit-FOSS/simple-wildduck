@@ -38,7 +38,7 @@ export const getAppPasswordInformation = async (
  */
 export const listApplicationPasswords = async (
 	userId: string,
-	queryData: ListAppPasswordsQueryParametersModel
+	queryData?: ListAppPasswordsQueryParametersModel
 ): Promise<ListAppPasswordsResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		accessToken: wdData.accessToken,

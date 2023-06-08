@@ -2,9 +2,9 @@ import { urlQueryBuilder } from "@netsu/js-utils";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
-	GetAddressesInfoResponseModelModel,
 	GetAddressInfoQueryParametersModel,
 	GetAddressInfoResponseModel,
+	GetAddressesInfoResponseModelModel,
 	GetForwardedAddressInfoResponseModel,
 	ListAddressesFromCommunicationRegisterQueryParametersModel,
 	ListAddressesFromCommunicationRegisterResponseModel,
@@ -64,7 +64,7 @@ export const getAddressesInfo = async (
  */
 export const getAddressInfo = async (
 	addressId: string,
-	queryData: GetAddressInfoQueryParametersModel
+	queryData?: GetAddressInfoQueryParametersModel
 ): Promise<GetAddressInfoResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/resolve/${addressId}`, {
 		accessToken: wdData.accessToken,
@@ -85,7 +85,7 @@ export const getAddressInfo = async (
  * @param queryData query parameters for additional options
  */
 export const listRegisteredAddresses = async (
-	queryData: ListRegisteredAddressesQueryParametersModel
+	queryData?: ListRegisteredAddressesQueryParametersModel
 ): Promise<ListRegisteredAddressesResponseModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		accessToken: wdData.accessToken,
@@ -107,7 +107,7 @@ export const listRegisteredAddresses = async (
  */
 export const listRegisteredAddressesForUser = async (
 	userId: string,
-	queryData: ListRegisteredAddressesForUserQueryParametersModel
+	queryData?: ListRegisteredAddressesForUserQueryParametersModel
 ): Promise<ListRegisteredAddressesForUserResponseModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/addresses`, {
 		accessToken: wdData.accessToken,
@@ -129,7 +129,7 @@ export const listRegisteredAddressesForUser = async (
  */
 export const listAddressesFromCommunicationRegister = async (
 	userId: string,
-	queryData: ListAddressesFromCommunicationRegisterQueryParametersModel
+	queryData?: ListAddressesFromCommunicationRegisterQueryParametersModel
 ): Promise<ListAddressesFromCommunicationRegisterResponseModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/addressregister`, {
 		accessToken: wdData.accessToken,

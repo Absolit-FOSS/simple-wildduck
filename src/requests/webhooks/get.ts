@@ -14,7 +14,7 @@ import {
  * @param queryData query parameters for additional options
  */
 export const getRegisteredWebhooks = async (
-	queryData: GetRegisteredWebhooksQueryParametersModel
+	queryData?: GetRegisteredWebhooksQueryParametersModel
 ): Promise<GetRegisteredWebhooksResponseModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		accessToken: wdData.accessToken,

@@ -19,7 +19,7 @@ import {
  */
 export const listArchivedMessage = async (
 	userId: string,
-	queryData: ListArchivedMessageQueryParameterModel
+	queryData?: ListArchivedMessageQueryParameterModel
 ): Promise<ListArchivedMessageResponseModel> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/messages`, {
 		accessToken: wdData.accessToken,

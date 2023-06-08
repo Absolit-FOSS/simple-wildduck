@@ -16,7 +16,7 @@ import {
  */
 export const listAuthenticationEvents = async (
 	userId: string,
-	queryData: ListAuthenticationEventsQueryParametersModel
+	queryData?: ListAuthenticationEventsQueryParametersModel
 ): Promise<ListAuthenticationEventsResponseModel> => {
 	const url = urlQueryBuilder(`/users/${userId}/authlog`, {
 		accessToken: wdData.accessToken,

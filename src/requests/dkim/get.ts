@@ -35,7 +35,7 @@ export const requestDkimInformation = async (
  * @param queryData query parameters for additional options
  */
 export const listRegisteredDkimKeys = async (
-	queryData: ListRegisteredDkimKeysQueryParameters
+	queryData?: ListRegisteredDkimKeysQueryParameters
 ): Promise<ListRegisteredDkimKeysResponseParameters> => {
 	const url = urlQueryBuilder(URL, {
 		accessToken: wdData.accessToken,

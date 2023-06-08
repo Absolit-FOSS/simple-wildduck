@@ -35,7 +35,7 @@ export const requestTlsCertificateInformation = async (
  * @param queryData query parameters for additional options
  */
 export const listRegisteredTlsCertificates = async (
-	queryData: ListRegisteredTlsCertQueryParametersModel
+	queryData?: ListRegisteredTlsCertQueryParametersModel
 ): Promise<ListRegisteredTlsCertResponseModel> => {
 	const url = urlQueryBuilder(URL, {
 		accessToken: wdData.accessToken,

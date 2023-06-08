@@ -40,7 +40,7 @@ export const requestFilterInformation = async (
  * @param queryData query parameters for additional options
  */
 export const listAllFilters = async (
-	queryData: ListAllFiltersQueryParametersModel
+	queryData?: ListAllFiltersQueryParametersModel
 ): Promise<ListAllFiltersResponseModel> => {
 	const url = urlQueryBuilder(`/filters`, {
 		accessToken: wdData.accessToken,

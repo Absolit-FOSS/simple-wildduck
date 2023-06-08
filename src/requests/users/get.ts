@@ -37,7 +37,7 @@ export const getUser = async (id: string): Promise<GetUserResponseModel> => {
  * @param queryData query parameters for additional options
  */
 export const getUsers = async (
-	queryData: GetUsersQueryParametersModel
+	queryData?: GetUsersQueryParametersModel
 ): Promise<GetUsersResponseModel> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		accessToken: wdData.accessToken,
@@ -99,7 +99,7 @@ export const getUserIdByUsername = async (
  */
 export const getDeletedUserInfo = async (
 	id: string,
-	queryData: UserIdentifierModel
+	queryData?: UserIdentifierModel
 ): Promise<GetDeletedUserInfoResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${id}/restore`, {
 		accessToken: wdData.accessToken,
@@ -121,7 +121,7 @@ export const getDeletedUserInfo = async (
  */
 export const searchUserMessages = async (
 	userId: string,
-	queryData: SearchUserMessagesQueryParametersModel
+	queryData?: SearchUserMessagesQueryParametersModel
 ): Promise<SearchUserMessagesResponseModel> => {
 	const url = urlQueryBuilder(`${URL}/${userId}/search`, {
 		accessToken: wdData.accessToken,

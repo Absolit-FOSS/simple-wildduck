@@ -48,7 +48,7 @@ export const deleteMessage = async (
 export const deleteAllMessages = async (
 	userId: string,
 	mailboxId: string,
-	queryData: DeleteAllMessagesQueryParametersModel
+	queryData?: DeleteAllMessagesQueryParametersModel
 ): Promise<DeleteAllMessagesResponseModel> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace("{mailboxId}", mailboxId)}`,
