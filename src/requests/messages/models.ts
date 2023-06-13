@@ -283,7 +283,7 @@ export interface GetMessageInfoResponseModel {
 	 * prevent uploading the same attachment every time a draft is
 	 * updated
 	 */
-	files?: FileModel;
+	files?: FileModel[];
 	/**
 	 * Outbound queue entries
 	 */
