@@ -38,3 +38,11 @@ if (users.success && users.results.length > 0) {
   - `src/requests/.../post.ts` -> All POST request functions
   - `src/requests/.../put.ts` -> All PUT request functions
 - `src/setup` -> Module setup, required functions when imported into your project
+
+---
+
+## MeetingPal - Simplify Voting in Meetings
+
+[MeetingPal](https://meetingpal.co.za) is a user-friendly app that allows for transparent voting during online, hybrid, or in-person meetings. This revolutionary software can be used for community schemes, professional bodies, associations, or trusts as it enables attendees to vote securely from anywhere in the world using only a mobile device. Enhance your meeting experience with MeetingPal.
+
+---
