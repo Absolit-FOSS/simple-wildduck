@@ -17,9 +17,9 @@ export const deleteForwardedAddress = async (
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.delete(url);
+	const res: DefaultResponseModel = await axiosConf.delete(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -38,7 +38,7 @@ export const deleteAddress = async (
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.delete(url);
+	const res: DefaultResponseModel = await axiosConf.delete(url);
 
-	return res.data;
+	return res;
 };

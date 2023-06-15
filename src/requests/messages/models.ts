@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import {
 	AttachmentModel,
 	CursorResponseModel,
@@ -150,153 +151,155 @@ export interface FileModel {
 	size: number;
 }
 
-export interface GetMessageInfoResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * ID of the Message
-	 */
-	id: number;
-	/**
-	 * ID of the Mailbox
-	 */
-	mailbox: string;
-	/**
-	 * ID of the User
-	 */
-	user: string;
-	/**
-	 * SMTP envelope (if available)
-	 */
-	envelope: EnvelopeModel;
-	/**
-	 * ID of the Thread
-	 */
-	thread: string;
-	from: FromToModel;
-	to?: FromToModel[];
-	cc?: FromToModel[];
-	bcc?: FromToModel[];
-	/**
-	 * Message subject
-	 */
-	subject: string;
-	/**
-	 * Message-ID header
-	 */
-	messageId: string;
-	/**
-	 * Date string from header
-	 */
-	date: string;
-	/**
-	 * Date string of receive time
-	 */
-	idate?: string;
-	/**
-	 * If set then this message is from a mailing list
-	 */
-	list?: {
+export interface GetMessageInfoResponseModel extends AxiosResponse<any, any> {
+	data: {
 		/**
-		 * Value from List-ID header
+		 * Indicates successful response
 		 */
-		id: string;
+		success: boolean;
 		/**
-		 * Value from List-Unsubscribe header
+		 * ID of the Message
 		 */
-		unsubscribe: string;
+		id: number;
+		/**
+		 * ID of the Mailbox
+		 */
+		mailbox: string;
+		/**
+		 * ID of the User
+		 */
+		user: string;
+		/**
+		 * SMTP envelope (if available)
+		 */
+		envelope: EnvelopeModel;
+		/**
+		 * ID of the Thread
+		 */
+		thread: string;
+		from: FromToModel;
+		to?: FromToModel[];
+		cc?: FromToModel[];
+		bcc?: FromToModel[];
+		/**
+		 * Message subject
+		 */
+		subject: string;
+		/**
+		 * Message-ID header
+		 */
+		messageId: string;
+		/**
+		 * Date string from header
+		 */
+		date: string;
+		/**
+		 * Date string of receive time
+		 */
+		idate?: string;
+		/**
+		 * If set then this message is from a mailing list
+		 */
+		list?: {
+			/**
+			 * Value from List-ID header
+			 */
+			id: string;
+			/**
+			 * Value from List-Unsubscribe header
+			 */
+			unsubscribe: string;
+		};
+		/**
+		 * Datestring, if set then indicates the time
+		 * after this message is automatically deleted
+		 */
+		expires?: string;
+		/**
+		 * Does this message have a \Seen flag
+		 */
+		seen: boolean;
+		/**
+		 * Does this message have a \Deleted flag
+		 */
+		deleted: boolean;
+		/**
+		 * Does this message have a \Flagged flag
+		 */
+		flagged: boolean;
+		/**
+		 * Does this message have a \Draft flag
+		 */
+		draft: boolean;
+		/**
+		 * An array of HTML string. Every array
+		 * element is from a separate mime node,
+		 * usually you would just join these to a
+		 * single string
+		 */
+		html?: string[];
+		/**
+		 * Plaintext content of the message
+		 */
+		text?: string;
+		/**
+		 * Attachments for the message
+		 */
+		attachments?: MessageInfoAttachmentModel[];
+		/**
+		 * Security verification info if message was received from MX.
+		 * If this property is missing then do not automatically assume
+		 * invalid TLS, SPF or DKIM.
+		 */
+		verificationResults?: VerificationResultModel;
+		/**
+		 * BIMI logo info. If logo validation failed in any way, then
+		 * this property is not set
+		 */
+		bimi?: BimiModel;
+		/**
+		 * Parsed Content-Type header. Usually needed to identify
+		 * encrypted messages and such
+		 */
+		contentType: {
+			/**
+			 * MIME type of the message, eg. "multipart/mixed"
+			 */
+			value: string;
+			/**
+			 * An object with Content-Type params as key-value pairs
+			 */
+			params: any;
+		};
+		/**
+		 * Custom metadata object set for this message
+		 */
+		metaData: any;
+		/**
+		 * Referenced message info
+		 */
+		references?: string[];
+		/**
+		 * List of files added to this message as attachments. Applies to
+		 * Drafts, normal messages do not have this property. Needed to
+		 * prevent uploading the same attachment every time a draft is
+		 * updated
+		 */
+		files?: FileModel[];
+		/**
+		 * Outbound queue entries
+		 */
+		outbound?: {
+			/**
+			 * Queue ID
+			 */
+			queueId: string;
+			/**
+			 * Queued recipients
+			 */
+			entries: OutboundQueryModel[];
+		}[];
 	};
-	/**
-	 * Datestring, if set then indicates the time
-	 * after this message is automatically deleted
-	 */
-	expires?: string;
-	/**
-	 * Does this message have a \Seen flag
-	 */
-	seen: boolean;
-	/**
-	 * Does this message have a \Deleted flag
-	 */
-	deleted: boolean;
-	/**
-	 * Does this message have a \Flagged flag
-	 */
-	flagged: boolean;
-	/**
-	 * Does this message have a \Draft flag
-	 */
-	draft: boolean;
-	/**
-	 * An array of HTML string. Every array
-	 * element is from a separate mime node,
-	 * usually you would just join these to a
-	 * single string
-	 */
-	html?: string[];
-	/**
-	 * Plaintext content of the message
-	 */
-	text?: string;
-	/**
-	 * Attachments for the message
-	 */
-	attachments?: MessageInfoAttachmentModel[];
-	/**
-	 * Security verification info if message was received from MX.
-	 * If this property is missing then do not automatically assume
-	 * invalid TLS, SPF or DKIM.
-	 */
-	verificationResults?: VerificationResultModel;
-	/**
-	 * BIMI logo info. If logo validation failed in any way, then
-	 * this property is not set
-	 */
-	bimi?: BimiModel;
-	/**
-	 * Parsed Content-Type header. Usually needed to identify
-	 * encrypted messages and such
-	 */
-	contentType: {
-		/**
-		 * MIME type of the message, eg. "multipart/mixed"
-		 */
-		value: string;
-		/**
-		 * An object with Content-Type params as key-value pairs
-		 */
-		params: any;
-	};
-	/**
-	 * Custom metadata object set for this message
-	 */
-	metaData: any;
-	/**
-	 * Referenced message info
-	 */
-	references?: string[];
-	/**
-	 * List of files added to this message as attachments. Applies to
-	 * Drafts, normal messages do not have this property. Needed to
-	 * prevent uploading the same attachment every time a draft is
-	 * updated
-	 */
-	files?: FileModel[];
-	/**
-	 * Outbound queue entries
-	 */
-	outbound?: {
-		/**
-		 * Queue ID
-		 */
-		queueId: string;
-		/**
-		 * Queued recipients
-		 */
-		entries: OutboundQueryModel[];
-	}[];
 }
 
 export interface DeleteAllMessagesQueryParametersModel {

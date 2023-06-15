@@ -1,4 +1,5 @@
-import { CursorResponseModel, PageQueryModel } from "../../models";
+import { AxiosResponse } from "axios";
+import { PageQueryModel } from "../../models";
 
 export interface ListArchivedMessageQueryParameterModel extends PageQueryModel {
 	/**
@@ -99,11 +100,34 @@ interface ResultsModel {
 	contentType: ContentTypeModel;
 }
 
-export interface ListArchivedMessageResponseModel extends CursorResponseModel {
-	/**
-	 * Message listing
-	 */
-	results: ResultsModel[];
+export interface ListArchivedMessageResponseModel
+	extends AxiosResponse<any, any> {
+	data: {
+		/**
+		 * Indicates successful response
+		 */
+		success: boolean;
+		/**
+		 * How many results were found
+		 */
+		total: number;
+		/**
+		 * Current page number. Derived from page query argument
+		 */
+		page: number;
+		/**
+		 * Either a cursor string or false if there are not any previous results
+		 */
+		previousCursor: string;
+		/**
+		 * Either a cursor string or false if there are not any next results
+		 */
+		nextCursor: string;
+		/**
+		 * Message listing
+		 */
+		results: ResultsModel[];
+	};
 }
 
 export interface RestoreArchivedMessageBodyParametersModel {
@@ -113,19 +137,22 @@ export interface RestoreArchivedMessageBodyParametersModel {
 	mailbox: string;
 }
 
-export interface RestoreArchivedMessageResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * Mailbox ID the message was moved to
-	 */
-	mailbox: string;
-	/**
-	 * New ID for the Message
-	 */
-	id: number;
+export interface RestoreArchivedMessageResponseModel
+	extends AxiosResponse<any, any> {
+	data: {
+		/**
+		 * Indicates successful response
+		 */
+		success: boolean;
+		/**
+		 * Mailbox ID the message was moved to
+		 */
+		mailbox: string;
+		/**
+		 * New ID for the Message
+		 */
+		id: number;
+	};
 }
 
 export interface RestoreArchivedMessagesBodyParametersModel {

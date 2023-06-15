@@ -28,9 +28,9 @@ export const createAddress = async (
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res: CreationResponseModel = await axiosConf.post(url, bodyData);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -53,7 +53,7 @@ export const createNewForwardedAddress = async (
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res: CreationResponseModel = await axiosConf.post(url, bodyData);
 
-	return res.data;
+	return res;
 };

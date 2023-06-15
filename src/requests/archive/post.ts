@@ -29,9 +29,12 @@ export const restoreArchivedMessage = async (
 		}
 	);
 
-	const res = await axiosConf.post(url, bodyData);
+	const res: RestoreArchivedMessageResponseModel = await axiosConf.post(
+		url,
+		bodyData
+	);
 
-	return res.data;
+	return res;
 };
 
 /**

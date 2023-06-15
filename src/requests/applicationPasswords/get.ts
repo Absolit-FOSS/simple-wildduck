@@ -23,9 +23,9 @@ export const getAppPasswordInformation = async (
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res: GetAppPasswordInformationResponseModel = await axiosConf.get(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -45,7 +45,7 @@ export const listApplicationPasswords = async (
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res: ListAppPasswordsResponseModel = await axiosConf.get(url);
 
-	return res.data;
+	return res;
 };

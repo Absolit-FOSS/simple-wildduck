@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import { LimitUsageTTLModel, PageQueryModel } from "../../models";
 
 export interface AutoreplyModel {
@@ -36,52 +37,55 @@ export interface DateStringAutoreplyModel extends AutoreplyModel {
 	end: string;
 }
 
-export interface GetForwardedAddressInfoResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * ID of the Address
-	 */
-	id: string;
-	/**
-	 * E-mail address string
-	 */
-	address: string;
-	/**
-	 * Identity name
-	 */
-	name: string;
-	/**
-	 * List of forwarding targets
-	 */
-	targets: string[];
-	/**
-	 * Account limits and usage
-	 */
-	limits: {
+export interface GetForwardedAddressInfoResponseModel
+	extends AxiosResponse<any, any> {
+	data: {
 		/**
-		 * Forwarding quota
+		 * Indicates successful response
 		 */
-		forwards: LimitUsageTTLModel;
+		success: boolean;
+		/**
+		 * ID of the Address
+		 */
+		id: string;
+		/**
+		 * E-mail address string
+		 */
+		address: string;
+		/**
+		 * Identity name
+		 */
+		name: string;
+		/**
+		 * List of forwarding targets
+		 */
+		targets: string[];
+		/**
+		 * Account limits and usage
+		 */
+		limits: {
+			/**
+			 * Forwarding quota
+			 */
+			forwards: LimitUsageTTLModel;
+		};
+		/**
+		 * Autoreply information
+		 */
+		autoreply: AutoreplyModel;
+		/**
+		 * Datestring of the time the address was created
+		 */
+		created: string;
+		/**
+		 * List of tags associated with the Address
+		 */
+		tags: string[];
+		/**
+		 * If true then the forwarded address is disabled
+		 */
+		forwardedDisabled: boolean;
 	};
-	/**
-	 * Autoreply information
-	 */
-	autoreply: AutoreplyModel;
-	/**
-	 * Datestring of the time the address was created
-	 */
-	created: string;
-	/**
-	 * List of tags associated with the Address
-	 */
-	tags: string[];
-	/**
-	 * If true then the forwarded address is disabled
-	 */
-	forwardedDisabled: boolean;
 }
 
 export interface UpdateForwardedAddressInfoBodyParametersModel {
@@ -155,44 +159,47 @@ export interface UpdateAddressInfoBodyParametersModel {
 	tags?: string[];
 }
 
-export interface GetAddressesInfoResponseModelModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * ID of the Address
-	 */
-	id: string;
-	/**
-	 * Identity name
-	 */
-	name: string;
-	/**
-	 * E-mail address string
-	 */
-	address: string;
-	/**
-	 * List of tags associated with the Address
-	 */
-	tags: string[];
-	/**
-	 * Metadata object (if available)
-	 */
-	metaData?: any;
-	/**
-	 * Internal metadata object (if available), not included for user-role requests
-	 */
-	internalData?: any;
-	/**
-	 * Indicates if this is the default address for the User
-	 */
-	main: boolean;
-	/**
-	 * <date-time>
-	 * Datestring of the time the address was created
-	 */
-	created: string;
+export interface GetAddressesInfoResponseModelModel
+	extends AxiosResponse<any, any> {
+	data: {
+		/**
+		 * Indicates successful response
+		 */
+		success: boolean;
+		/**
+		 * ID of the Address
+		 */
+		id: string;
+		/**
+		 * Identity name
+		 */
+		name: string;
+		/**
+		 * E-mail address string
+		 */
+		address: string;
+		/**
+		 * List of tags associated with the Address
+		 */
+		tags: string[];
+		/**
+		 * Metadata object (if available)
+		 */
+		metaData?: any;
+		/**
+		 * Internal metadata object (if available), not included for user-role requests
+		 */
+		internalData?: any;
+		/**
+		 * Indicates if this is the default address for the User
+		 */
+		main: boolean;
+		/**
+		 * <date-time>
+		 * Datestring of the time the address was created
+		 */
+		created: string;
+	};
 }
 
 export interface GetAddressInfoQueryParametersModel {
@@ -202,52 +209,54 @@ export interface GetAddressInfoQueryParametersModel {
 	allowWildcard: boolean;
 }
 
-export interface GetAddressInfoResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * ID of the Address
-	 */
-	id: string;
-	/**
-	 * E-mail address string
-	 */
-	address: string;
-	/**
-	 * Identity name
-	 */
-	name: string;
-	/**
-	 * ID of the user if the address belongs to a User
-	 */
-	user: string;
-	/**
-	 * List of forwarding targets if this is a Forwarded address
-	 */
-	targets: string[];
-	/**
-	 * Account limits and usage
-	 */
-	limits: {
+export interface GetAddressInfoResponseModel extends AxiosResponse<any, any> {
+	data: {
 		/**
-		 * Forwarding quota
+		 * Indicates successful response
 		 */
-		forwards: LimitUsageTTLModel;
+		success: boolean;
+		/**
+		 * ID of the Address
+		 */
+		id: string;
+		/**
+		 * E-mail address string
+		 */
+		address: string;
+		/**
+		 * Identity name
+		 */
+		name: string;
+		/**
+		 * ID of the user if the address belongs to a User
+		 */
+		user: string;
+		/**
+		 * List of forwarding targets if this is a Forwarded address
+		 */
+		targets: string[];
+		/**
+		 * Account limits and usage
+		 */
+		limits: {
+			/**
+			 * Forwarding quota
+			 */
+			forwards: LimitUsageTTLModel;
+		};
+		/**
+		 * Autoreply information
+		 */
+		autoreply: AutoreplyModel;
+		/**
+		 * List of tags associated with the Address
+		 */
+		tags: string[];
+		/**
+		 * Datestring of the time the address was created
+		 */
+		created: string;
 	};
-	/**
-	 * Autoreply information
-	 */
-	autoreply: AutoreplyModel;
-	/**
-	 * List of tags associated with the Address
-	 */
-	tags: string[];
-	/**
-	 * Datestring of the time the address was created
-	 */
-	created: string;
 }
 
 export interface ListRegisteredAddressesQueryParametersModel
@@ -309,31 +318,34 @@ export interface ListRegisteredAddressesResultsModel {
 	target?: string[];
 }
 
-export interface ListRegisteredAddressesResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * How many results were found
-	 */
-	total: number;
-	/**
-	 * Current page number. Derived from page query argument
-	 */
-	page: number;
-	/**
-	 * Either a cursor string or false if there are not any previous results
-	 */
-	previousCursor: string;
-	/**
-	 * Either a cursor string or false if there are not any next results
-	 */
-	nextCursor: string;
-	/**
-	 * Address listing
-	 */
-	results: ListRegisteredAddressesResultsModel[];
+export interface ListRegisteredAddressesResponseModel
+	extends AxiosResponse<any, any> {
+	data: {
+		/**
+		 * Indicates successful response
+		 */
+		success: boolean;
+		/**
+		 * How many results were found
+		 */
+		total: number;
+		/**
+		 * Current page number. Derived from page query argument
+		 */
+		page: number;
+		/**
+		 * Either a cursor string or false if there are not any previous results
+		 */
+		previousCursor: string;
+		/**
+		 * Either a cursor string or false if there are not any next results
+		 */
+		nextCursor: string;
+		/**
+		 * Address listing
+		 */
+		results: ListRegisteredAddressesResultsModel[];
+	};
 }
 
 export interface ListRegisteredAddressesForUserQueryParametersModel {
@@ -382,15 +394,18 @@ export interface ListRegisteredAddressesForUserResultsModel {
 	internalData?: any;
 }
 
-export interface ListRegisteredAddressesForUserResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * Address listing
-	 */
-	results: ListRegisteredAddressesForUserResultsModel[];
+export interface ListRegisteredAddressesForUserResponseModel
+	extends AxiosResponse<any, any> {
+	data: {
+		/**
+		 * Indicates successful response
+		 */
+		success: boolean;
+		/**
+		 * Address listing
+		 */
+		results: ListRegisteredAddressesForUserResultsModel[];
+	};
 }
 
 export interface ListAddressesFromCommunicationRegisterQueryParametersModel {
@@ -421,15 +436,18 @@ export interface ListAddressesFromCommunicationRegisterResultsModel {
 	address: string;
 }
 
-export interface ListAddressesFromCommunicationRegisterResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: true;
-	/**
-	 * Address listing
-	 */
-	results: ListAddressesFromCommunicationRegisterResultsModel[];
+export interface ListAddressesFromCommunicationRegisterResponseModel
+	extends AxiosResponse<any, any> {
+	data: {
+		/**
+		 * Indicates successful response
+		 */
+		success: true;
+		/**
+		 * Address listing
+		 */
+		results: ListAddressesFromCommunicationRegisterResultsModel[];
+	};
 }
 
 export interface RenameDomainInAddressesBodyParametersModel {

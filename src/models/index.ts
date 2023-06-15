@@ -1,3 +1,5 @@
+import { AxiosResponse } from "axios";
+
 export interface LimitUsageModel {
 	allowed: number;
 	used: number;
@@ -13,25 +15,43 @@ export enum AvailableEmailScopes {
 	SMTP = "smtp",
 }
 
-export interface DefaultResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
+export interface DefaultResponseModel extends AxiosResponse<any, any> {
+	data: {
+		/**
+		 * Indicates successful response
+		 */
+		success: boolean;
+	};
 }
 
-export interface CreationResponseModel extends DefaultResponseModel {
-	/**
-	 * Id of the created item
-	 */
-	id: string;
+export interface CreationResponseModel extends AxiosResponse<any, any> {
+	data: {
+		/**
+		 * Indicates successful response
+		 */
+		success: boolean;
+		/**
+		 * Id of the created item
+		 */
+		id: string;
+	};
 }
 
-export interface UpdateResponseModel extends CreationResponseModel {
-	/**
-	 * Number of items updated
-	 */
-	updated: number;
+export interface UpdateResponseModel extends AxiosResponse<any, any> {
+	data: {
+		/**
+		 * Indicates successful response
+		 */
+		success: boolean;
+		/**
+		 * Id of the created item
+		 */
+		id: string;
+		/**
+		 * Number of items updated
+		 */
+		updated: number;
+	};
 }
 
 export interface UserIdentifierModel {
@@ -59,27 +79,29 @@ export enum AvailableSpecialFolders {
 	TRASH = "\\Trash",
 }
 
-export interface CursorResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * How many results were found
-	 */
-	total: number;
-	/**
-	 * Current page number. Derived from page query argument
-	 */
-	page: number;
-	/**
-	 * Either a cursor string or false if there are not any previous results
-	 */
-	previousCursor: string;
-	/**
-	 * Either a cursor string or false if there are not any next results
-	 */
-	nextCursor: string;
+export interface CursorResponseModel extends AxiosResponse<any, any> {
+	data: {
+		/**
+		 * Indicates successful response
+		 */
+		success: boolean;
+		/**
+		 * How many results were found
+		 */
+		total: number;
+		/**
+		 * Current page number. Derived from page query argument
+		 */
+		page: number;
+		/**
+		 * Either a cursor string or false if there are not any previous results
+		 */
+		previousCursor: string;
+		/**
+		 * Either a cursor string or false if there are not any next results
+		 */
+		nextCursor: string;
+	};
 }
 
 export interface PageQueryModel {

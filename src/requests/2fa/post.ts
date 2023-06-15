@@ -26,9 +26,9 @@ export const validateTOTPToken = async (
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res: DefaultResponseModel = await axiosConf.post(url, bodyData);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -51,9 +51,9 @@ export const enableTOTPSeed = async (
 		}
 	);
 
-	const res = await axiosConf.post(url, bodyData);
+	const res: DefaultResponseModel = await axiosConf.post(url, bodyData);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -74,7 +74,10 @@ export const generateTOTPSeed = async (
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res: GenerateTOTPSeedResponseModel = await axiosConf.post(
+		url,
+		bodyData
+	);
 
-	return res.data;
+	return res;
 };

@@ -1,3 +1,5 @@
+import { AxiosResponse } from "axios";
+
 export interface LastUseModel {
 	/**
 	 * <date-time>
@@ -10,32 +12,35 @@ export interface LastUseModel {
 	event: string;
 }
 
-export interface GetAppPasswordInformationResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * ID of the Application Password
-	 */
-	id: string;
-	/**
-	 * Description
-	 */
-	description: string;
-	/**
-	 * Items Enum: "imap" "pop3" "smtp" "*"
-	 * Allowed scopes for the Application Password
-	 */
-	scopes: string[];
-	/**
-	 * Information about last use
-	 */
-	lastUse: LastUseModel;
-	/**
-	 * Datestring
-	 */
-	created: string;
+export interface GetAppPasswordInformationResponseModel
+	extends AxiosResponse<any, any> {
+	data: {
+		/**
+		 * Indicates successful response
+		 */
+		success: boolean;
+		/**
+		 * ID of the Application Password
+		 */
+		id: string;
+		/**
+		 * Description
+		 */
+		description: string;
+		/**
+		 * Items Enum: "imap" "pop3" "smtp" "*"
+		 * Allowed scopes for the Application Password
+		 */
+		scopes: string[];
+		/**
+		 * Information about last use
+		 */
+		lastUse: LastUseModel;
+		/**
+		 * Datestring
+		 */
+		created: string;
+	};
 }
 
 export interface ListAppPasswordsQueryParametersModel {
@@ -70,15 +75,17 @@ interface ResultsModel {
 	created: string;
 }
 
-export interface ListAppPasswordsResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * Event listing
-	 */
-	results: ResultsModel[];
+export interface ListAppPasswordsResponseModel extends AxiosResponse<any, any> {
+	data: {
+		/**
+		 * Indicates successful response
+		 */
+		success: boolean;
+		/**
+		 * Event listing
+		 */
+		results: ResultsModel[];
+	};
 }
 
 export interface CreateNewAppPasswordBodyParametersModel {
@@ -120,23 +127,26 @@ export interface CreateNewAppPasswordBodyParametersModel {
 	ip?: string;
 }
 
-export interface CreateAppPasswordResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * ID of the Application Password
-	 */
-	id: string;
-	/**
-	 * Application Specific Password. Generated password is whitespace agnostic,
-	 * so it could be displayed to the client as "abcd efgh ijkl mnop" instead of "abcdefghijklmnop"
-	 */
-	password: string;
-	/**
-	 * Base64 encoded mobileconfig "string" file. Generated profile file should be sent
-	 * to the client with Content-Type value of application/x-apple-aspen-config
-	 */
-	mobileconfig: string;
+export interface CreateAppPasswordResponseModel
+	extends AxiosResponse<any, any> {
+	data: {
+		/**
+		 * Indicates successful response
+		 */
+		success: boolean;
+		/**
+		 * ID of the Application Password
+		 */
+		id: string;
+		/**
+		 * Application Specific Password. Generated password is whitespace agnostic,
+		 * so it could be displayed to the client as "abcd efgh ijkl mnop" instead of "abcdefghijklmnop"
+		 */
+		password: string;
+		/**
+		 * Base64 encoded mobileconfig "string" file. Generated profile file should be sent
+		 * to the client with Content-Type value of application/x-apple-aspen-config
+		 */
+		mobileconfig: string;
+	};
 }

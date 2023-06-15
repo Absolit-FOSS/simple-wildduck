@@ -19,7 +19,7 @@ export const enableCustom2FA = async (
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.put(url, bodyData);
+	const res: DefaultResponseModel = await axiosConf.put(url, bodyData);
 
-	return res.data;
+	return res;
 };

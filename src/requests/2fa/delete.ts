@@ -21,9 +21,9 @@ export const disable2FA = async (
 		...queryData,
 	});
 
-	const res = await axiosConf.delete(url);
+	const res: DefaultResponseModel = await axiosConf.delete(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -45,9 +45,9 @@ export const disableCustom2FA = async (
 		...queryData,
 	});
 
-	const res = await axiosConf.delete(url);
+	const res: DefaultResponseModel = await axiosConf.delete(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -68,7 +68,7 @@ export const disableTOTPAuth = async (
 		...queryData,
 	});
 
-	const res = await axiosConf.delete(url);
+	const res: DefaultResponseModel = await axiosConf.delete(url);
 
-	return res.data;
+	return res;
 };

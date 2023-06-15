@@ -26,7 +26,7 @@ export const listArchivedMessage = async (
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res: ListArchivedMessageResponseModel = await axiosConf.get(url);
 
-	return res.data;
+	return res;
 };

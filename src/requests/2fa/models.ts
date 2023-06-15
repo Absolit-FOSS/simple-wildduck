@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import { UserIdentifierModel } from "../../models";
 
 export interface ValidateTOTPTokenBodyParameterModel
@@ -27,17 +28,19 @@ export interface GenerateTOTPSeedBodyParameterModel
 	issuer?: "string";
 }
 
-export interface GenerateTOTPSeedResponseModel {
-	/**
-	 * Indicates successful response
-	 */
-	success: boolean;
-	/**
-	 * Generated TOTP seed value
-	 */
-	seed: string;
-	/**
-	 * Base64 encoded QR code
-	 */
-	qrcode: string;
+export interface GenerateTOTPSeedResponseModel extends AxiosResponse<any, any> {
+	data: {
+		/**
+		 * Indicates successful response
+		 */
+		success: boolean;
+		/**
+		 * Generated TOTP seed value
+		 */
+		seed: string;
+		/**
+		 * Base64 encoded QR code
+		 */
+		qrcode: string;
+	};
 }

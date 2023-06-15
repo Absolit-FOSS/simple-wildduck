@@ -35,9 +35,9 @@ export const getMessageInfo = async (
 		}
 	);
 
-	const res = await axiosConf.get(url);
+	const res: GetMessageInfoResponseModel = await axiosConf.get(url);
 
-	return res.data;
+	return res;
 };
 
 /**

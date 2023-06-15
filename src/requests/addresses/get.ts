@@ -28,9 +28,9 @@ export const getForwardedAddressInfo = async (
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res: GetForwardedAddressInfoResponseModel = await axiosConf.get(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -49,9 +49,9 @@ export const getAddressesInfo = async (
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res: GetAddressesInfoResponseModelModel = await axiosConf.get(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -71,9 +71,9 @@ export const getAddressInfo = async (
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res: GetAddressInfoResponseModel = await axiosConf.get(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -92,9 +92,9 @@ export const listRegisteredAddresses = async (
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res: ListRegisteredAddressesResponseModel = await axiosConf.get(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -114,9 +114,11 @@ export const listRegisteredAddressesForUser = async (
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res: ListRegisteredAddressesForUserResponseModel = await axiosConf.get(
+		url
+	);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -136,7 +138,8 @@ export const listAddressesFromCommunicationRegister = async (
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res: ListAddressesFromCommunicationRegisterResponseModel =
+		await axiosConf.get(url);
 
-	return res.data;
+	return res;
 };

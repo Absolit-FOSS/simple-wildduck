@@ -22,7 +22,10 @@ export const createNewAppPassword = async (
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res: CreateAppPasswordResponseModel = await axiosConf.post(
+		url,
+		bodyData
+	);
 
-	return res.data;
+	return res;
 };
