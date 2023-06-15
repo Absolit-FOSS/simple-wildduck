@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
@@ -18,14 +19,14 @@ import {
 export const getAppPasswordInformation = async (
 	userId: string,
 	aspId: string
-): Promise<GetAppPasswordInformationResponseModel> => {
+): Promise<AxiosResponse<GetAppPasswordInformationResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/${aspId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetAppPasswordInformationResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -39,13 +40,13 @@ export const getAppPasswordInformation = async (
 export const listApplicationPasswords = async (
 	userId: string,
 	queryData?: ListAppPasswordsQueryParametersModel
-): Promise<ListAppPasswordsResponseModel> => {
+): Promise<AxiosResponse<ListAppPasswordsResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<ListAppPasswordsResponseModel>(url);
 
-	return res.data;
+	return res;
 };

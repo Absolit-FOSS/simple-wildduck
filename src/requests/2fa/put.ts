@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -14,12 +15,12 @@ import { URL } from "./config";
 export const enableCustom2FA = async (
 	userId: string,
 	bodyData: UserIdentifierModel
-): Promise<DefaultResponseModel> => {
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/custom`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.put(url, bodyData);
+	const res = await axiosConf.put<DefaultResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };

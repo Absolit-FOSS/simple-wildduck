@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
@@ -17,12 +18,15 @@ import {
 export const submitMessageForDelivery = async (
 	userId: string,
 	bodyData: SubmitMessageForDeliveryBodyParameterModel
-): Promise<SubmitMessageForDeliveryResponseModel> => {
+): Promise<AxiosResponse<SubmitMessageForDeliveryResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<SubmitMessageForDeliveryResponseModel>(
+		url,
+		bodyData
+	);
 
-	return res.data;
+	return res;
 };

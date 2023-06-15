@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { CreationResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -23,14 +24,14 @@ import {
 export const createAddress = async (
 	userId: string,
 	bodyData: CreateNewAddressBodyParameterModel
-): Promise<CreationResponseModel> => {
+): Promise<AxiosResponse<CreationResponseModel, any>> => {
 	const url = urlQueryBuilder(`/users/${userId}/addresses`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<CreationResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -48,12 +49,12 @@ export const createAddress = async (
  */
 export const createNewForwardedAddress = async (
 	bodyData: CreateNewForwardedAddressBodyParameterModel
-): Promise<CreationResponseModel> => {
+): Promise<AxiosResponse<CreationResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/forwarded/`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<CreationResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };

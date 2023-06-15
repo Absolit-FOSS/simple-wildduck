@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { CreationResponseModel, FullQueryModel } from "../../models/index";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -16,14 +17,14 @@ import {
  */
 export const getAliasInformation = async (
 	aliasId: string
-): Promise<GetAliasInfoResponseModel> => {
+): Promise<AxiosResponse<GetAliasInfoResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${aliasId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetAliasInfoResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -35,15 +36,17 @@ export const getAliasInformation = async (
  */
 export const listRegisteredDomainAliases = async (
 	queryData?: FullQueryModel
-): Promise<ListRegisteredDomainAliasesResponseModel> => {
+): Promise<AxiosResponse<ListRegisteredDomainAliasesResponseModel, any>> => {
 	const url = urlQueryBuilder(URL, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<ListRegisteredDomainAliasesResponseModel>(
+		url
+	);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -55,12 +58,12 @@ export const listRegisteredDomainAliases = async (
  */
 export const resolveIdForDomainAlias = async (
 	aliasId: string
-): Promise<CreationResponseModel> => {
+): Promise<AxiosResponse<CreationResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/resolve/${aliasId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<CreationResponseModel>(url);
 
-	return res.data;
+	return res;
 };

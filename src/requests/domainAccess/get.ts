@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import { ListAllowAndBlocklistedDomainsResponseModel } from "./models";
@@ -12,14 +13,16 @@ import { ListAllowAndBlocklistedDomainsResponseModel } from "./models";
  */
 export const listAllowlistedDomains = async (
 	tag: string
-): Promise<ListAllowAndBlocklistedDomainsResponseModel> => {
+): Promise<AxiosResponse<ListAllowAndBlocklistedDomainsResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${tag}/allow`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<ListAllowAndBlocklistedDomainsResponseModel>(
+		url
+	);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -31,12 +34,14 @@ export const listAllowlistedDomains = async (
  */
 export const listBlocklistedDomains = async (
 	tag: string
-): Promise<ListAllowAndBlocklistedDomainsResponseModel> => {
+): Promise<AxiosResponse<ListAllowAndBlocklistedDomainsResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${tag}/block`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<ListAllowAndBlocklistedDomainsResponseModel>(
+		url
+	);
 
-	return res.data;
+	return res;
 };

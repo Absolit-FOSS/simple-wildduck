@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
@@ -23,7 +24,7 @@ export const getMessageInfo = async (
 	mailboxId: string,
 	messageId: number,
 	queryData?: GetMessageInfoQueryParametersModel
-): Promise<GetMessageInfoResponseModel> => {
+): Promise<AxiosResponse<GetMessageInfoResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace(
 			"{mailboxId}",
@@ -35,9 +36,9 @@ export const getMessageInfo = async (
 		}
 	);
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetMessageInfoResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -53,7 +54,7 @@ export const getMessagesInMailbox = async (
 	userId: string,
 	mailboxId: string,
 	queryData?: GetMessagesInMailboxQueryParametersModel
-): Promise<GetMessagesInMailboxResponseModel> => {
+): Promise<AxiosResponse<GetMessagesInMailboxResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace("{mailboxId}", mailboxId)}`,
 		{
@@ -62,9 +63,9 @@ export const getMessagesInMailbox = async (
 		}
 	);
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetMessagesInMailboxResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -82,7 +83,7 @@ export const getMessageAttachment = async (
 	mailboxId: string,
 	messageId: number,
 	attachmentId: string
-): Promise<string> => {
+): Promise<AxiosResponse<string, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace(
 			"{mailboxId}",
@@ -93,10 +94,10 @@ export const getMessageAttachment = async (
 		}
 	);
 
-	const res = await axiosConf.get(url, { responseType: "arraybuffer" });
+	const res = await axiosConf.get<string>(url, { responseType: "arraybuffer" });
 	const data = Buffer.from(res.data, "binary").toString("base64");
 
-	return data;
+	return { ...res, data };
 };
 
 /**
@@ -113,7 +114,7 @@ export const getMessageSource = async (
 	userId: string,
 	mailboxId: string,
 	messageId: number
-): Promise<any> => {
+): Promise<AxiosResponse<any, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace(
 			"{mailboxId}",
@@ -124,7 +125,7 @@ export const getMessageSource = async (
 		}
 	);
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<any>(url);
 
-	return res.data;
+	return res;
 };

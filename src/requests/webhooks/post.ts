@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { CreationResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -13,12 +14,12 @@ import { CreateWebhookBodyParametersModel } from "./models";
  */
 export const createWebhook = async (
 	bodyData: CreateWebhookBodyParametersModel
-): Promise<CreationResponseModel> => {
+): Promise<AxiosResponse<CreationResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<CreationResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };

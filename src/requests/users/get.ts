@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -19,14 +20,16 @@ import {
  *
  * @param id the users wildduck ID
  */
-export const getUser = async (id: string): Promise<GetUserResponseModel> => {
+export const getUser = async (
+	id: string
+): Promise<AxiosResponse<GetUserResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${id}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetUserResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -38,15 +41,15 @@ export const getUser = async (id: string): Promise<GetUserResponseModel> => {
  */
 export const getUsers = async (
 	queryData?: GetUsersQueryParametersModel
-): Promise<GetUsersResponseModel> => {
+): Promise<AxiosResponse<GetUsersResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetUsersResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -60,14 +63,14 @@ export const getUsers = async (
  */
 export const getChangeStream = async (
 	id: string
-): Promise<GetUserResponseModel> => {
+): Promise<AxiosResponse<GetUserResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${id}/updates`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetUserResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -79,14 +82,14 @@ export const getChangeStream = async (
  */
 export const getUserIdByUsername = async (
 	username: string
-): Promise<GetUserIdByUsernameResponseModel> => {
+): Promise<AxiosResponse<GetUserIdByUsernameResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/resolve/${username}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetUserIdByUsernameResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -100,15 +103,15 @@ export const getUserIdByUsername = async (
 export const getDeletedUserInfo = async (
 	id: string,
 	queryData?: UserIdentifierModel
-): Promise<GetDeletedUserInfoResponseModel> => {
+): Promise<AxiosResponse<GetDeletedUserInfoResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${id}/restore`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetDeletedUserInfoResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -122,13 +125,13 @@ export const getDeletedUserInfo = async (
 export const searchUserMessages = async (
 	userId: string,
 	queryData?: SearchUserMessagesQueryParametersModel
-): Promise<SearchUserMessagesResponseModel> => {
+): Promise<AxiosResponse<SearchUserMessagesResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${userId}/search`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<SearchUserMessagesResponseModel>(url);
 
-	return res.data;
+	return res;
 };

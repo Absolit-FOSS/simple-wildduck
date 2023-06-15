@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
@@ -20,13 +21,13 @@ import {
 export const listArchivedMessage = async (
 	userId: string,
 	queryData?: ListArchivedMessageQueryParameterModel
-): Promise<ListArchivedMessageResponseModel> => {
+): Promise<AxiosResponse<ListArchivedMessageResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/messages`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<ListArchivedMessageResponseModel>(url);
 
-	return res.data;
+	return res;
 };

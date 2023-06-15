@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -20,7 +21,7 @@ export const deleteMessage = async (
 	userId: string,
 	mailboxId: string,
 	messageId: number
-): Promise<DefaultResponseModel> => {
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace(
 			"{mailboxId}",
@@ -31,9 +32,9 @@ export const deleteMessage = async (
 		}
 	);
 
-	const res = await axiosConf.delete(url);
+	const res = await axiosConf.delete<DefaultResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -49,7 +50,7 @@ export const deleteAllMessages = async (
 	userId: string,
 	mailboxId: string,
 	queryData?: DeleteAllMessagesQueryParametersModel
-): Promise<DeleteAllMessagesResponseModel> => {
+): Promise<AxiosResponse<DeleteAllMessagesResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace("{mailboxId}", mailboxId)}`,
 		{
@@ -58,9 +59,9 @@ export const deleteAllMessages = async (
 		}
 	);
 
-	const res = await axiosConf.delete(url);
+	const res = await axiosConf.delete<DeleteAllMessagesResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -75,12 +76,12 @@ export const deleteAllMessages = async (
 export const deleteOutboundMessage = async (
 	userId: string,
 	queueId: string
-): Promise<DefaultResponseModel> => {
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(`/users/${userId}/outbound/${queueId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.delete(url);
+	const res = await axiosConf.delete<DefaultResponseModel>(url);
 
-	return res.data;
+	return res;
 };

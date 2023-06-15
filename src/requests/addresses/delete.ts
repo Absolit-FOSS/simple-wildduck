@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -12,14 +13,14 @@ import { URL } from "./config";
  */
 export const deleteForwardedAddress = async (
 	addressId: string
-): Promise<DefaultResponseModel> => {
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/forwarded/${addressId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.delete(url);
+	const res = await axiosConf.delete<DefaultResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -33,12 +34,12 @@ export const deleteForwardedAddress = async (
 export const deleteAddress = async (
 	userId: string,
 	addressId: string
-): Promise<DefaultResponseModel> => {
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(`/users/${userId}/addresses/${addressId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.delete(url);
+	const res = await axiosConf.delete<DefaultResponseModel>(url);
 
-	return res.data;
+	return res;
 };

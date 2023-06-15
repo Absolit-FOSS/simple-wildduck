@@ -1,6 +1,6 @@
 # Simple WildDuck
 
-Simple way to access the WildDuck api from your JavaScript.
+Simple WildDuck is a free and open-source wrapper for the WildDuck API. It simplifies API requests by providing well-documented TypeScript functions, making it easy to integrate WildDuck into any project.
 
 Based completely on the existing API: https://docs.wildduck.email/api/
 
@@ -16,12 +16,12 @@ wd.wdInit({
 	xAccessToken: "HeaderXAccessToken",
 });
 
-// simply make a request as such
+// simply make a request as such - note you will receive headers as well as data
 const users = await wd.getUsers({ limit: 10 });
 
 // reap the data rewards
-if (users.success && users.results.length > 0) {
-	console.log(users.results[0].address);
+if (users.data.success && users.data.results.length > 0) {
+	console.log(users.data.results[0].address);
 }
 ```
 

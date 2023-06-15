@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -17,7 +18,7 @@ export const updateMailboxInfo = async (
 	userId: string,
 	mailboxId: string,
 	bodyData: UpdateMailboxInfoBodyParametersModel
-): Promise<DefaultResponseModel> => {
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId)}/${mailboxId}`,
 		{
@@ -25,7 +26,7 @@ export const updateMailboxInfo = async (
 		}
 	);
 
-	const res = await axiosConf.put(url, bodyData);
+	const res = await axiosConf.put<DefaultResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };

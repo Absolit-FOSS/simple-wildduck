@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
@@ -18,7 +19,7 @@ import {
 export const getMailboxInfo = async (
 	userId: string,
 	mailboxId: string
-): Promise<GetMailboxInfoResponseModel> => {
+): Promise<AxiosResponse<GetMailboxInfoResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId)}/${mailboxId}`,
 		{
@@ -26,9 +27,9 @@ export const getMailboxInfo = async (
 		}
 	);
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetMailboxInfoResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -42,13 +43,13 @@ export const getMailboxInfo = async (
 export const getUserMailboxes = async (
 	userId: string,
 	queryData?: GetUserMailboxesQueryParametersModel
-): Promise<GetUserMailboxesResponseModel> => {
+): Promise<AxiosResponse<GetUserMailboxesResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetUserMailboxesResponseModel>(url);
 
-	return res.data;
+	return res;
 };

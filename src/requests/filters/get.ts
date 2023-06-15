@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
@@ -19,7 +20,7 @@ import {
 export const requestFilterInformation = async (
 	userId: string,
 	filterId: string
-): Promise<RequestFilterInfoResponseModel> => {
+): Promise<AxiosResponse<RequestFilterInfoResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId)}/${filterId}`,
 		{
@@ -27,9 +28,9 @@ export const requestFilterInformation = async (
 		}
 	);
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<RequestFilterInfoResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -41,15 +42,15 @@ export const requestFilterInformation = async (
  */
 export const listAllFilters = async (
 	queryData?: ListAllFiltersQueryParametersModel
-): Promise<ListAllFiltersResponseModel> => {
+): Promise<AxiosResponse<ListAllFiltersResponseModel, any>> => {
 	const url = urlQueryBuilder(`/filters`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<ListAllFiltersResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -61,12 +62,12 @@ export const listAllFilters = async (
  */
 export const listFiltersForUser = async (
 	userId: string
-): Promise<ListFiltersForUserResponseModel> => {
+): Promise<AxiosResponse<ListFiltersForUserResponseModel, any>> => {
 	const url = urlQueryBuilder(URL.replace("{userId}", userId), {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<ListFiltersForUserResponseModel>(url);
 
-	return res.data;
+	return res;
 };
