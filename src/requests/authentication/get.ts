@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import {
 	ListAuthenticationEventsQueryParametersModel,
@@ -16,16 +17,16 @@ import {
  */
 export const listAuthenticationEvents = async (
 	userId: string,
-	queryData: ListAuthenticationEventsQueryParametersModel
-): Promise<ListAuthenticationEventsResponseModel> => {
+	queryData?: ListAuthenticationEventsQueryParametersModel
+): Promise<AxiosResponse<ListAuthenticationEventsResponseModel, any>> => {
 	const url = urlQueryBuilder(`/users/${userId}/authlog`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<ListAuthenticationEventsResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -39,12 +40,12 @@ export const listAuthenticationEvents = async (
 export const requestEventInformation = async (
 	userId: string,
 	eventId: string
-): Promise<RequestEventInformationResponseModel> => {
+): Promise<AxiosResponse<RequestEventInformationResponseModel, any>> => {
 	const url = urlQueryBuilder(`/users/${userId}/authlog/${eventId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<RequestEventInformationResponseModel>(url);
 
-	return res.data;
+	return res;
 };

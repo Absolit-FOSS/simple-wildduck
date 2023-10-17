@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
@@ -16,12 +17,15 @@ import {
  */
 export const createOrUpdateDkimKeyForDomain = async (
 	bodyData: CreateOrUpdateDkimKeyForDomainBodyParametersModel
-): Promise<CreateOrUpdateDkimKeyForDomainResponseModel> => {
+): Promise<AxiosResponse<CreateOrUpdateDkimKeyForDomainResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<CreateOrUpdateDkimKeyForDomainResponseModel>(
+		url,
+		bodyData
+	);
 
-	return res.data;
+	return res;
 };

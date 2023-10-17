@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
@@ -21,14 +22,14 @@ import {
  */
 export const exportUserData = async (
 	bodyData: ExportUserDataBodyParameterModel
-): Promise<any> => {
+): Promise<AxiosResponse<any, any>> => {
 	const url = urlQueryBuilder(`${URL}/export`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<any>(url, bodyData);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -43,12 +44,12 @@ export const exportUserData = async (
  */
 export const importUserData = async (
 	bodyData: any
-): Promise<ImportUserDataResponseModel> => {
+): Promise<AxiosResponse<ImportUserDataResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/import`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<ImportUserDataResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };

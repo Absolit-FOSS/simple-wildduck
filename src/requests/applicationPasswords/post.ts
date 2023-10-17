@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
@@ -17,12 +18,15 @@ import {
 export const createNewAppPassword = async (
 	userId: string,
 	bodyData: CreateNewAppPasswordBodyParametersModel
-): Promise<CreateAppPasswordResponseModel> => {
+): Promise<AxiosResponse<CreateAppPasswordResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<CreateAppPasswordResponseModel>(
+		url,
+		bodyData
+	);
 
-	return res.data;
+	return res;
 };

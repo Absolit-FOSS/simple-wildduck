@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { DefaultResponseModel, UserIdentifierModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -14,16 +15,16 @@ import { URL } from "./config";
  */
 export const disable2FA = async (
 	userId: string,
-	queryData: UserIdentifierModel
-): Promise<DefaultResponseModel> => {
+	queryData?: UserIdentifierModel
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.delete(url);
+	const res = await axiosConf.delete<DefaultResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -38,16 +39,16 @@ export const disable2FA = async (
  */
 export const disableCustom2FA = async (
 	userId: string,
-	queryData: UserIdentifierModel
-): Promise<DefaultResponseModel> => {
+	queryData?: UserIdentifierModel
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/custom`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.delete(url);
+	const res = await axiosConf.delete<DefaultResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -61,14 +62,14 @@ export const disableCustom2FA = async (
  */
 export const disableTOTPAuth = async (
 	userId: string,
-	queryData: UserIdentifierModel
-): Promise<DefaultResponseModel> => {
+	queryData?: UserIdentifierModel
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/totp`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.delete(url);
+	const res = await axiosConf.delete<DefaultResponseModel>(url);
 
-	return res.data;
+	return res;
 };

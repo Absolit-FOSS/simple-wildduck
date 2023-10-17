@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -14,7 +15,7 @@ import { URL } from "./config";
 export const deleteMailbox = async (
 	userId: string,
 	mailboxId: string
-): Promise<DefaultResponseModel> => {
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId)}/${mailboxId}`,
 		{
@@ -22,7 +23,7 @@ export const deleteMailbox = async (
 		}
 	);
 
-	const res = await axiosConf.delete(url);
+	const res = await axiosConf.delete<DefaultResponseModel>(url);
 
-	return res.data;
+	return res;
 };

@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
@@ -22,12 +23,18 @@ import {
  */
 export const createOrUpdateTlsCertificateForServerName = async (
 	bodyData: CreateOrUpdateTlsCertForServerNameBodyParametersModel
-): Promise<CreateOrUpdateTlsCertForServerNameResponseModel> => {
+): Promise<
+	AxiosResponse<CreateOrUpdateTlsCertForServerNameResponseModel, any>
+> => {
 	const url = urlQueryBuilder(URL, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res =
+		await axiosConf.post<CreateOrUpdateTlsCertForServerNameResponseModel>(
+			url,
+			bodyData
+		);
 
-	return res.data;
+	return res;
 };

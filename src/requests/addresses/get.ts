@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
@@ -23,14 +24,14 @@ import {
  */
 export const getForwardedAddressInfo = async (
 	addressId: string
-): Promise<GetForwardedAddressInfoResponseModel> => {
+): Promise<AxiosResponse<GetForwardedAddressInfoResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/forwarded/${addressId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetForwardedAddressInfoResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -44,14 +45,14 @@ export const getForwardedAddressInfo = async (
 export const getAddressesInfo = async (
 	userId: string,
 	addressId: string
-): Promise<GetAddressesInfoResponseModelModel> => {
+): Promise<AxiosResponse<GetAddressesInfoResponseModelModel, any>> => {
 	const url = urlQueryBuilder(`/users/${userId}/addresses/${addressId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetAddressesInfoResponseModelModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -64,16 +65,16 @@ export const getAddressesInfo = async (
  */
 export const getAddressInfo = async (
 	addressId: string,
-	queryData: GetAddressInfoQueryParametersModel
-): Promise<GetAddressInfoResponseModel> => {
+	queryData?: GetAddressInfoQueryParametersModel
+): Promise<AxiosResponse<GetAddressInfoResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/resolve/${addressId}`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetAddressInfoResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -85,16 +86,16 @@ export const getAddressInfo = async (
  * @param queryData query parameters for additional options
  */
 export const listRegisteredAddresses = async (
-	queryData: ListRegisteredAddressesQueryParametersModel
-): Promise<ListRegisteredAddressesResponseModel> => {
+	queryData?: ListRegisteredAddressesQueryParametersModel
+): Promise<AxiosResponse<ListRegisteredAddressesResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<ListRegisteredAddressesResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -107,16 +108,18 @@ export const listRegisteredAddresses = async (
  */
 export const listRegisteredAddressesForUser = async (
 	userId: string,
-	queryData: ListRegisteredAddressesForUserQueryParametersModel
-): Promise<ListRegisteredAddressesForUserResponseModel> => {
+	queryData?: ListRegisteredAddressesForUserQueryParametersModel
+): Promise<AxiosResponse<ListRegisteredAddressesForUserResponseModel, any>> => {
 	const url = urlQueryBuilder(`/users/${userId}/addresses`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<ListRegisteredAddressesForUserResponseModel>(
+		url
+	);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -129,14 +132,19 @@ export const listRegisteredAddressesForUser = async (
  */
 export const listAddressesFromCommunicationRegister = async (
 	userId: string,
-	queryData: ListAddressesFromCommunicationRegisterQueryParametersModel
-): Promise<ListAddressesFromCommunicationRegisterResponseModel> => {
+	queryData?: ListAddressesFromCommunicationRegisterQueryParametersModel
+): Promise<
+	AxiosResponse<ListAddressesFromCommunicationRegisterResponseModel, any>
+> => {
 	const url = urlQueryBuilder(`/users/${userId}/addressregister`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res =
+		await axiosConf.get<ListAddressesFromCommunicationRegisterResponseModel>(
+			url
+		);
 
-	return res.data;
+	return res;
 };

@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { CreationResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -17,14 +18,14 @@ import {
  */
 export const requestTlsCertificateInformation = async (
 	certId: string
-): Promise<RequestTlsCertInfoResponseModel> => {
+): Promise<AxiosResponse<RequestTlsCertInfoResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${certId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<RequestTlsCertInfoResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -35,16 +36,16 @@ export const requestTlsCertificateInformation = async (
  * @param queryData query parameters for additional options
  */
 export const listRegisteredTlsCertificates = async (
-	queryData: ListRegisteredTlsCertQueryParametersModel
-): Promise<ListRegisteredTlsCertResponseModel> => {
+	queryData?: ListRegisteredTlsCertQueryParametersModel
+): Promise<AxiosResponse<ListRegisteredTlsCertResponseModel, any>> => {
 	const url = urlQueryBuilder(URL, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<ListRegisteredTlsCertResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -56,12 +57,12 @@ export const listRegisteredTlsCertificates = async (
  */
 export const resolveIdForServerName = async (
 	servername: string
-): Promise<CreationResponseModel> => {
+): Promise<AxiosResponse<CreationResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/resolve/${servername}}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<CreationResponseModel>(url);
 
-	return res.data;
+	return res;
 };

@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import {
 	CreationResponseModel,
 	DefaultResponseModel,
@@ -22,14 +23,14 @@ import {
  */
 export const createUser = async (
 	bodyData: CreateUserBodyParameterModel
-): Promise<CreationResponseModel> => {
+): Promise<AxiosResponse<CreationResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<CreationResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -46,14 +47,14 @@ export const createUser = async (
 export const cancelUserDeletion = async (
 	id: string,
 	bodyData: UserIdentifierModel
-): Promise<DefaultResponseModel> => {
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${id}/restore`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<DefaultResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -68,14 +69,14 @@ export const cancelUserDeletion = async (
  */
 export const recalculateUserQuota = async (
 	id: string
-): Promise<RecalculateUserQuotaResponseModel> => {
+): Promise<AxiosResponse<RecalculateUserQuotaResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${id}/quota/reset`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url);
+	const res = await axiosConf.post<RecalculateUserQuotaResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -87,16 +88,17 @@ export const recalculateUserQuota = async (
  * http://docs.wildduck.email/api/#operation/recalculateQuotaAllUsers
  *
  */
-export const recalculateQuotaForAllUsers =
-	async (): Promise<DefaultResponseModel> => {
-		const url = urlQueryBuilder(`${URL}/quota/reset`, {
-			accessToken: wdData.accessToken,
-		});
+export const recalculateQuotaForAllUsers = async (): Promise<
+	AxiosResponse<DefaultResponseModel, any>
+> => {
+	const url = urlQueryBuilder(`${URL}/quota/reset`, {
+		accessToken: wdData.accessToken,
+	});
 
-		const res = await axiosConf.post(url);
+	const res = await axiosConf.post<DefaultResponseModel>(url);
 
-		return res.data;
-	};
+	return res;
+};
 
 /**
  * This method generates a new temporary password for a User. Additionally it removes all two-factor authentication settings
@@ -109,12 +111,15 @@ export const recalculateQuotaForAllUsers =
 export const resetUserPassword = async (
 	id: string,
 	bodyData: ResetUserPasswordBodyParametersModel
-): Promise<ResetUserPasswordResponseModel> => {
+): Promise<AxiosResponse<ResetUserPasswordResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${id}/password/reset`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<ResetUserPasswordResponseModel>(
+		url,
+		bodyData
+	);
 
-	return res.data;
+	return res;
 };

@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
@@ -17,14 +18,14 @@ import {
 export const downloadFile = async (
 	userId: string,
 	fileId: string
-): Promise<any> => {
+): Promise<AxiosResponse<any, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/${fileId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<any>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -37,14 +38,14 @@ export const downloadFile = async (
  */
 export const getStoredFiles = async (
 	userId: string,
-	queryData: GetStoredFilesQueryParametersModel
-): Promise<GetStoredFilesResponseModel> => {
-	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/`, {
+	queryData?: GetStoredFilesQueryParametersModel
+): Promise<AxiosResponse<GetStoredFilesResponseModel, any>> => {
+	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetStoredFilesResponseModel>(url);
 
-	return res.data;
+	return res;
 };

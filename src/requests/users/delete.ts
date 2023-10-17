@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -14,14 +15,14 @@ import { DeleteUserQueryParametersModel } from "./models";
  */
 export const deleteUser = async (
 	id: string,
-	queryData: DeleteUserQueryParametersModel
-): Promise<DefaultResponseModel> => {
+	queryData?: DeleteUserQueryParametersModel
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${id}`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.delete(url);
+	const res = await axiosConf.delete<DefaultResponseModel>(url);
 
-	return res.data;
+	return res;
 };

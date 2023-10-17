@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
@@ -17,14 +18,17 @@ import {
  */
 export const authenticateUser = async (
 	bodyData: AuthenticateUserBodyParametersModel
-): Promise<AuthenticateUserResponseModel> => {
+): Promise<AxiosResponse<AuthenticateUserResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<AuthenticateUserResponseModel>(
+		url,
+		bodyData
+	);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -37,12 +41,12 @@ export const authenticateUser = async (
  */
 export const preAuthenticationCheck = async (
 	bodyData: PreAuthCheckBodyParametersModel
-): Promise<PreAuthCheckResponseModel> => {
+): Promise<AxiosResponse<PreAuthCheckResponseModel, any>> => {
 	const url = urlQueryBuilder(`/preauth`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<PreAuthCheckResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };

@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import {
@@ -14,14 +15,14 @@ import {
  * @param queryData query parameters for additional options
  */
 export const getRegisteredWebhooks = async (
-	queryData: GetRegisteredWebhooksQueryParametersModel
-): Promise<GetRegisteredWebhooksResponseModel> => {
+	queryData?: GetRegisteredWebhooksQueryParametersModel
+): Promise<AxiosResponse<GetRegisteredWebhooksResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetRegisteredWebhooksResponseModel>(url);
 
-	return res.data;
+	return res;
 };

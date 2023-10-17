@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { CreationResponseModel } from "../../models/index";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -17,7 +18,7 @@ export const updateFilterInformation = async (
 	userId: string,
 	filterId: string,
 	bodyData: UpdateFilterInfoBodyParametersModel
-): Promise<CreationResponseModel> => {
+): Promise<AxiosResponse<CreationResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId)}/${filterId}`,
 		{
@@ -25,7 +26,7 @@ export const updateFilterInformation = async (
 		}
 	);
 
-	const res = await axiosConf.put(url, bodyData);
+	const res = await axiosConf.put<CreationResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };

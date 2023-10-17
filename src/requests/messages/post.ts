@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 import { getMessageInfo } from "./get";
@@ -32,7 +33,7 @@ export const uploadMessage = async (
 	userId: string,
 	mailboxId: string,
 	bodyData: UploadMessageBodyParameterModel
-): Promise<UploadMessageResponseModel> => {
+): Promise<AxiosResponse<UploadMessageResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace("{mailboxId}", mailboxId)}`,
 		{
@@ -40,9 +41,9 @@ export const uploadMessage = async (
 		}
 	);
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<UploadMessageResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -60,16 +61,16 @@ export const uploadMessageReply = async (
 	mailboxId: string,
 	replyMessageId: number,
 	bodyData: UploadMessageReplyBodyParameterModel
-): Promise<UploadMessageResponseModel> => {
+): Promise<AxiosResponse<UploadMessageResponseModel, any>> => {
 	const messageResponse = await getMessageInfo(
 		userId,
 		mailboxId,
 		replyMessageId,
 		{}
 	);
-	const inReplyTo = messageResponse.messageId;
+	const inReplyTo = messageResponse.data.messageId;
 	// todo? add all prior emails to references?
-	const references = messageResponse.references;
+	const references = messageResponse.data.references;
 
 	// const headers = [
 	// 	["Content-Type", "application/json"],
@@ -84,7 +85,7 @@ export const uploadMessageReply = async (
 		}
 	);
 
-	const res = await axiosConf.post(
+	const res = await axiosConf.post<UploadMessageResponseModel>(
 		url,
 		{
 			...bodyData,
@@ -108,7 +109,7 @@ export const uploadMessageReply = async (
 		}
 	);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -130,20 +131,23 @@ export const forwardStoredMessage = async (
 	mailboxId: string,
 	messageId: number,
 	bodyData: ForwardStoredMessageBodyParameterModel
-): Promise<ForwardStoredMessageResponseModel> => {
+): Promise<AxiosResponse<ForwardStoredMessageResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace(
 			"{mailboxId}",
 			mailboxId
-		)}/${messageId}`,
+		)}/${messageId}/forward`,
 		{
 			accessToken: wdData.accessToken,
 		}
 	);
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<ForwardStoredMessageResponseModel>(
+		url,
+		bodyData
+	);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -159,14 +163,17 @@ export const forwardStoredMessage = async (
 export const searchUpdateMessage = async (
 	userId: string,
 	bodyData: SearchUpdateMessageBodyParameterModel
-): Promise<SearchUpdateMessageResponseModel> => {
+): Promise<AxiosResponse<SearchUpdateMessageResponseModel, any>> => {
 	const url = urlQueryBuilder(`/users/${userId}/search`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<SearchUpdateMessageResponseModel>(
+		url,
+		bodyData
+	);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -185,7 +192,7 @@ export const submitDraftMessage = async (
 	mailboxId: string,
 	messageId: number,
 	bodyData: SubmitDraftMessageBodyParameterModel
-): Promise<SubmitDraftMessageResponseModel> => {
+): Promise<AxiosResponse<SubmitDraftMessageResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace(
 			"{mailboxId}",
@@ -196,7 +203,10 @@ export const submitDraftMessage = async (
 		}
 	);
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<SubmitDraftMessageResponseModel>(
+		url,
+		bodyData
+	);
 
-	return res.data;
+	return res;
 };

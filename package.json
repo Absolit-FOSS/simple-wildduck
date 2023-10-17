@@ -1,7 +1,7 @@
 {
     "name": "@absolit/simple-wildduck",
     "version": "1.0.0",
-    "description": "Simple interface for the WildDuck API",
+    "description": "Documented TypeScript wrapper for the WildDuck API",
     "main": "dist/index.js",
     "scripts": {
         "compile": "tsc",
@@ -27,7 +27,7 @@
         "dist/"
     ],
     "dependencies": {
-        "@netsu/js-utils": "^1.1.8",
+        "@netsu/js-utils": "^1.2.2",
         "axios": "^1.3.3"
     },
     "devDependencies": {

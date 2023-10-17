@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { CreationResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -17,14 +18,14 @@ import {
  */
 export const requestDkimInformation = async (
 	dkimId: string
-): Promise<RequestDkimInformationResponseModel> => {
+): Promise<AxiosResponse<RequestDkimInformationResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${dkimId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<RequestDkimInformationResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -35,16 +36,18 @@ export const requestDkimInformation = async (
  * @param queryData query parameters for additional options
  */
 export const listRegisteredDkimKeys = async (
-	queryData: ListRegisteredDkimKeysQueryParameters
-): Promise<ListRegisteredDkimKeysResponseParameters> => {
+	queryData?: ListRegisteredDkimKeysQueryParameters
+): Promise<AxiosResponse<ListRegisteredDkimKeysResponseParameters, any>> => {
 	const url = urlQueryBuilder(URL, {
 		accessToken: wdData.accessToken,
 		...queryData,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<ListRegisteredDkimKeysResponseParameters>(
+		url
+	);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -56,12 +59,12 @@ export const listRegisteredDkimKeys = async (
  */
 export const resolveIdForDkimDomain = async (
 	domain: string
-): Promise<CreationResponseModel> => {
+): Promise<AxiosResponse<CreationResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/resolve/${domain}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<CreationResponseModel>(url);
 
-	return res.data;
+	return res;
 };

@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -19,14 +20,14 @@ import {
 export const updateForwardedAddressInfo = async (
 	addressId: string,
 	bodyData: UpdateForwardedAddressInfoBodyParametersModel
-): Promise<DefaultResponseModel> => {
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/forwarded/${addressId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.put(url, bodyData);
+	const res = await axiosConf.put<DefaultResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -43,14 +44,14 @@ export const updateAddressInfo = async (
 	userId: string,
 	addressId: string,
 	bodyData: UpdateAddressInfoBodyParametersModel
-): Promise<DefaultResponseModel> => {
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(`/users/${userId}/addresses/${addressId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.put(url, bodyData);
+	const res = await axiosConf.put<DefaultResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -62,12 +63,12 @@ export const updateAddressInfo = async (
  */
 export const renameDomainInAddresses = async (
 	bodyData: RenameDomainInAddressesBodyParametersModel
-): Promise<DefaultResponseModel> => {
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/renameDomain`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.put(url, bodyData);
+	const res = await axiosConf.put<DefaultResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };

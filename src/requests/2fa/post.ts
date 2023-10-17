@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -21,14 +22,14 @@ import {
 export const validateTOTPToken = async (
 	userId: string,
 	bodyData: ValidateTOTPTokenBodyParameterModel
-): Promise<DefaultResponseModel> => {
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/totp/check`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<DefaultResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -43,7 +44,7 @@ export const validateTOTPToken = async (
 export const enableTOTPSeed = async (
 	userId: string,
 	bodyData: EnableTOTPSeedBodyParameterModel
-): Promise<DefaultResponseModel> => {
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId)}/totp/enable`,
 		{
@@ -51,9 +52,9 @@ export const enableTOTPSeed = async (
 		}
 	);
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<DefaultResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -69,12 +70,15 @@ export const enableTOTPSeed = async (
 export const generateTOTPSeed = async (
 	userId: string,
 	bodyData: GenerateTOTPSeedBodyParameterModel
-): Promise<GenerateTOTPSeedResponseModel> => {
+): Promise<AxiosResponse<GenerateTOTPSeedResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/totp/setup`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<GenerateTOTPSeedResponseModel>(
+		url,
+		bodyData
+	);
 
-	return res.data;
+	return res;
 };

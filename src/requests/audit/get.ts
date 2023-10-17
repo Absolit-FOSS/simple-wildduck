@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { DefaultMailboxModel } from "../../models/index";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -13,14 +14,14 @@ import { GetAuditInformationResponseModel } from "./models";
  */
 export const getAuditInformation = async (
 	auditId: string
-): Promise<GetAuditInformationResponseModel> => {
+): Promise<AxiosResponse<GetAuditInformationResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${auditId}`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<GetAuditInformationResponseModel>(url);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -32,12 +33,12 @@ export const getAuditInformation = async (
  */
 export const exportAuditedEmails = async (
 	auditId: string
-): Promise<DefaultMailboxModel> => {
+): Promise<AxiosResponse<DefaultMailboxModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${auditId}/export.mbox`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.get(url);
+	const res = await axiosConf.get<DefaultMailboxModel>(url);
 
-	return res.data;
+	return res;
 };

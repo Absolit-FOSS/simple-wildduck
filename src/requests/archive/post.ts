@@ -1,4 +1,5 @@
 import { urlQueryBuilder } from "@netsu/js-utils";
+import { AxiosResponse } from "axios";
 import { DefaultResponseModel } from "../../models";
 import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
@@ -21,7 +22,7 @@ export const restoreArchivedMessage = async (
 	userId: string,
 	messageId: number,
 	bodyData: RestoreArchivedMessageBodyParametersModel
-): Promise<RestoreArchivedMessageResponseModel> => {
+): Promise<AxiosResponse<RestoreArchivedMessageResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId)}/messages/${messageId}/restore`,
 		{
@@ -29,9 +30,12 @@ export const restoreArchivedMessage = async (
 		}
 	);
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<RestoreArchivedMessageResponseModel>(
+		url,
+		bodyData
+	);
 
-	return res.data;
+	return res;
 };
 
 /**
@@ -47,12 +51,12 @@ export const restoreArchivedMessage = async (
 export const restoreArchivedMessages = async (
 	userId: string,
 	bodyData: RestoreArchivedMessagesBodyParametersModel
-): Promise<DefaultResponseModel> => {
+): Promise<AxiosResponse<DefaultResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}/restore`, {
 		accessToken: wdData.accessToken,
 	});
 
-	const res = await axiosConf.post(url, bodyData);
+	const res = await axiosConf.post<DefaultResponseModel>(url, bodyData);
 
-	return res.data;
+	return res;
 };
