@@ -329,7 +329,7 @@ export interface ListRegisteredAddressesResponseModel {
 	/**
 	 * Either a cursor string or false if there are not any next results
 	 */
-	nextCursor: string;
+	nextCursor: string | false;
 	/**
 	 * Address listing
 	 */
