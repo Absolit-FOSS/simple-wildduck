@@ -7,15 +7,6 @@ Based completely on the existing API: https://docs.wildduck.email/api/
 - [Setup and Usage](#setup-and-usage)
 - [Contributing](#contributing)
   - [Project Structure](#project-structure)
-- [Request Functions](#request-functions)
-  - [Messages](#messages)
-    - [updateMessageInfo](#updateMessageInfo)
-    - [deleteMessage](#deleteMessage)
-    <!-- and all the rest -->
-  - [Applicationpasswords](#applicationpasswords)
-    - [deleteAppPassword](#deleteapppassword)
-    - [createNewAppPassword](#createnewapppassword)
-    <!-- and all the rest -->
 
 ## Setup and Usage
 
