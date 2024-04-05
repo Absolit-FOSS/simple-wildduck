@@ -5,7 +5,7 @@ import { axiosConf, wdData } from "../../setup";
 import { URL } from "./config";
 
 /**
- * This method disables account password for IMAP/POP3/SMTP
+ * This method disables account password for IMAP/POP3/SMTP.
  *
  * https://docs.wildduck.email/api/#operation/enableCustom2FA
  *

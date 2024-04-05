@@ -16,7 +16,7 @@ import {
 } from "./models";
 
 /**
- * Request forwarded Addresses information
+ * Request forwarded Addresses information.
  *
  * https://docs.wildduck.email/api/#operation/getForwardedAddress
  *
@@ -35,7 +35,7 @@ export const getForwardedAddressInfo = async (
 };
 
 /**
- * Request Addresses information
+ * Request User Addresses information.
  *
  * https://docs.wildduck.email/api/#operation/getUserAddress
  *
@@ -56,7 +56,7 @@ export const getAddressesInfo = async (
 };
 
 /**
- * Get Address info
+ * Get Address info.
  *
  * https://docs.wildduck.email/api/#operation/resolveAddress
  *
@@ -78,7 +78,7 @@ export const getAddressInfo = async (
 };
 
 /**
- * List registered Addresses
+ * List registered Addresses.
  *
  * https://docs.wildduck.email/api/#operation/getAddresses
  *

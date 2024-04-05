@@ -12,7 +12,7 @@ import {
 
 /**
  * This method checks if a TOTP token provided by a User
- * is valid for authentication
+ * is valid for authentication.
  *
  * https://docs.wildduck.email/api/#operation/checkTotp2FA
  *
@@ -34,7 +34,7 @@ export const validateTOTPToken = async (
 
 /**
  * This method enables TOTP for a user by verifying the
- * seed value generated from 2fa/totp/setup
+ * seed value generated from 2fa/totp/setup.
  *
  * https://docs.wildduck.email/api/#operation/enableTotp2FA
  *
@@ -60,7 +60,7 @@ export const enableTOTPSeed = async (
 /**
  * This method generates TOTP seed and QR code for 2FA.
  * User needs to verify the seed value using
- * 2fa/totp/enable endpoint
+ * 2fa/totp/enable endpoint.
  *
  * https://docs.wildduck.email/api/#operation/setupTotp2FA
  *
