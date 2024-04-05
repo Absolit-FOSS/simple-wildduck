@@ -7,6 +7,7 @@ Based completely on the existing API: https://docs.wildduck.email/api/
 - [Setup and Usage](#setup-and-usage)
 - [Contributing](#contributing)
   - [Project Structure](#project-structure)
+- [Useful Resources](#useful-resources)
 
 ## Setup and Usage
 
@@ -44,6 +45,12 @@ if (users.data.success && users.data.results.length > 0) {
   - `src/requests/.../post.ts` -> All POST request functions
   - `src/requests/.../put.ts` -> All PUT request functions
 - `src/setup` -> Module setup, required functions when imported into your project
+
+## Useful Resources
+
+- [WildDuck](https://wildduck.email)
+- [WildDuck API](https://docs.wildduck.email/api/)
+- [WildDuck Docs](https://docs.wildduck.email/#/)
 
 ---
 

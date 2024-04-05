@@ -47,7 +47,7 @@ export interface ListRegisteredDomainAliasesQueryParametersModel {
 	 */
 	limit?: number;
 	/**
-	 * Current page number. Informational only, page numbers start from 1
+	 * Current page number. **Informational only**, page numbers start from 1
 	 */
 	page?: number;
 	/**

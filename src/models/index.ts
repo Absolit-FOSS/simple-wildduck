@@ -90,7 +90,7 @@ export interface PageQueryModel {
 	 */
 	limit?: number;
 	/**
-	 * Current page number. Informational only, page
+	 * Current page number. **Informational only**, page
 	 * numbers start from 1
 	 */
 	page?: number;
