@@ -4,7 +4,20 @@ Simple WildDuck is a free and open-source wrapper for the WildDuck API. It simpl
 
 Based completely on the existing API: https://docs.wildduck.email/api/
 
-## Basic Usage
+- [Setup and Usage](#setup-and-usage)
+- [Contributing](#contributing)
+  - [Project Structure](#project-structure)
+- [Request Functions](#request-functions)
+  - [Messages](#messages)
+    - [updateMessageInfo](#updateMessageInfo)
+    - [deleteMessage](#deleteMessage)
+    <!-- and all the rest -->
+  - [Applicationpasswords](#applicationpasswords)
+    - [deleteAppPassword](#deleteapppassword)
+    - [createNewAppPassword](#createnewapppassword)
+    <!-- and all the rest -->
+
+## Setup and Usage
 
 ```typescript
 import wd from "@absolit/simple-wildduck";
@@ -25,7 +38,9 @@ if (users.data.success && users.data.results.length > 0) {
 }
 ```
 
-## Project Structure
+## Contributing
+
+### Project Structure
 
 - `src/` -> All source code goes here
 - `src/models` -> Models that can be used everywhere goes here

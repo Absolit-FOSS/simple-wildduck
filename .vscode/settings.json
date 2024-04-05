@@ -5,6 +5,10 @@
 		"Datestring",
 		"mbox",
 		"mobileconfig",
-    "bimi"
-	]
+		"bimi"
+	],
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.black-formatter"
+	},
+	"python.formatting.provider": "none"
 }
