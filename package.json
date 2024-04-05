@@ -1,6 +1,6 @@
 {
     "name": "@absolit/simple-wildduck",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Documented TypeScript wrapper for the WildDuck API",
     "main": "dist/index.js",
     "scripts": {
