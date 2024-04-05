@@ -513,6 +513,8 @@ export interface GetUsersQueryParametersModel {
 	internalData?: boolean;
 	/**
 	 * How many records to return
+	 *
+	 * @max 250
 	 */
 	limit?: number;
 	/**

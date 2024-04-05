@@ -401,7 +401,9 @@ export interface ListAddressesFromCommunicationRegisterQueryParametersModel {
 	query: string;
 	/**
 	 * How many records to return
-	 * Example: limit=25
+	 * @example limit=25
+	 *
+	 * @max 250
 	 */
 	limit?: number;
 }
