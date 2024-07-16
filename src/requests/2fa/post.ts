@@ -14,7 +14,7 @@ import {
  * This method checks if a TOTP token provided by a User
  * is valid for authentication.
  *
- * https://docs.wildduck.email/api/#operation/checkTotp2FA
+ * https://docs.wildduck.email/api/#operation/postusersuser2fatotpcheck
  *
  * @param userId the users wildduck ID
  * @param bodyData body parameters for request
@@ -36,7 +36,7 @@ export const validateTOTPToken = async (
  * This method enables TOTP for a user by verifying the
  * seed value generated from 2fa/totp/setup.
  *
- * https://docs.wildduck.email/api/#operation/enableTotp2FA
+ * https://docs.wildduck.email/api/#operation/postusersuser2fatotpenable
  *
  * @param userId the users wildduck ID
  * @param bodyData body parameters for request
@@ -62,7 +62,7 @@ export const enableTOTPSeed = async (
  * User needs to verify the seed value using
  * 2fa/totp/enable endpoint.
  *
- * https://docs.wildduck.email/api/#operation/setupTotp2FA
+ * https://docs.wildduck.email/api/#operation/postusersuser2fatotpsetup
  *
  * @param userId the users wildduck ID
  * @param bodyData body parameters for request

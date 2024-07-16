@@ -12,7 +12,7 @@ import {
 /**
  * Restore archived Message
  *
- * https://docs.wildduck.email/api/#operation/restoreMessage
+ * https://docs.wildduck.email/api/#operation/create_restore_task
  *
  * @param userId ID of the User
  * @param messageId Message ID
@@ -44,7 +44,7 @@ export const restoreArchivedMessage = async (
  * is fully recovered, except any email addresses that might have been
  * already recycled
  *
- * https://docs.wildduck.email/api/#operation/restoreMessages
+ * https://docs.wildduck.email/api/#operation/archived_restore
  *
  * @param userId ID of the User
  */

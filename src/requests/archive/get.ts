@@ -12,7 +12,7 @@ import {
  *
  * Archive contains all recently deleted messages besides Drafts etc.
  *
- * https://docs.wildduck.email/api/#operation/getArchivedMessages
+ * https://docs.wildduck.email/api/#operation/archived
  *
  * @param userId ID of the User
  * @param queryData query parameters for additional options

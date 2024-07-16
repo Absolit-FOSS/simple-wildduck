@@ -16,7 +16,7 @@ import {
  * Special addresses *@example.com, *suffix@example.com and username@* catches all emails to these domains
  * or users without a registered destination (requires allowWildcard argument)
  *
- * https://docs.wildduck.email/api/#operation/createUserAddress
+ * https://docs.wildduck.email/api/#operation/postusersuseraddresses
  *
  * @param userId ID of the User
  * @param bodyData body parameters to create a user
@@ -43,7 +43,7 @@ export const createAddress = async (
  * catches all emails to these domains or users without a registered destination
  * (requires allowWildcard argument)
  *
- * https://docs.wildduck.email/api/#operation/createForwardedAddress
+ * https://docs.wildduck.email/api/#operation/postaddressesforwarded
  *
  * @param bodyData body parameters to cancel user deletion
  */

@@ -8,7 +8,7 @@ import { CreateNewAuditBodyParametersModel } from "./models";
 /**
  * Create new audit
  *
- * https://docs.wildduck.email/api/#operation/createAudit
+ * https://docs.wildduck.email/api/#operation/postaudit
  *
  * @param bodyData body parameters to reset user password
  */

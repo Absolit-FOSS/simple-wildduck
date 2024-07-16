@@ -7,7 +7,7 @@ import { URL } from "./config";
 /**
  * This method disables account password for IMAP/POP3/SMTP.
  *
- * https://docs.wildduck.email/api/#operation/enableCustom2FA
+ * https://docs.wildduck.email/api/#operation/putusersuser2facustom
  *
  * @param userId the users wildduck ID
  * @param bodyData data to update on the mailbox
