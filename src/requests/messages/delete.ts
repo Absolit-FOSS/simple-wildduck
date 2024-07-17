@@ -11,7 +11,7 @@ import {
 /**
  * Delete a message
  *
- * https://docs.wildduck.email/api/#operation/deleteMessage
+ * https://docs.wildduck.email/api/#operation/deleteusersusermailboxesmailboxmessagesmessage
  *
  * @param userId Users unique ID
  * @param mailboxId Mailbox unique ID.
@@ -40,7 +40,7 @@ export const deleteMessage = async (
 /**
  * Delete all messages from a mailbox
  *
- * https://docs.wildduck.email/api/#operation/deleteMessagesInMailbox
+ * https://docs.wildduck.email/api/#operation/deleteusersusermailboxesmailboxmessages
  *
  * @param userId Users unique ID
  * @param mailboxId Mailbox unique ID.
@@ -68,7 +68,7 @@ export const deleteAllMessages = async (
  * You can delete outbound emails that are still in queue. Queue ID
  * can be found from the outbound property of a stored email.
  *
- * https://docs.wildduck.email/api/#operation/deleteOutboundMessage
+ * https://docs.wildduck.email/api/#operation/deleteusersuseroutboundqueueid
  *
  * @param userId Users unique ID
  * @param queueId Queue unique ID.

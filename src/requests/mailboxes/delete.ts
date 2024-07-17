@@ -7,7 +7,7 @@ import { URL } from "./config";
 /**
  * Delete a Mailbox
  *
- * https://docs.wildduck.email/api/#operation/deleteMailbox
+ * https://docs.wildduck.email/api/#operation/deleteusersusermailboxesmailbox
  *
  * @param userId Users unique ID
  * @param mailboxId Mailbox unique ID.

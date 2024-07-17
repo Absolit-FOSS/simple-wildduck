@@ -10,7 +10,7 @@ import {
 /**
  * Submit a message for delivery
  *
- * https://docs.wildduck.email/api/#operation/submitMessage
+ * https://docs.wildduck.email/api/#operation/send
  *
  * @param userId the users wildduck ID
  * @param bodyData body parameters to submit

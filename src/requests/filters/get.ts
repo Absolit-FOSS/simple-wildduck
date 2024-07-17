@@ -12,7 +12,7 @@ import {
 /**
  * Request Filter information
  *
- * https://docs.wildduck.email/api/#operation/getFilter
+ * https://docs.wildduck.email/api/#operation/getusersuserfiltersfilter
  *
  * @param userId Users unique ID
  * @param filterId Filters unique ID
@@ -36,7 +36,7 @@ export const requestFilterInformation = async (
 /**
  * List all Filters
  *
- * https://docs.wildduck.email/api/#operation/getAllFilters
+ * https://docs.wildduck.email/api/#operation/filters
  *
  * @param queryData query parameters for additional options
  */
@@ -56,7 +56,7 @@ export const listAllFilters = async (
 /**
  * List Filters for a User
  *
- * https://docs.wildduck.email/api/#operation/getFilters
+ * https://docs.wildduck.email/api/#operation/getusersuserfilters
  *
  * @param userId Users unique ID
  */

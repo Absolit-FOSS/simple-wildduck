@@ -10,7 +10,7 @@ import {
 /**
  * Get registered webhooks
  *
- * https://docs.wildduck.email/api/#operation/getWebhooks
+ * https://docs.wildduck.email/api/#operation/webhooks
  *
  * @param queryData query parameters for additional options
  */

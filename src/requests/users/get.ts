@@ -57,7 +57,7 @@ export const getUsers = async (
  * to get notifications about changes in messages and mailboxes.
  * Returned events are JSON encoded strings
  *
- * http://docs.wildduck.email/api/#operation/getUpdates
+ * https://docs.wildduck.email/api/#operation/getusersuserupdates
  *
  * @param id the users wildduck ID
  */
@@ -76,7 +76,7 @@ export const getChangeStream = async (
 /**
  * Get a users ID via their username
  *
- * http://docs.wildduck.email/api/#operation/resolveUser
+ * https://docs.wildduck.email/api/#operation/getusersresolveusername
  *
  * @param username the users wildduck username
  */
@@ -95,7 +95,7 @@ export const getUserIdByUsername = async (
 /**
  * Get the recovery info for a deleted user
  *
- * http://docs.wildduck.email/api/#operation/restoreUserInfo
+ * https://docs.wildduck.email/api/#operation/getusersuserrestore
  *
  * @param id the users wildduck ID
  * @param queryData query parameters for additional options

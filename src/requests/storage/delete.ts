@@ -7,7 +7,7 @@ import { URL } from "./config";
 /**
  * Delete file from storage
  *
- * https://docs.wildduck.email/api/#operation/deleteFile
+ * https://docs.wildduck.email/api/#operation/deleteusersuserstoragefile
  *
  * @param userId Users unique ID
  * @param fileId ID of the File

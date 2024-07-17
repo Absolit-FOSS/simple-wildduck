@@ -17,7 +17,7 @@ import {
  * NB! you must ensure yourself that the servername value is actually listed in
  * certificate's common name or SAN as WildDuck is going to use this certificate regardless.
  *
- * https://docs.wildduck.email/api/#operation/updateTLSCertificate
+ * https://docs.wildduck.email/api/#operation/postcerts
  *
  * @param bodyData body parameters to create a user
  */

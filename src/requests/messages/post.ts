@@ -23,7 +23,7 @@ import {
  * from structured data fields, then do not use the raw
  * property.
  *
- * https://docs.wildduck.email/api/#operation/uploadMessage
+ * https://docs.wildduck.email/api/#operation/postusersusermailboxesmailboxmessages
  *
  * @param userId the users wildduck ID
  * @param mailboxId the mailbox wildduck ID
@@ -49,7 +49,7 @@ export const uploadMessage = async (
 /**
  * This allows you to email a reply to a thread
  *
- * https://docs.wildduck.email/api/#operation/uploadMessage
+ * https://docs.wildduck.email/api/#operation/postusersusermailboxesmailboxmessages
  *
  * @param userId the users wildduck ID
  * @param mailboxId the mailbox wildduck ID
@@ -119,7 +119,7 @@ export const uploadMessageReply = async (
  * delivered so you can try again. Forwarding does not modify the
  * original message.
  *
- * https://docs.wildduck.email/api/#operation/forwardStoredMessage
+ * https://docs.wildduck.email/api/#operation/postusersusermailboxesmailboxmessagesmessageforward
  *
  * @param userId the users wildduck ID
  * @param mailboxId the mailbox wildduck ID
@@ -155,7 +155,7 @@ export const forwardStoredMessage = async (
  * This is an async method so that it will return immediately.
  * Actual modifications are run in the background.
  *
- * https://docs.wildduck.email/api/#operation/searchApplyMessages
+ * https://docs.wildduck.email/api/#operation/searchApply
  *
  * @param userId the users wildduck ID
  * @param bodyData body parameters to update
@@ -180,7 +180,7 @@ export const searchUpdateMessage = async (
  * This method allows to submit a draft message for delivery.
  * Draft is moved to Sent mail folder.
  *
- * https://docs.wildduck.email/api/#operation/submitStoredMessage
+ * https://docs.wildduck.email/api/#operation/postusersusermailboxesmailboxmessagesmessagesubmit
  *
  * @param userId the users wildduck ID
  * @param mailboxId the mailbox wildduck ID
