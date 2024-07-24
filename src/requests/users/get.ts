@@ -16,7 +16,7 @@ import {
 /**
  * Get a single user
  *
- * http://docs.wildduck.email/api/#operation/getUser
+ * https://docs.wildduck.email/api/#operation/getusersuser
  *
  * @param id the users wildduck ID
  */
@@ -35,7 +35,7 @@ export const getUser = async (
 /**
  * Get all registered users
  *
- * http://docs.wildduck.email/api/#operation/getUsers
+ * https://docs.wildduck.email/api/#operation/users
  *
  * @param queryData query parameters for additional options
  */
@@ -117,7 +117,7 @@ export const getDeletedUserInfo = async (
 /**
  * This method allows searching for matching messages.
  *
- * https://docs.wildduck.email/api/#operation/searchMessages
+ * https://docs.wildduck.email/api/#operation/search
  *
  * @param userId the users wildduck ID
  * @param queryData query parameters for additional options

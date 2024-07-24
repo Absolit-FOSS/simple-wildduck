@@ -7,7 +7,7 @@ import { URL } from "./config";
 /**
  * Delete a forwarded Address.
  *
- * https://docs.wildduck.email/api/#operation/deleteusersuseraddressesaddress
+ * https://docs.wildduck.email/api/#operation/deleteaddressesforwardedaddress
  *
  * @param addressId ID of the Address
  */

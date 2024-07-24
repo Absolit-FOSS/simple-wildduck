@@ -12,7 +12,7 @@ import {
 /**
  * Get a message
  *
- * https://docs.wildduck.email/api/#operation/raw
+ * https://docs.wildduck.email/api/#operation/message
  *
  * @param userId the users wildduck ID
  * @param mailboxId the mailbox wildduck ID
@@ -44,7 +44,7 @@ export const getMessageInfo = async (
 /**
  * Get all messages in a mailbox
  *
- * https://docs.wildduck.email/api/#operation/getMessages
+ * https://docs.wildduck.email/api/#operation/messages
  *
  * @param userId the users wildduck ID
  * @param mailboxId the mailbox wildduck ID
@@ -71,7 +71,7 @@ export const getMessagesInMailbox = async (
 /**
  * Download a message attachment, return buffer string.
  *
- * https://docs.wildduck.email/api/#operation/getMessageAttachment
+ * https://docs.wildduck.email/api/#operation/attachment
  *
  * @param userId the users wildduck ID
  * @param mailboxId the mailbox wildduck ID
@@ -104,7 +104,7 @@ export const getMessageAttachment = async (
  * This method returns the full RFC822 formatted source of the stored
  * message
  *
- * https://docs.wildduck.email/api/#operation/getMessageSource
+ * https://docs.wildduck.email/api/#operation/raw
  *
  * @param userId the users wildduck ID
  * @param mailboxId the mailbox wildduck ID
