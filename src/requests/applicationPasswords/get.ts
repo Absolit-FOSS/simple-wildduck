@@ -11,7 +11,7 @@ import {
 /**
  * Request ASP information
  *
- * https://docs.wildduck.email/api/#operation/getASP
+ * https://docs.wildduck.email/api/#operation/getusersuseraspsasp
  *
  * @param userId the users wildduck ID
  * @param aspId ID of the Application Password
@@ -32,7 +32,7 @@ export const getAppPasswordInformation = async (
 /**
  * List Application Passwords
  *
- * https://docs.wildduck.email/api/#operation/getASPs
+ * https://docs.wildduck.email/api/#operation/getusersuserasps
  *
  * @param userId ID of the User
  * @param queryData query parameters for additional options

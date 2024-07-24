@@ -8,7 +8,7 @@ import { UploadFileToStorageBodyParameterModel } from "./models";
 /**
  * This method allows to upload an attachment to be linked from a draft
  *
- * https://docs.wildduck.email/api/#operation/uploadFile
+ * https://docs.wildduck.email/api/#operation/postusersuserstorage
  *
  * @param userId the users wildduck ID
  * @param bodyData body parameters to create a user

@@ -10,7 +10,7 @@ import {
 /**
  * This method returns stored file contents in binary form
  *
- * https://docs.wildduck.email/api/#operation/getFile
+ * https://docs.wildduck.email/api/#operation/storagefile
  *
  * @param userId the users wildduck ID
  * @param fileId the file wildduck ID
@@ -31,7 +31,7 @@ export const downloadFile = async (
 /**
  * Get a list of all the stored files
  *
- * https://docs.wildduck.email/api/#operation/getFiles
+ * https://docs.wildduck.email/api/#operation/getusersuserstorage
  *
  * @param userId the users wildduck ID
  * @param queryData query parameters for additional options

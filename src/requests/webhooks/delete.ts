@@ -7,7 +7,7 @@ import { URL } from "./config";
 /**
  * Delete a webhook
  *
- * https://docs.wildduck.email/api/#operation/deleteWebhook
+ * https://docs.wildduck.email/api/#operation/deletewebhookswebhook
  *
  * @param webhookId the webhook wildduck ID
  */

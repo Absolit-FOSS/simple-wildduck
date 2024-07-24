@@ -12,7 +12,7 @@ import {
 /**
  * Authenticate a User
  *
- * https://docs.wildduck.email/api/#operation/authenticate
+ * https://docs.wildduck.email/api/#operation/postauthenticate
  *
  * @param bodyData body parameters to reset user password
  */
@@ -35,7 +35,7 @@ export const authenticateUser = async (
  * Pre-auth check
  * Check if an username exists and can be used for authentication
  *
- * https://docs.wildduck.email/api/#operation/preauth
+ * https://docs.wildduck.email/api/#operation/postpreauth
  *
  * @param bodyData body parameters to reset user password
  */

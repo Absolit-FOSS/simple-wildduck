@@ -9,7 +9,7 @@ import { URL } from "./config";
  *
  * This method invalidates currently used authentication token. If token is not provided then nothing happens
  *
- * https://docs.wildduck.email/api/#operation/invalidateAccessToken
+ * https://docs.wildduck.email/api/#operation/deleteauthenticate
  */
 export const invalidateAuthenticationToken = async (): Promise<
 	AxiosResponse<DefaultResponseModel, any>

@@ -7,7 +7,7 @@ import { ListAllowAndBlocklistedDomainsResponseModel } from "./models";
 /**
  * List allowlisted domains
  *
- * https://docs.wildduck.email/api/#operation/getAllowedDomain
+ * https://docs.wildduck.email/api/#operation/getdomainaccesstagallow
  *
  * @param tag Tag to look for
  */
@@ -28,7 +28,7 @@ export const listAllowlistedDomains = async (
 /**
  * List blocklisted domains
  *
- * https://docs.wildduck.email/api/#operation/getBlockedDomain
+ * https://docs.wildduck.email/api/#operation/getdomainaccesstagblock
  *
  * @param tag Tag to look for
  */

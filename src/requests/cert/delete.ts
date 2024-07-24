@@ -7,7 +7,7 @@ import { URL } from "./config";
 /**
  * Delete a TLS certificate
  *
- * https://docs.wildduck.email/api/#operation/deleteTlsCert
+ * https://docs.wildduck.email/api/#operation/deletecertscert
  *
  * @param certId ID of the TLS certificate
  */

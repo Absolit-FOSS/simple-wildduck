@@ -11,7 +11,7 @@ import {
 /**
  * Update a user
  *
- * http://docs.wildduck.email/api/#operation/updateUser
+ * https://docs.wildduck.email/api/#operation/putusersuser
  *
  * @param id the users wildduck ID
  * @param bodyData data to update on the user
@@ -32,7 +32,7 @@ export const updateUser = async (
 /**
  * Log out all users sessions in IMAP
  *
- * http://docs.wildduck.email/api/#operation/logoutUser
+ * https://docs.wildduck.email/api/#operation/putusersuserlogout
  *
  * @param id the users wildduck ID
  * @param bodyData data to logout on the user

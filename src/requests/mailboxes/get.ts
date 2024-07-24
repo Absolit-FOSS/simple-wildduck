@@ -11,7 +11,7 @@ import {
 /**
  * Get the information of a mailbox
  *
- * https://docs.wildduck.email/api/#operation/getMailbox
+ * https://docs.wildduck.email/api/#operation/getusersusermailboxesmailbox
  *
  * @param userId the users wildduck ID
  * @param mailboxId the mailbox wildduck ID
@@ -35,7 +35,7 @@ export const getMailboxInfo = async (
 /**
  * Get a list of the users mailboxes
  *
- * https://docs.wildduck.email/api/#operation/getMailboxes
+ * https://docs.wildduck.email/api/#operation/getusersusermailboxes
  *
  * @param userId the users wildduck ID
  * @param queryData query parameters for additional options

@@ -11,7 +11,7 @@ import { AddDomainToAllowOrBlocklistBodyParametersModel } from "./models";
  * If an email is sent from a domain that is listed in the allowlist then it is never marked as spam.
  * Lists apply for tagged users.
  *
- * https://docs.wildduck.email/api/#operation/createAllowedDomain
+ * https://docs.wildduck.email/api/#operation/postdomainaccesstagallow
  *
  * @param tag Tag to look for
  * @param bodyData body parameters to reset user password
@@ -35,7 +35,7 @@ export const addDomainToAllowlist = async (
  * If an email is sent from a domain that is listed in the blocklist then it is always marked as spam.
  * Lists apply for tagged users.
  *
- * https://docs.wildduck.email/api/#operation/createBlockedDomain
+ * https://docs.wildduck.email/api/#operation/postdomainaccesstagblock
  *
  * @param tag Tag to look for
  * @param bodyData body parameters to reset user password

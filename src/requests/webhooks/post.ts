@@ -8,7 +8,7 @@ import { CreateWebhookBodyParametersModel } from "./models";
 /**
  * Create a new webhook
  *
- * https://docs.wildduck.email/api/#operation/createWebhook
+ * https://docs.wildduck.email/api/#operation/postwebhooks
  *
  * @param bodyData body parameters to create a webhook
  */

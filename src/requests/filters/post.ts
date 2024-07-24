@@ -8,7 +8,7 @@ import { CreateNewFilterBodyParametersModel } from "./models";
 /**
  * Create new Filter
  *
- * https://docs.wildduck.email/api/#operation/createFilter
+ * https://docs.wildduck.email/api/#operation/postusersuserfilters
  *
  * @param userId Users unique ID
  * @param bodyData body parameters to reset user password

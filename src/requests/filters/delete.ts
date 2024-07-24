@@ -7,7 +7,7 @@ import { URL } from "./config";
 /**
  * Delete a Filter
  *
- * https://docs.wildduck.email/api/#operation/deleteFilter
+ * https://docs.wildduck.email/api/#operation/deleteusersuserfiltersfilter
  *
  * @param userId Users unique ID
  * @param filterId Filters unique ID

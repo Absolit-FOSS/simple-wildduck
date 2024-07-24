@@ -7,7 +7,7 @@ import { URL } from "./config";
 /**
  * Delete an Application Password
  *
- * https://docs.wildduck.email/api/#operation/deleteASP
+ * https://docs.wildduck.email/api/#operation/deleteusersuseraspsasp
  *
  * @param userId ID of the User
  * @param aspId ID of the Application Password
