@@ -1,36 +1,36 @@
 {
-    "name": "@absolit/simple-wildduck",
-    "version": "1.0.8",
-    "description": "Documented TypeScript wrapper for the WildDuck API",
-    "main": "dist/index.js",
-    "scripts": {
-        "compile": "tsc",
-        "publish": "tsc && npm publish --access=public",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Absolit-FOSS/simple-wildduck.git"
-    },
-    "keywords": [
-        "wildduck",
-        "absolit"
-    ],
-    "author": "Absolit",
-    "license": "Apache-2.0",
-    "bugs": {
-        "url": "https://github.com/Absolit-FOSS/simple-wildduck/issues"
-    },
-    "homepage": "https://github.com/Absolit-FOSS/simple-wildduck#readme",
-    "types": "dist/index.d.ts",
-    "files": [
-        "dist/"
-    ],
-    "dependencies": {
-        "@netsu/js-utils": "^1.2.2",
-        "axios": "^1.3.3"
-    },
-    "devDependencies": {
-        "@types/node": "^20.1.5"
-    }
+	"name": "@absolit/simple-wildduck",
+	"version": "1.1.0",
+	"description": "Documented TypeScript wrapper for the WildDuck API",
+	"main": "dist/index.js",
+	"scripts": {
+		"compile": "tsc",
+		"publish": "tsc && npm publish --access=public",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Absolit-FOSS/simple-wildduck.git"
+	},
+	"keywords": [
+		"wildduck",
+		"absolit"
+	],
+	"author": "Absolit",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/Absolit-FOSS/simple-wildduck/issues"
+	},
+	"homepage": "https://github.com/Absolit-FOSS/simple-wildduck#readme",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist/"
+	],
+	"dependencies": {
+		"@netsu/js-utils": "^2.1.0",
+		"axios": "^1.12.2"
+	},
+	"devDependencies": {
+		"@types/node": "^20.1.5"
+	}
 }
