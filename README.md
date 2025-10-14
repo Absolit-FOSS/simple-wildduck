@@ -2,7 +2,7 @@
 
 Simple WildDuck is a free and open-source wrapper for the WildDuck API. It simplifies API requests by providing well-documented TypeScript functions, making it easy to integrate WildDuck into any project.
 
-Based completely on the existing API: https://docs.wildduck.email/api/
+Based completely on the existing API: https://docs.wildduck.email/docs/category/wildduck-api
 
 - [Setup and Usage](#setup-and-usage)
 - [Contributing](#contributing)
@@ -48,9 +48,9 @@ if (users.data.success && users.data.results.length > 0) {
 
 ## Useful Resources
 
-- [WildDuck](https://wildduck.email)
-- [WildDuck API](https://docs.wildduck.email/api/)
-- [WildDuck Docs](https://docs.wildduck.email/#/)
+- [WildDuck](https://docs.wildduck.email)
+- [WildDuck API](https://docs.wildduck.email/docs/category/wildduck-api)
+- [WildDuck Docs](https://docs.wildduck.email/docs/intro)
 
 ---
 
