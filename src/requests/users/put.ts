@@ -9,9 +9,9 @@ import {
 } from "./models";
 
 /**
- * Update a user
+ * Update User information
  *
- * https://docs.wildduck.email/api/#operation/putusersuser
+ * https://docs.wildduck.email/docs/wildduck-api/update-user
  *
  * @param id the users wildduck ID
  * @param bodyData data to update on the user
@@ -32,7 +32,7 @@ export const updateUser = async (
 /**
  * Log out all users sessions in IMAP
  *
- * https://docs.wildduck.email/api/#operation/putusersuserlogout
+ * https://docs.wildduck.email/docs/wildduck-api/logout-user
  *
  * @param id the users wildduck ID
  * @param bodyData data to logout on the user

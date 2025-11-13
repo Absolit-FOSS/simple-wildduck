@@ -12,7 +12,7 @@ import {
 /**
  * Request TLS certificate information
  *
- * https://docs.wildduck.email/api/#operation/getcertscert
+ * https://docs.wildduck.email/docs/wildduck-api/get-tls-certificate
  *
  * @param certId ID of the TLS certificate
  */
@@ -31,7 +31,7 @@ export const requestTlsCertificateInformation = async (
 /**
  * List registered TLS certificates
  *
- * https://docs.wildduck.email/api/#operation/cert
+ * https://docs.wildduck.email/docs/wildduck-api/get-tls-certificates
  *
  * @param queryData query parameters for additional options
  */
@@ -51,7 +51,7 @@ export const listRegisteredTlsCertificates = async (
 /**
  * Resolve ID for a server name
  *
- * https://docs.wildduck.email/api/#operation/getcertsresolveservername
+ * https://docs.wildduck.email/docs/wildduck-api/resolve-tls-certificate
  *
  * @param servername Server name
  */

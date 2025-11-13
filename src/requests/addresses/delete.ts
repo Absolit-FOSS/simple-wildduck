@@ -7,7 +7,7 @@ import { URL } from "./config";
 /**
  * Delete a forwarded Address.
  *
- * https://docs.wildduck.email/api/#operation/deleteaddressesforwardedaddress
+ * https://docs.wildduck.email/docs/wildduck-api/delete-forwarded-address
  *
  * @param addressId ID of the Address
  */
@@ -26,7 +26,7 @@ export const deleteForwardedAddress = async (
 /**
  * Delete an Address.
  *
- * https://docs.wildduck.email/api/#operation/deleteusersuseraddressesaddress
+ * https://docs.wildduck.email/docs/wildduck-api/delete-user-address
  *
  * @param userId ID of the User
  * @param addressId ID of the Address

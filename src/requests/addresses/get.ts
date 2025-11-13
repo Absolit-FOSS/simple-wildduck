@@ -18,7 +18,7 @@ import {
 /**
  * Request forwarded Addresses information.
  *
- * https://docs.wildduck.email/api/#operation/getaddressesforwardedaddress
+ * https://docs.wildduck.email/docs/wildduck-api/get-forwarded-address
  *
  * @param addressId ID of the Address
  */
@@ -37,7 +37,7 @@ export const getForwardedAddressInfo = async (
 /**
  * Request User Addresses information.
  *
- * https://docs.wildduck.email/api/#operation/getusersuseraddressesaddress
+ * https://docs.wildduck.email/docs/wildduck-api/get-user-address
  *
  * @param userId ID of the User
  * @param addressId ID of the Address
@@ -58,7 +58,7 @@ export const getAddressesInfo = async (
 /**
  * Get Address info.
  *
- * https://docs.wildduck.email/api/#operation/getaddressesresolveaddress
+ * https://docs.wildduck.email/docs/wildduck-api/resolve-address
  *
  * @param addressId ID of the Address or e-mail address string
  * @param queryData query parameters for additional options
@@ -80,7 +80,7 @@ export const getAddressInfo = async (
 /**
  * List registered Addresses.
  *
- * https://docs.wildduck.email/api/#operation/addresses
+ * https://docs.wildduck.email/docs/wildduck-api/get-addresses
  *
  * @param userId ID of the User
  * @param queryData query parameters for additional options
@@ -101,7 +101,7 @@ export const listRegisteredAddresses = async (
 /**
  * List registered Addresses for a User
  *
- * https://docs.wildduck.email/api/#operation/getusersuseraddresses
+ * https://docs.wildduck.email/docs/wildduck-api/get-user-addresses
  *
  * @param userId ID of the User
  * @param queryData query parameters for additional options
@@ -125,7 +125,7 @@ export const listRegisteredAddressesForUser = async (
 /**
  * Lists addresses from email headers. Includes addresses both from sent and received messages. Sorted by last usage
  *
- * https://docs.wildduck.email/api/#operation/getusersuseraddressregister
+ * https://docs.wildduck.email/docs/wildduck-api/get-user-addressregister
  *
  * @param userId ID of the User, Example: 507f1f77bcf86cd799439011
  * @param queryData query parameters for additional options

@@ -7,7 +7,7 @@ import { URL } from "./config";
 /**
  * Delete a Domain from listing
  *
- * https://docs.wildduck.email/api/#operation/deletedomainaccessdomain
+ * https://docs.wildduck.email/docs/wildduck-api/delete-domain-listing
  *
  * @param domainId Listed domains unique ID
  */

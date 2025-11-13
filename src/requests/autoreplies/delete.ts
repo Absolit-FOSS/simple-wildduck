@@ -8,7 +8,7 @@ import {} from "./models";
 /**
  * Delete Autoreply information
  *
- * https://docs.wildduck.email/api/#operation/deleteusersuserautoreply
+ * https://docs.wildduck.email/docs/wildduck-api/delete-autoreply
  *
  * @param userId ID of the User
  */

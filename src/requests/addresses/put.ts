@@ -12,7 +12,7 @@ import {
 /**
  * Update forwarded Address information
  *
- * https://docs.wildduck.email/api/#operation/putaddressesforwardedid
+ * https://docs.wildduck.email/docs/wildduck-api/update-forwarded-address
  *
  * @param addressId ID of the Address
  * @param bodyData data to update on the user
@@ -34,7 +34,7 @@ export const updateForwardedAddressInfo = async (
  * Update Address information
  * Renames domain names for addresses, DKIM keys and Domain Aliases
  *
- * https://docs.wildduck.email/api/#operation/putusersuseraddressesid
+ * https://docs.wildduck.email/docs/wildduck-api/update-address-addressregister
  *
  * @param userId ID of the User
  * @param addressId ID of the Address
@@ -57,7 +57,7 @@ export const updateAddressInfo = async (
 /**
  * Rename domain in addresses
  *
- * https://docs.wildduck.email/api/#operation/putaddressesrenamedomain
+ * https://docs.wildduck.email/docs/wildduck-api/rename-domain
  *
  * @param bodyData data to update on the user
  */

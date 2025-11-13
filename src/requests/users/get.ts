@@ -16,7 +16,7 @@ import {
 /**
  * Get a single user
  *
- * https://docs.wildduck.email/api/#operation/getusersuser
+ * https://docs.wildduck.email/docs/wildduck-api/get-user
  *
  * @param id the users wildduck ID
  */
@@ -35,7 +35,7 @@ export const getUser = async (
 /**
  * Get all registered users
  *
- * https://docs.wildduck.email/api/#operation/users
+ * https://docs.wildduck.email/docs/wildduck-api/get-users
  *
  * @param queryData query parameters for additional options
  */

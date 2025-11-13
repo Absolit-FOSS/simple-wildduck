@@ -8,8 +8,8 @@ import { CreateNewAuditBodyParametersModel } from "./models";
 /**
  * Create new audit
  *
- * https://docs.wildduck.email/api/#operation/postaudit
- *
+ * https://docs.wildduck.email/docs/wildduck-api/create-audit
+ * 
  * @param bodyData body parameters to reset user password
  */
 export const createNewAudit = async (

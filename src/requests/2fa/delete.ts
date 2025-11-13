@@ -8,7 +8,7 @@ import { URL } from "./config";
  * This method disables all 2FA mechanisms a user
  * might have set up
  *
- * https://docs.wildduck.email/api/#operation/deleteusersuser2fa
+ * https://docs.wildduck.email/docs/wildduck-api/disable-2-fa
  *
  * @param userId Users unique ID
  * @param queryData query parameters for additional options
@@ -32,7 +32,7 @@ export const disable2FA = async (
  * set up, then account password for IMAP/POP3/SMTP gets
  * enabled again.
  *
- * https://docs.wildduck.email/api/#operation/deleteusersuser2facustom
+ * https://docs.wildduck.email/docs/wildduck-api/disable-custom-2-fa
  *
  * @param userId Users unique ID
  * @param queryData query parameters for additional options
@@ -55,7 +55,7 @@ export const disableCustom2FA = async (
  * This method disables TOTP for a user. Does not affect
  * other 2FA mechanisms a user might have set up.
  *
- * https://docs.wildduck.email/api/#operation/deleteusersuser2fatotp
+ * https://docs.wildduck.email/docs/wildduck-api/disable-totp-auth
  *
  * @param userId Users unique ID
  * @param queryData query parameters for additional options

@@ -8,7 +8,7 @@ import { GetAuditInformationResponseModel } from "./models";
 /**
  * Request Audit Info
  *
- * https://docs.wildduck.email/api/#operation/getauditaudit
+ * https://docs.wildduck.email/docs/wildduck-api/get-audit
  *
  * @param auditId ID of the Audit
  */
@@ -27,7 +27,7 @@ export const getAuditInformation = async (
 /**
  * Export Audited Emails
  *
- * https://docs.wildduck.email/api/#operation/getauditauditexportmbox
+ * https://docs.wildduck.email/docs/wildduck-api/get-audit-emails
  *
  * @param auditId ID of the Audit
  */

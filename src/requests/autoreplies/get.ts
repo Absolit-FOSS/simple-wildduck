@@ -7,7 +7,7 @@ import { GetAutoreplyResponseModel } from "./models";
 /**
  * Request Autoreply information
  *
- * https://docs.wildduck.email/api/#operation/getusersuserautoreply
+ * https://docs.wildduck.email/docs/wildduck-api/get-autoreply
  *
  * @param userId ID of the User
  */

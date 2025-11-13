@@ -7,7 +7,7 @@ import { URL } from "./config";
 /**
  * Delete an Alias
  *
- * https://docs.wildduck.email/api/#operation/deletedomainaliasesalias
+ * https://docs.wildduck.email/docs/wildduck-api/delete-domain-alias
  *
  * @param aliasId the users wildduck ID
  */
