@@ -12,7 +12,7 @@ import {
 /**
  * Request DKIM information
  *
- * https://docs.wildduck.email/api/#operation/getdkimdkim
+ * https://docs.wildduck.email/docs/wildduck-api/get-dkim-key
  *
  * @param dkimId ID of the DKIM
  */
@@ -31,7 +31,7 @@ export const requestDkimInformation = async (
 /**
  * List registered DKIM keys
  *
- * https://docs.wildduck.email/api/#operation/dkim
+ * https://docs.wildduck.email/docs/wildduck-api/get-dkim-keys
  *
  * @param queryData query parameters for additional options
  */
@@ -53,7 +53,7 @@ export const listRegisteredDkimKeys = async (
 /**
  * Resolve ID for a DKIM domain
  *
- * https://docs.wildduck.email/api/#operation/getdkimresolvedomain
+ * https://docs.wildduck.email/docs/wildduck-api/resolve-dkim
  *
  * @param domain DKIM domain
  */

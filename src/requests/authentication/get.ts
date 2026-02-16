@@ -10,7 +10,7 @@ import {
 /**
  * List authentication Events
  *
- * https://docs.wildduck.email/api/#operation/authlog
+ * https://docs.wildduck.email/docs/wildduck-api/get-authlog
  *
  * @param userId ID of the User
  * @param queryData query parameters for additional options
@@ -32,7 +32,7 @@ export const listAuthenticationEvents = async (
 /**
  * Request Event information
  *
- * https://docs.wildduck.email/api/#operation/getusersuserauthlogevent
+ * https://docs.wildduck.email/docs/wildduck-api/get-authlog-event
  *
  * @param userId ID of the User
  * @param eventId ID of the Event

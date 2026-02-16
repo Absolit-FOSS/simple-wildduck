@@ -17,7 +17,7 @@ import {
 /**
  * Create a new user
  *
- * https://docs.wildduck.email/api/#operation/postusers
+ * https://docs.wildduck.email/docs/wildduck-api/create-user
  *
  * @param bodyData body parameters to create a user
  */
@@ -39,7 +39,7 @@ export const createUser = async (
  * is fully recovered, except any email addresses that might have been
  * already recycled
  *
- * https://docs.wildduck.email/api/#operation/postusersuserrestore
+ * https://docs.wildduck.email/docs/wildduck-api/cancel-user-delete
  *
  * @param id the users wildduck ID
  * @param bodyData body parameters to cancel user deletion
@@ -63,7 +63,7 @@ export const cancelUserDeletion = async (
  * transactional, so if the user is currently receiving new messages
  * then the resulting value is not exact.
  *
- * https://docs.wildduck.email/api/#operation/postusersuserquotareset
+ * https://docs.wildduck.email/docs/wildduck-api/recalculate-quota
  *
  * @param id the users wildduck ID
  */
@@ -85,7 +85,7 @@ export const recalculateUserQuota = async (
  * transactional, so if the user is currently receiving new messages
  * then the resulting value is not exact.
  *
- * https://docs.wildduck.email/api/#operation/postquotareset
+ * https://docs.wildduck.email/docs/wildduck-api/recalculate-quota-all-users
  *
  */
 export const recalculateQuotaForAllUsers = async (): Promise<
@@ -103,7 +103,7 @@ export const recalculateQuotaForAllUsers = async (): Promise<
 /**
  * This method generates a new temporary password for a User. Additionally it removes all two-factor authentication settings
  *
- * https://docs.wildduck.email/api/#operation/postusersuserpasswordreset
+ * https://docs.wildduck.email/docs/wildduck-api/reset-user-password
  *
  * @param id the users wildduck ID
  * @param bodyData body parameters to reset user password

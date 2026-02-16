@@ -8,7 +8,7 @@ import { CreateMailboxBodyParameterModel } from "./models";
 /**
  * Create a new mailbox
  *
- * https://docs.wildduck.email/api/#operation/postusersusermailboxes
+ * https://docs.wildduck.email/docs/wildduck-api/create-mailbox
  *
  * @param userId the users wildduck ID
  * @param bodyData body parameters to create a user

@@ -7,7 +7,7 @@ import { URL } from "./config";
 /**
  * Delete a DKIM key
  *
- * https://docs.wildduck.email/api/#operation/deletedkimdkim
+ * https://docs.wildduck.email/docs/wildduck-api/delete-dkim-key
  *
  * @param dkimId ID of the DKIM
  */

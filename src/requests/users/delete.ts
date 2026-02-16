@@ -8,7 +8,7 @@ import { DeleteUserQueryParametersModel } from "./models";
 /**
  * Delete a user
  *
- * https://docs.wildduck.email/api/#operation/deleteusersuser
+ * https://docs.wildduck.email/docs/wildduck-api/delete-user
  *
  * @param id the users wildduck ID
  * @param queryData query parameters for additional options

@@ -10,7 +10,7 @@ import {
 /**
  * Create new Application Password
  *
- * https://docs.wildduck.email/api/#operation/postusersuserasps
+ * https://docs.wildduck.email/docs/wildduck-api/create-asp
  *
  * @param userId ID of the User
  * @param bodyData body parameters to reset user password

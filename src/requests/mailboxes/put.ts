@@ -8,7 +8,7 @@ import { UpdateMailboxInfoBodyParametersModel } from "./models";
 /**
  * Update a mailbox
  *
- * https://docs.wildduck.email/api/#operation/putusersusermailboxesmailbox
+ * https://docs.wildduck.email/docs/wildduck-api/update-mailbox
  *
  * @param userId the users wildduck ID
  * @param mailboxId the mailbox wildduck ID

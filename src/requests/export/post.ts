@@ -14,7 +14,7 @@ import {
  * "export"-role access token is required for exporting
  * and importing.
  *
- * https://docs.wildduck.email/api/#operation/postdataexport
+ * https://docs.wildduck.email/docs/wildduck-api/create-export
  *
  * @param bodyData body parameters to export user data
  *
@@ -38,7 +38,7 @@ export const exportUserData = async (
  * "export"-role access token is required for exporting
  * and importing.
  *
- * https://docs.wildduck.email/api/#operation/postdataimport
+ * https://docs.wildduck.email/docs/wildduck-api/create-import
  *
  * @param bodyData body parameters (binary) containing data to import
  */

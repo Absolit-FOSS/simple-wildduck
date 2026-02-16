@@ -11,7 +11,7 @@ import {
 /**
  * Request Alias information
  *
- * https://docs.wildduck.email/api/#operation/getdomainaliasesalias
+ * https://docs.wildduck.email/docs/wildduck-api/get-domain-alias
  *
  * @param aliasId ID of the Alias
  */
@@ -30,7 +30,7 @@ export const getAliasInformation = async (
 /**
  * List registered Domain Aliases
  *
- * https://docs.wildduck.email/api/#operation/domainaliases
+ * https://docs.wildduck.email/docs/wildduck-api/get-domain-aliases
  *
  * @param query Partial match of a Domain Alias or Domain name
  */
@@ -52,7 +52,7 @@ export const listRegisteredDomainAliases = async (
 /**
  * Resolve ID for a domain alias
  *
- * https://docs.wildduck.email/api/#operation/getdomainaliasesresolvealias
+ * https://docs.wildduck.email/docs/wildduck-api/resolve-domain-alias
  *
  * @param aliasId Alias domain
  */

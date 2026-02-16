@@ -9,7 +9,7 @@ import { CreateNewDomainAliasBodyParameterModel } from "./models";
  * Add a new Alias for a Domain.
  * This allows to accept mail on username@domain and username@alias
  *
- * https://docs.wildduck.email/api/#operation/postdomainaliases
+ * https://docs.wildduck.email/docs/wildduck-api/create-domain-alias
  *
  * @param bodyData body parameters to reset user password+
  */

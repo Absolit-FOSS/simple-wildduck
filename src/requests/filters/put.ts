@@ -8,7 +8,7 @@ import { UpdateFilterInfoBodyParametersModel } from "./models";
 /**
  * Update Filter information
  *
- * https://docs.wildduck.email/api/#operation/putusersuserfiltersfilter
+ * https://docs.wildduck.email/docs/wildduck-api/update-filter
  *
  * @param userId the users wildduck ID
  * @param filterId Filters unique ID
