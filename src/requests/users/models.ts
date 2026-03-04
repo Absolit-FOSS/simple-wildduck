@@ -551,13 +551,24 @@ export interface RecalculateUserQuotaResponseModel {
 
 export interface SearchUserMessagesQueryParametersModel extends PageQueryModel {
 	/**
+	 * Additional query string
+	 */
+	q?: string;
+	/**
 	 * ID of the Mailbox
 	 */
 	mailbox?: string;
 	/**
+	 * Message ID values, only applies when used in combination with mailbox. Either comma separated numbers (1,2,3) or colon separated range (3:15), or a range from UID to end (3:*)
+	 */
+	id?: string;
+	/**
 	 * Thread ID
 	 */
 	thread?: string;
+	"or.query"?: string;
+	"or.from"?: string;
+	"or.subject"?: string;
 	/**
 	 * Search string, uses MongoDB fulltext index. Covers data from message body and also common headers like from, to, subject etc.
 	 */
@@ -583,38 +594,6 @@ export interface SearchUserMessagesQueryParametersModel extends PageQueryModel {
 	 */
 	subject?: string;
 	/**
-	 * If true, then matches only messages with attachments
-	 */
-	attachments?: boolean;
-	/**
-	 * If true, then matches only messages with \Flagged flags
-	 */
-	flagged?: boolean;
-	/**
-	 * If true, then matches only messages without \Seen flags
-	 */
-	unseen?: boolean;
-	/**
-	 * If true, then matches messages not in Junk or Trash
-	 */
-	searchable?: boolean;
-	/**
-	 * Search string, uses MongoDB fulltext index. Covers data from message body and also common headers like from, to, subject etc.
-	 */
-	"or.query"?: string;
-	/**
-	 * Partial match for the From: header line
-	 */
-	"or.from"?: string;
-	/**
-	 * Partial match for the To: and Cc: header lines
-	 */
-	"or.to"?: string;
-	/**
-	 * Partial match for the Subject: header line
-	 */
-	"or.subject"?: string;
-	/**
 	 * Minimal message size in bytes
 	 */
 	minSize?: number;
@@ -623,11 +602,45 @@ export interface SearchUserMessagesQueryParametersModel extends PageQueryModel {
 	 */
 	maxSize?: number;
 	/**
+	 * If true, then matches only messages with attachments
+	 */
+	attachments?: boolean;
+	/**
+	 * If true, then matches only messages with \Flagged flags
+	 */
+	flagged?: boolean;
+	/**
+	 * If true, then matches only messages without \Seen flags. Takes precedence over the seen flag
+	 */
+	unseen?: boolean;
+	/**
+	 * If true, then matches only messages with \Seen flags
+	 */
+	seen?: boolean;
+	/**
+	 * Comma separated list of header keys to include in the response
+	 * Example: List-ID, MIME-Version
+	 */
+	includeHeaders?: string;
+	/**
+	 * If true, then matches messages not in Junk or Trash
+	 */
+	searchable?: boolean;
+	/**
+	 * Session identifier for the logs
+	 */
+	sess?: string;
+	/**
+	 * IP address for the logs
+	 */
+	ip?: string;
+	/**
 	 * If true, then includes threadMessageCount in the response. Counters come with some overhead
 	 */
 	threadCounters?: boolean;
 	/**
-	 * Ordering of the records by insert date. If no order is supplied, results are sorted by heir mongoDB ObjectId.
+	 * Possible values: [asc, desc]
+	 * Ordering of the records by insert date. If no order is supplied, results are sorted by their mongoDB ObjectId.
 	 */
 	order?: "asc" | "desc";
 }

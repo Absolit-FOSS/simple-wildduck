@@ -21,7 +21,7 @@ import {
  * @param id the users wildduck ID
  */
 export const getUser = async (
-	id: string
+	id: string,
 ): Promise<AxiosResponse<GetUserResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${id}`, {
 		accessToken: wdData.accessToken,
@@ -40,7 +40,7 @@ export const getUser = async (
  * @param queryData query parameters for additional options
  */
 export const getUsers = async (
-	queryData?: GetUsersQueryParametersModel
+	queryData?: GetUsersQueryParametersModel,
 ): Promise<AxiosResponse<GetUsersResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}`, {
 		accessToken: wdData.accessToken,
@@ -62,7 +62,7 @@ export const getUsers = async (
  * @param id the users wildduck ID
  */
 export const getChangeStream = async (
-	id: string
+	id: string,
 ): Promise<AxiosResponse<GetUserResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${id}/updates`, {
 		accessToken: wdData.accessToken,
@@ -81,7 +81,7 @@ export const getChangeStream = async (
  * @param username the users wildduck username
  */
 export const getUserIdByUsername = async (
-	username: string
+	username: string,
 ): Promise<AxiosResponse<GetUserIdByUsernameResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/resolve/${username}`, {
 		accessToken: wdData.accessToken,
@@ -102,7 +102,7 @@ export const getUserIdByUsername = async (
  */
 export const getDeletedUserInfo = async (
 	id: string,
-	queryData?: UserIdentifierModel
+	queryData?: UserIdentifierModel,
 ): Promise<AxiosResponse<GetDeletedUserInfoResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${id}/restore`, {
 		accessToken: wdData.accessToken,
@@ -117,14 +117,14 @@ export const getDeletedUserInfo = async (
 /**
  * This method allows searching for matching messages.
  *
- * https://docs.wildduck.email/api/#operation/search
+ * https://docs.wildduck.email/docs/wildduck-api/search-messages
  *
  * @param userId the users wildduck ID
  * @param queryData query parameters for additional options
  */
 export const searchUserMessages = async (
 	userId: string,
-	queryData?: SearchUserMessagesQueryParametersModel
+	queryData?: SearchUserMessagesQueryParametersModel,
 ): Promise<AxiosResponse<SearchUserMessagesResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL}/${userId}/search`, {
 		accessToken: wdData.accessToken,
