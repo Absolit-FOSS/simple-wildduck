@@ -739,5 +739,5 @@ export interface SearchUserMessagesResponseResultsModel {
 }
 
 export interface SearchUserMessagesResponseModel extends CursorResponseModel {
-	results: SearchUserMessagesResponseResultsModel[];
+	result: SearchUserMessagesResponseResultsModel[];
 }
