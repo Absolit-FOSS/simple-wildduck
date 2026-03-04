@@ -740,5 +740,8 @@ export interface SearchUserMessagesResponseResultsModel {
 
 export interface SearchUserMessagesResponseModel extends CursorResponseModel {
 	query: string;
-	results: SearchUserMessagesResponseResultsModel[];
+	/**
+	 * Documentation says `results` but actual key is simply result
+	 */
+	result: SearchUserMessagesResponseResultsModel[];
 }
