@@ -6,6 +6,7 @@ import {
 	PageQueryModel,
 	UserIdentifierModel,
 } from "../../models";
+import { ContentTypeModel } from "../archive";
 
 export interface GetMessageInfoQueryParametersModel {
 	/**
@@ -259,16 +260,7 @@ export interface GetMessageInfoResponseModel {
 	 * Parsed Content-Type header. Usually needed to identify
 	 * encrypted messages and such
 	 */
-	contentType: {
-		/**
-		 * MIME type of the message, eg. "multipart/mixed"
-		 */
-		value: string;
-		/**
-		 * An object with Content-Type params as key-value pairs
-		 */
-		params: any;
-	};
+	contentType: ContentTypeModel;
 	/**
 	 * Custom metadata object set for this message
 	 */
@@ -317,8 +309,7 @@ export interface DeleteAllMessagesResponseModel {
 	deleted: number;
 }
 
-export interface GetMessagesInMailboxQueryParametersModel
-	extends PageQueryModel {
+export interface GetMessagesInMailboxQueryParametersModel extends PageQueryModel {
 	/**
 	 * If true, then returns only unseen messages
 	 */
@@ -422,16 +413,7 @@ export interface MessageInMailboxModel {
 	 * Parsed Content-Type header. Usually needed to identify encrypted
 	 * messages and such
 	 */
-	contentType: {
-		/**
-		 * MIME type of the message, eg. "multipart/mixed"
-		 */
-		value: string;
-		/**
-		 * An object with Content-Type params as key-value pairs
-		 */
-		params: any;
-	};
+	contentType: ContentTypeModel;
 	/**
 	 * Custom metadata value. Included if metaData query argument was true
 	 */
@@ -722,8 +704,7 @@ export interface UploadMessageBodyParameterModel extends UserIdentifierModel {
 	};
 }
 
-export interface UploadMessageReplyBodyParameterModel
-	extends UserIdentifierModel {
+export interface UploadMessageReplyBodyParameterModel extends UserIdentifierModel {
 	/**
 	 * Is the message unseen or not
 	 */

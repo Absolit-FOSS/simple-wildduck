@@ -7,6 +7,8 @@ import {
 	LimitUsageTTLModel,
 	PageQueryModel,
 } from "../../models";
+import { ContentTypeModel } from "../archive";
+import { BimiModel, MessageInfoAttachmentModel } from "../messages";
 
 export interface GetUserResponseLimitUsageModel {
 	quota: LimitUsageModel;
@@ -675,6 +677,7 @@ export interface SearchUserMessagesResponseResultsModel {
 	 * Recipients in Bcc: field. Usually only available for drafts
 	 */
 	bcc: FromToModel[];
+	messageId: string;
 	/**
 	 * Message subject
 	 */
@@ -688,10 +691,6 @@ export interface SearchUserMessagesResponseResultsModel {
 	 */
 	idate: string;
 	/**
-	 * Message size in bytes
-	 */
-	size: number;
-	/**
 	 * First 128 bytes of the message
 	 */
 	intro: string;
@@ -699,6 +698,11 @@ export interface SearchUserMessagesResponseResultsModel {
 	 * Does the message have attachments
 	 */
 	attachments: boolean;
+	attachmentsList: MessageInfoAttachmentModel[];
+	/**
+	 * Message size in bytes
+	 */
+	size: number;
 	/**
 	 * Is this message already seen or not
 	 */
@@ -711,6 +715,7 @@ export interface SearchUserMessagesResponseResultsModel {
 	 * Does this message have a \Flagged flag
 	 */
 	flagged: boolean;
+	draft: boolean;
 	/**
 	 * Does this message have a \Answered flag
 	 */
@@ -719,25 +724,21 @@ export interface SearchUserMessagesResponseResultsModel {
 	 * Does this message have a $Forwarded flag
 	 */
 	forwarded: boolean;
+	references: string[];
+	bimi: BimiModel;
 	/**
 	 * Parsed Content-Type header. Usually needed to identify encrypted messages and such
 	 */
-	contentType: {
-		/**
-		 * MIME type of the message, eg. "multipart/mixed"
-		 */
-		value: string;
-		/**
-		 * An object with Content-Type params as key-value pairs
-		 */
-		params: any;
-	};
+	contentType: ContentTypeModel;
+	encrypted: boolean;
 	/**
 	 * Custom metadata value. Included if metaData query argument was true
 	 */
-	metaData: any;
+	metaData: unknown;
+	headers: unknown;
 }
 
 export interface SearchUserMessagesResponseModel extends CursorResponseModel {
-	result: SearchUserMessagesResponseResultsModel[];
+	query: string;
+	results: SearchUserMessagesResponseResultsModel[];
 }
