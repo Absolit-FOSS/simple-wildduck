@@ -115,6 +115,9 @@ export const getDeletedUserInfo = async (
 };
 
 /**
+ * @warn this method may give you a timeout if searching large amounts of data, use
+ * `getMessagesInMailbox` for better performance
+ *
  * This method allows searching for matching messages.
  *
  * https://docs.wildduck.email/docs/wildduck-api/search-messages

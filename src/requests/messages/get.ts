@@ -23,17 +23,17 @@ export const getMessageInfo = async (
 	userId: string,
 	mailboxId: string,
 	messageId: number,
-	queryData?: GetMessageInfoQueryParametersModel
+	queryData?: GetMessageInfoQueryParametersModel,
 ): Promise<AxiosResponse<GetMessageInfoResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace(
 			"{mailboxId}",
-			mailboxId
+			mailboxId,
 		)}/${messageId}`,
 		{
 			accessToken: wdData.accessToken,
 			...queryData,
-		}
+		},
 	);
 
 	const res = await axiosConf.get<GetMessageInfoResponseModel>(url);
@@ -44,7 +44,7 @@ export const getMessageInfo = async (
 /**
  * Get all messages in a mailbox
  *
- * https://docs.wildduck.email/api/#operation/messages
+ * https://docs.wildduck.email/docs/wildduck-api/get-messages
  *
  * @param userId the users wildduck ID
  * @param mailboxId the mailbox wildduck ID
@@ -53,14 +53,14 @@ export const getMessageInfo = async (
 export const getMessagesInMailbox = async (
 	userId: string,
 	mailboxId: string,
-	queryData?: GetMessagesInMailboxQueryParametersModel
+	queryData?: GetMessagesInMailboxQueryParametersModel,
 ): Promise<AxiosResponse<GetMessagesInMailboxResponseModel, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace("{mailboxId}", mailboxId)}`,
 		{
 			accessToken: wdData.accessToken,
 			...queryData,
-		}
+		},
 	);
 
 	const res = await axiosConf.get<GetMessagesInMailboxResponseModel>(url);
@@ -82,16 +82,16 @@ export const getMessageAttachment = async (
 	userId: string,
 	mailboxId: string,
 	messageId: number,
-	attachmentId: string
+	attachmentId: string,
 ): Promise<AxiosResponse<string, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace(
 			"{mailboxId}",
-			mailboxId
+			mailboxId,
 		)}/${messageId}/attachments/${attachmentId}`,
 		{
 			accessToken: wdData.accessToken,
-		}
+		},
 	);
 
 	const res = await axiosConf.get<string>(url, { responseType: "arraybuffer" });
@@ -113,16 +113,16 @@ export const getMessageAttachment = async (
 export const getMessageSource = async (
 	userId: string,
 	mailboxId: string,
-	messageId: number
+	messageId: number,
 ): Promise<AxiosResponse<any, any>> => {
 	const url = urlQueryBuilder(
 		`${URL.replace("{userId}", userId).replace(
 			"{mailboxId}",
-			mailboxId
+			mailboxId,
 		)}/${messageId}/message.eml`,
 		{
 			accessToken: wdData.accessToken,
-		}
+		},
 	);
 
 	const res = await axiosConf.get<any>(url);
