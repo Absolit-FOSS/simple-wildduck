@@ -10,14 +10,14 @@ import {
 /**
  * Submit a message for delivery
  *
- * https://docs.wildduck.email/api/#operation/send
+ * https://docs.wildduck.email/docs/wildduck-api/submit-message
  *
  * @param userId the users wildduck ID
  * @param bodyData body parameters to submit
  */
 export const submitMessageForDelivery = async (
 	userId: string,
-	bodyData: SubmitMessageForDeliveryBodyParameterModel
+	bodyData: SubmitMessageForDeliveryBodyParameterModel,
 ): Promise<AxiosResponse<SubmitMessageForDeliveryResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		accessToken: wdData.accessToken,
@@ -25,7 +25,7 @@ export const submitMessageForDelivery = async (
 
 	const res = await axiosConf.post<SubmitMessageForDeliveryResponseModel>(
 		url,
-		bodyData
+		bodyData,
 	);
 
 	return res;

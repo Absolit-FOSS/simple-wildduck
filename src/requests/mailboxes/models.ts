@@ -172,4 +172,16 @@ export interface CreateMailboxBodyParameterModel {
 	 * expires. Set to 0 to disable.
 	 */
 	retention?: number;
+	/**
+	 * Session identifier for the logs
+	 */
+	sess?: string;
+	/**
+	 * If true then messages in this mailbox are encrypted
+	 */
+	encryptMessages?: boolean;
+	/**
+	 * IP address for the logs
+	 */
+	ip?: string;
 }

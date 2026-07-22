@@ -15,7 +15,7 @@ import { CreateMailboxBodyParameterModel } from "./models";
  */
 export const createMailbox = async (
 	userId: string,
-	bodyData: CreateMailboxBodyParameterModel
+	bodyData: CreateMailboxBodyParameterModel,
 ): Promise<AxiosResponse<CreationResponseModel, any>> => {
 	const url = urlQueryBuilder(`${URL.replace("{userId}", userId)}`, {
 		accessToken: wdData.accessToken,
