@@ -1,11 +1,11 @@
 {
 	"name": "@absolit/simple-wildduck",
-	"version": "1.2.0",
+	"version": "1.2.2",
 	"description": "Documented TypeScript wrapper for the WildDuck API",
 	"main": "dist/index.js",
 	"scripts": {
 		"compile": "tsc",
-		"publish": "tsc && npm publish --access=public",
+		"publish": "tsc && npm publish --access=public --userconfig=/tmp/npmrc",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {

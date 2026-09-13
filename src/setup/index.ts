@@ -13,5 +13,8 @@ export const wdInit = ({ baseUrl, accessToken, xAccessToken }: WDInitModel) => {
 	axiosConf = axios.create({
 		baseURL: baseUrl,
 		adapter: "fetch",
+		fetchOptions: {
+			cache: "no-store",
+		},
 	});
 };
