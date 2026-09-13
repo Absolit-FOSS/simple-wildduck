@@ -12,13 +12,15 @@
 		"declaration": true /* Generate .d.ts files from TypeScript and JavaScript files in your project. */,
 		"sourceMap": true /* Create source map files for emitted JavaScript files. */,
 		"outDir": "./dist" /* Specify an output folder for all emitted files. */,
+		"rootDir": "./src",
 		"esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */,
 		"forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
 
 		/* Type Checking */
 		"strict": true /* Enable all strict type-checking options. */,
 		"noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied `any` type.. */,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"types": ["node"]
 	},
 	"include": ["src/**/*", "index.ts"],
 	"exclude": ["node_modules"]
