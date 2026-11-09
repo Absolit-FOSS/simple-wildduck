@@ -88,7 +88,7 @@ export interface EnvelopeModel {
 		 * Normalized RCPT address
 		 */
 		formatted: string;
-	};
+	}[];
 }
 
 export interface VerificationResultModel {

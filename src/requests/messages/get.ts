@@ -12,7 +12,7 @@ import {
 /**
  * Get a message
  *
- * https://docs.wildduck.email/api/#operation/message
+ * https://docs.wildduck.email/docs/wildduck-api/get-message
  *
  * @param userId the users wildduck ID
  * @param mailboxId the mailbox wildduck ID
